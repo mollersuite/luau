@@ -65,10 +65,7 @@
   export let host
   export let id
   let code = dedent`
-  getgenv().request = request or (http and http.request) or (syn and syn.request) or (function (args)
-    if args.Method ~= 'GET' then error('Method not supported') end
-    return game:HttpGet(args.Url)
-  end)
+  getgenv().request = request or (http and http.request) or (syn and syn.request) or (lib and lib.request)
   loadstring(request({
     Url = 'https://${host}/script/${id}',
     Method = 'GET'
@@ -77,12 +74,17 @@
 </script>
 
 <svelte:head>
-  <title>{script.name}</title>
+  <title>{script.name} - Luau.ml</title>
 </svelte:head>
 
 <h1>{script.name}</h1>
 <p>{script.description}</p>
-<code>{code}</code>
+<code
+  >{code}<button
+    class="material-icons"
+    on:click={() => navigator.clipboard.writeText(code)}>content_copy</button
+  ></code
+>
 {#if script.games && script.games.length}
   <h2>Supported places</h2>
   {#each script.games as game}
@@ -91,9 +93,27 @@
 {/if}
 
 <style>
+  button {
+    background: none;
+    color: white;
+    float: right;
+    border: 0;
+    cursor: pointer;
+    transition: background 0.3s;
+    padding: 5px;
+    border-radius: 8px;
+  }
+  button:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  button:active {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  button:focus {
+    border: solid 1px white;
+  }
   code {
     white-space: pre-wrap;
-    font-family: var(--font-mono);
     font-size: 13px;
   }
 </style>
