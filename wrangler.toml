@@ -1,0 +1,9 @@
+name = "luau"
+type = "webpack"
+route = ''
+zone_id = ''
+usage_model = ''
+workers_dev = true
+[site]
+bucket = "./build"
+entry-point = "./workers-site"
