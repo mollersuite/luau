@@ -28,7 +28,7 @@ export const scripts = {
         while _G.Busy do
             for i = 1,10 do
             wait(2)
-            client.Character.HumanoidRootPart.CFrame=Stages["CaveStage" .. i].DarknessPart.CFrame
+            client.Character.HumanoidRootPart.CFrame = Stages["CaveStage" .. i].DarknessPart.CFrame
             wait(0.1)
             Gold:FireServer() end
             wait(1)
