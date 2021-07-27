@@ -73,6 +73,7 @@ export async function get({ params }) {
           local list = Instance.new('UIListLayout', frame)
           list.FillDirection = Enum.FillDirection.Vertical
           list.HorizontalAlignment = Enum.HorizontalAlignment.Center
+          list.SortOrder = Enum.SortOrder.Name
 
           local heading = Instance.new('TextLabel', frame)
           heading.Font = Enum.Font.GothamBlack
@@ -81,6 +82,7 @@ export async function get({ params }) {
           heading.Size = UDim2.new(1, 0, 0, 50)
           heading.TextWrapped = true
           heading.TextSize = 20
+          heading.Name = '!'
           heading.BackgroundTransparency = 1
 
           local heading2 = Instance.new('TextLabel', frame)
@@ -89,6 +91,7 @@ export async function get({ params }) {
           heading2.TextColor3 = Color3.new(1,1,1)
           heading2.Size = UDim2.new(1, 0, 0, 50)
           heading2.TextSize = 20
+          heading.Name = '!1'
           heading2.BackgroundTransparency = 1
           for _,v in pairs(games) do
             local btn = Instance.new('TextButton', frame)
@@ -97,7 +100,9 @@ export async function get({ params }) {
             btn.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
             btn.Size = UDim2.new(1, 0, 0, 50)
             btn.TextSize = 15
-            btn.Text = game:GetService('MarketplaceService'):GetProductInfo(v).Name
+            local name = game:GetService('MarketplaceService'):GetProductInfo(v).Name
+            btn.Name = '1' .. name
+            btn.Text = name
             btn.MouseButton1Click:Connect(function ()
               game:GetService('TeleportService'):Teleport(v)
             end)
@@ -106,6 +111,7 @@ export async function get({ params }) {
           local close = Instance.new('TextButton', frame)
           close.Font = Enum.Font.GothamBold
           close.Text = 'Script hosted on luau.ml'
+          close.Name = 'ZZZZZZZZZZ'
           close.TextColor3 = Color3.new(1,1,1)
           close.Size = UDim2.new(1, 0, 0, 50)
           close.TextSize = 20
