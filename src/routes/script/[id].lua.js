@@ -24,6 +24,7 @@ export async function get({ params }) {
         local games = { ${script.games.join(', ')} }
         if not table.find(games, game.PlaceId) then -- place id NOT game id
 
+          -- validnumber function and random string polyfill by Amourousity
           local function ValidNumber(Number)
             local Returned = table.pack(pcall(function()
                 return type(Number) == "number" and not string.find(string.lower(tostring(Number)),"nan")
@@ -42,7 +43,7 @@ export async function get({ params }) {
               return unpack(Returned)
           end
 
-          local random = (crypt and crypt.random) or (syn and syn.crypt and syn.crypt.random) or RandomString
+          local random = (crypt and crypt.random) or (syn and syn.crypt and syn.crypt.random) (crypt and crypt.generatekey and function (_) return crypt.generatekey() end) or RandomString
           local gui = Instance.new('ScreenGui')
           gui.Name = random(200)
 
@@ -63,7 +64,7 @@ export async function get({ params }) {
 
           -- make gui
           local frame = Instance.new('Frame', gui)
-          frame.Size = UDim2.new(0, 200, 0, 500)
+          frame.Size = UDim2.new(0, 300, 0, 500)
           frame.Position = UDim2.new(0.5, 0, 0.5, 0)
           frame.AnchorPoint = Vector2.new(0.5, 0.5)
           frame.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
@@ -72,6 +73,14 @@ export async function get({ params }) {
           local list = Instance.new('UIListLayout', frame)
           list.FillDirection = Enum.FillDirection.Vertical
           list.HorizontalAlignment = Enum.HorizontalAlignment.Center
+
+          local heading = Instance.new('TextLabel', frame)
+          heading.Font = Enum.Font.GothamBlack
+          heading.Text = 'This script does not support this game.'
+          heading.TextColor3 = Color3.new(1,1,1)
+          heading.Size = UDim2.new(1, 0, 0, 50)
+          heading.TextSize = 20
+          heading.BackgroundTransparency = 1
         end
       end
     ` + script.source
