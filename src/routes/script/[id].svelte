@@ -1,11 +1,7 @@
 <script context="module">
   import { browser } from '$app/env'
 
-  // if the client-side router is already loaded
-  // (i.e. we came here from elsewhere in the app), use it
-  export const router = browser
-
-  // there is obviously dynamic data here
+  export const router = true
   export const prerender = false
 
   /**
@@ -14,7 +10,7 @@
   export async function load({ page, fetch, session, context }) {
     if (session.exploit) {
       return {
-        redirect: `./${page.params.id}.lua`
+        redirect: `/scripts/${page.params.id}.lua`
       }
     }
     if (isNaN(Number(page.params.id))) {
@@ -24,7 +20,7 @@
       }
     }
 
-    const url = `./${page.params.id}.json`
+    const url = `/script/${page.params.id}.json`
     const res = await fetch(url)
     if (res.ok) {
       const script = await res.json()
@@ -33,7 +29,12 @@
         (await Promise.all(
           script.games.map((game) => {
             return fetch(
-              `https://api.roblox.com/Marketplace/ProductInfo?assetId=` + game
+              `https://cors.bridged.cc/https://api.roblox.com/Marketplace/ProductInfo?assetId=` +
+                game,{
+                  headers: browser ? undefined : {
+                    Origin: 'https://luau.ml'
+                  }
+                }
             ).then((res) => res.json())
           })
         ))
