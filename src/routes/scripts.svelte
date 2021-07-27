@@ -1,8 +1,3 @@
-<script context="module">
-  export const router = true
-  export const prerender = true
-</script>
-
 <script>
   import { scripts } from './script/_scripts'
 </script>
