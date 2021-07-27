@@ -43,7 +43,7 @@ export async function get({ params }) {
               return unpack(Returned)
           end
 
-          local random = (crypt and crypt.random) or (syn and syn.crypt and syn.crypt.random) (crypt and crypt.generatekey and function (_) return crypt.generatekey() end) or RandomString
+          local random = (crypt and (crypt.random or crypt.generatebytes)) or (syn and syn.crypt and syn.crypt.random) or RandomString
           local gui = Instance.new('ScreenGui')
           gui.Name = random(200)
 
@@ -81,6 +81,17 @@ export async function get({ params }) {
           heading.Size = UDim2.new(1, 0, 0, 50)
           heading.TextSize = 20
           heading.BackgroundTransparency = 1
+
+          local heading2 = Instance.new('TextLabel', frame)
+          heading2.Font = Enum.Font.GothamBold
+          heading2.Text = 'However, these games do:'
+          heading2.TextColor3 = Color3.new(1,1,1)
+          heading2.Size = UDim2.new(1, 0, 0, 50)
+          heading2.TextSize = 20
+          heading2.BackgroundTransparency = 1
+          for _,v in pairs(games) do
+            
+          end
         end
       end
     ` + script.source
