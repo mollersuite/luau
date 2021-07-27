@@ -13,6 +13,11 @@
       name: 'About',
       goto: '/about',
       icon: 'person'
+    },
+    {
+      name: 'Scripts',
+      goto: '/scripts',
+      icon: 'code'
     }
   ]
   /** @type {boolean} */
