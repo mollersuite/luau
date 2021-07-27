@@ -16,9 +16,15 @@ export async function get({ params }) {
     }
   }
 
-  const script = scripts[Number(id)]?.source
-  if (script.games?.length) {
+  const script = scripts[Number(id)]
+  if (!script) {
+    return {
+      status: 404,
+      body: 'error("Script not found.")'
+    }
+  }
 
+  if (script.games?.length) {
     script.source = dedent`
       do
         local games = { ${script.games.join(', ')} }
@@ -90,8 +96,8 @@ export async function get({ params }) {
           heading2.Text = 'However, these games do:'
           heading2.TextColor3 = Color3.new(1,1,1)
           heading2.Size = UDim2.new(1, 0, 0, 50)
-          heading2.TextSize = 20
-          heading.Name = '!1'
+          heading2.TextSize = 15
+          heading2.Name = '!1'
           heading2.BackgroundTransparency = 1
           for _,v in pairs(games) do
             local btn = Instance.new('TextButton', frame)
@@ -122,11 +128,11 @@ export async function get({ params }) {
           error('Game not supported.')
         end
       end
-    ` + script.source
+    ` + '\n' + script.source
   }
   if (script) {
     return {
-      body: script
+      body: script.source
     }
   }
 }
