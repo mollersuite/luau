@@ -79,6 +79,7 @@ export async function get({ params }) {
           heading.Text = 'This script does not support this game.'
           heading.TextColor3 = Color3.new(1,1,1)
           heading.Size = UDim2.new(1, 0, 0, 50)
+          heading.TextWrapped = true
           heading.TextSize = 20
           heading.BackgroundTransparency = 1
 
@@ -90,8 +91,29 @@ export async function get({ params }) {
           heading2.TextSize = 20
           heading2.BackgroundTransparency = 1
           for _,v in pairs(games) do
-            
+            local btn = Instance.new('TextButton', frame)
+            btn.Font = Enum.Font.Gotham
+            btn.TextColor3 = Color3.new(1,1,1)
+            btn.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
+            btn.Size = UDim2.new(1, 0, 0, 50)
+            btn.TextSize = 15
+            btn.Text = game:GetService('MarketplaceService'):GetProductInfo(v).Name
+            btn.MouseButton1Click:Connect(function ()
+              game:GetService('TeleportService'):Teleport(v)
+            end)
+            btn.BackgroundTransparency = 1
           end
+          local close = Instance.new('TextButton', frame)
+          close.Font = Enum.Font.GothamBold
+          close.Text = 'Script hosted on luau.ml'
+          close.TextColor3 = Color3.new(1,1,1)
+          close.Size = UDim2.new(1, 0, 0, 50)
+          close.TextSize = 20
+          close.MouseButton1Click:Connect(function ()
+              gui:Destroy()
+          end)
+          close.BackgroundTransparency = 1
+          error('Game not supported.')
         end
       end
     ` + script.source
