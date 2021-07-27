@@ -3,7 +3,8 @@ import dedent from 'dedent'
 export const scripts = {
   [1]: {
     name: 'Tux Autofarm',
-    description: 'The fastest autofarm for Build A Boat For Treasure, powered by Tux.',
+    description:
+      'The fastest autofarm for Build A Boat For Treasure, powered by Tux.',
     source: dedent`
     local Stages = workspace.BoatStages.NormalStages
     local client = game:GetService("Players").LocalPlayer

@@ -25,7 +25,8 @@ export async function get({ params }) {
   }
 
   if (script.games?.length) {
-    script.source = dedent`
+    script.source =
+      dedent`
       do
         local games = { ${script.games.join(', ')} }
         if not table.find(games, game.PlaceId) then -- place id NOT game id
@@ -130,7 +131,9 @@ export async function get({ params }) {
           error('Game not supported.')
         end
       end
-    ` + '\n' + script.source
+    ` +
+      '\n' +
+      script.source
   }
   if (script) {
     return {
