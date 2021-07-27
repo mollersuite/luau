@@ -88,7 +88,7 @@
 {#if script.games && script.games.length}
   <h2>Supported places</h2>
   {#each script.games as game}
-    <a href={`https://roblox.com/games/${game.AssetId}`}>{game.Name}</a>
+    <a href="https://roblox.com/games/{game.AssetId}">{game.Name}</a>
   {/each}
 {/if}
 

@@ -9,10 +9,10 @@
 <h1>Scripts</h1>
 <section>
   {#each Object.entries(scripts) as [id, script], i}
-      <a href={`/script/${id}`} in:fly={{ delay: i * 100, y: 50 }}>
-        <h1>{script.name}</h1>
-        <p>{script.description}</p>
-      </a>
+    <a href="/script/{id}" in:fly={{ delay: i * 100, y: 50 }}>
+      <h1>{script.name}</h1>
+      <p>{script.description}</p>
+    </a>
   {/each}
 </section>
 
