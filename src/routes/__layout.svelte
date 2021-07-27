@@ -140,7 +140,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1ch;
     flex-direction: row;
     position: relative;
     background: none;
@@ -148,12 +147,13 @@
     color: white;
     padding: 1em;
     border-radius: 1em;
-    transition: background 0.3s;
+    transition: background 0.3s, gap 0.3s;
   }
   a:focus {
     border: solid 1px white;
   }
   a:hover {
+    gap: 1ch;
     text-decoration: none;
     background: rgba(255, 255, 255, 0.3);
   }
@@ -163,6 +163,8 @@
     content: attr(aria-label);
     transition: font-size 0.3s;
     font-size: 0;
+    margin: 0;
+    padding: 0;
   }
 
   a:hover::after {
@@ -170,7 +172,7 @@
   }
 
   .selected {
-      border: solid 1px gray;
+    border: solid 1px gray;
   }
   a:active {
     background: rgba(255, 255, 255, 0.7);
