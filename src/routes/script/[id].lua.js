@@ -76,6 +76,7 @@ export async function get({ params }) {
           frame.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
           frame.BorderSizePixel = 0
 
+          Instance.new('UICorner', frame).CornerRadius = UDim.new(0,8)
           local list = Instance.new('UIListLayout', frame)
           list.FillDirection = Enum.FillDirection.Vertical
           list.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -116,11 +117,12 @@ export async function get({ params }) {
           end
           local close = Instance.new('TextButton', frame)
           close.Font = Enum.Font.GothamBold
-          close.Text = 'Script hosted on luau.ml'
+          close.Text = 'Script hosted on luau.ml (Click here to close)'
+          close.TextWrapped = true
           close.Name = 'ZZZZZZZZZZ'
           close.TextColor3 = Color3.new(1,1,1)
           close.Size = UDim2.new(1, 0, 0, 50)
-          close.TextSize = 20
+          close.TextSize = 17
           close.MouseButton1Click:Connect(function ()
               gui:Destroy()
           end)
