@@ -1,9 +1,8 @@
+import getExploit from '$lib/exploit'
+
 export function getSession(request) {
+  const exploit = getExploit(request.headers)
   return {
-    exploit: !!(
-      request.headers['user-agent']?.startsWith('synx') ||
-      request.headers['user-agent']?.startsWith('ScriptWare') ||
-      Object.keys(request.headers).find((key) => key.endsWith('-fingerprint'))
-    )
+    exploit
   }
 }

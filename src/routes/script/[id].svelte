@@ -114,6 +114,5 @@
   }
   code {
     white-space: pre-wrap;
-    font-size: 13px;
   }
 </style>

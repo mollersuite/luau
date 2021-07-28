@@ -63,8 +63,9 @@ a:hover {
 }
 
 pre,
-code {
-  font-size: 16px;
+code,
+textarea {
+  font-size: 13px;
   font-family: var(--font-mono);
   background-color: rgba(0, 0, 0, 0.45);
   border-radius: 3px;
