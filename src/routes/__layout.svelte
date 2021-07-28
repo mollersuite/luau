@@ -40,10 +40,10 @@
     },
     {
       name: 'Scripts',
-      goto: '/scripts/1',
+      goto: '/scripts/0',
       icon: 'code'
     },
-    {
+    $user && {
       name: 'Submit',
       goto: '/new',
       icon: 'add'
@@ -65,7 +65,7 @@
           },
           icon: 'logout'
         }
-  ]
+  ].filter(Boolean)
 
   /** @type {boolean} */
   let hovering = true
