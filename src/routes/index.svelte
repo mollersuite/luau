@@ -11,19 +11,23 @@
   <h1>Introducing Luau.ml</h1>
 
   <h2>Yet another script sharing website.</h2>
-  <div>
-    <img
-      src="https://5079.ml/5079mlicon.svg"
-      height="100"
-      alt="mollersuite logo"
-    />
-    moller software <small>(Jack & Charlie)</small>
-  </div>
+
+  <a href="https://github.com/mollersuite">
+    <div>
+      part of
+      <img
+        src="https://5079.ml/5079mlicon.svg"
+        height="100"
+        alt="mollersuite logo"
+      />
+      mollersuite
+    </div>
+  </a>
 </section>
 
 <style>
-  small {
-    font-size: 11px;
+  a {
+    color: white;
   }
   div {
     font-family: 'moller', 'Inter Black', 'inter';

@@ -8,37 +8,51 @@
 <script>
   import { supabase, user } from '$lib/supabase'
 
-  function submit(e) {
-    const form = new FormData(e.target)
-    const { name, source, games, description } = Object.fromEntries(
-      form.entries()
-    )
-    supabase.from('scripts').insert({
-      name,
-      source,
-      games: games && JSON.stringify(games.toString().split(',')),
-      description
-    })
+  let source = ''
+  let title = ''
+  let description = ''
+  let games = ''
+
+  async function submit(e) {
+    const {
+      body: [{ id }]
+    } = await supabase
+      .from('scripts')
+      .insert({
+        name: title,
+        source,
+        games: games ? games.split(',') : null,
+        description,
+        user_id: $user.id
+      })
+      .throwOnError()
+    location.href = '/script/' + id
   }
 </script>
 
 <h1>New Script</h1>
 <p>You will be able to edit these after your script is created.</p>
 <form on:submit|preventDefault={submit}>
-  <input type="text" name="name" placeholder="Script name" required />
+  <input
+    type="text"
+    name="name"
+    placeholder="Script name"
+    required
+    bind:value={title}
+  />
   <textarea
     placeholder="-- Source"
+    bind:value={source}
     name="source"
-    value=""
     maxlength="10000000"
     required
   />
   <small>The source of your script.</small>
   <br />
   <textarea
+    bind:value={description}
     placeholder="Description"
     name="description"
-    value=""
     maxlength="10000"
   />
   <small>Max 10k characters.</small>
@@ -48,7 +62,12 @@
     game's URL, or <code>game.PlaceId</code>.<br />Keep this empty if your
     script supports all games.</small
   >
-  <input type="text" placeholder="Supported games" name="games" />
+  <input
+    type="text"
+    placeholder="Supported games"
+    name="games"
+    bind:value={games}
+  />
   <input type="submit" value="Upload" />
 </form>
 
