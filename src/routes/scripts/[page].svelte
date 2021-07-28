@@ -37,7 +37,7 @@
       <p>{script.description}</p>
     </a>
   {:else}
-    <a in:fly={{ delay: 0, y: 50 }} href="new">
+    <a in:fly={{ delay: 0, y: 50 }} href="/new">
       <h1>You've reached the end!</h1>
       <p>Maybe add your own script?</p>
     </a>

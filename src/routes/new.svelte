@@ -6,9 +6,19 @@
 </script>
 
 <script>
+  import { supabase, user } from '$lib/supabase'
+
   function submit(e) {
     const form = new FormData(e.target)
-    console.log(Object.fromEntries(form.entries()))
+    const { name, source, games, description } = Object.fromEntries(
+      form.entries()
+    )
+    supabase.from('scripts').insert({
+      name,
+      source,
+      games: games && JSON.stringify(games.toString().split(',')),
+      description
+    })
   }
 </script>
 
@@ -16,10 +26,21 @@
 <p>You will be able to edit these after your script is created.</p>
 <form on:submit|preventDefault={submit}>
   <input type="text" name="name" placeholder="Script name" required />
-  <textarea placeholder="-- Source" name="source" value="" maxlength="10000000" required />
+  <textarea
+    placeholder="-- Source"
+    name="source"
+    value=""
+    maxlength="10000000"
+    required
+  />
   <small>The source of your script.</small>
   <br />
-  <textarea placeholder="Description" name="description" value="" maxlength="10000" />
+  <textarea
+    placeholder="Description"
+    name="description"
+    value=""
+    maxlength="10000"
+  />
   <small>Max 10k characters.</small>
   <br />
   <small
