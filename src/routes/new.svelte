@@ -1,12 +1,12 @@
 <script context="module">
-  import { text } from 'svelte/internal'
-
   export const router = true
   export const prerender = true
 </script>
 
 <script>
+  import { browser } from '$app/env'
   import { supabase, user } from '$lib/supabase'
+  $: browser && !$user && (location.href = '/')
 
   let source = ''
   let title = ''
