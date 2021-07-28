@@ -67,7 +67,7 @@
   let code = dedent`
   getgenv().request = request or (http and http.request) or (syn and syn.request) or (lib and lib.request)
   loadstring(request({
-    Url = 'https://${host}/script/${id}',
+    Url = "https://${host}/script/${id}",
     Method = 'GET'
   }).Body, ${JSON.stringify(script.name)})()
   `

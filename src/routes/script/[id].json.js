@@ -1,4 +1,4 @@
-import { scripts } from './_scripts.js'
+import { scripts } from '$lib/scripts.js'
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */

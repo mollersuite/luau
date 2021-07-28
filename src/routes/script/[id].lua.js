@@ -1,13 +1,21 @@
-import { scripts } from './_scripts.js'
+import { scripts } from '$lib/scripts.js'
 import dedent from 'dedent'
+import exploit from '$lib/exploit.js'
 
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
-export async function get({ params }) {
-  // the `slug` parameter is available because this file
-  // is called [slug].json.js
+export async function get({ params, headers }) {
   const { id } = params
+
+  if (!exploit(headers)) {
+    return {
+      status: 301,
+      headers: {
+        Location: '/script/' + id
+      }
+    }
+  }
 
   if (isNaN(Number(id))) {
     return {

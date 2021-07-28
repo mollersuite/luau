@@ -44,7 +44,7 @@ export const scripts = {
   [2]: {
     name: 'moller hub',
     description: 'A terrible script hub, powered by beagles.',
-    source: dedent`
+    source: dedent(String.raw`
     -- //
     -- || INSTANCE SETUP
     -- \\
@@ -325,6 +325,6 @@ export const scripts = {
         }):Play()
       end
     end)
-    `
+    `)
   }
 }

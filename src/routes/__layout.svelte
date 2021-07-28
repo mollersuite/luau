@@ -25,14 +25,14 @@
       icon: 'house'
     },
     {
-      name: 'About',
-      goto: '/about',
-      icon: 'person'
+      name: 'Scripts',
+      goto: '/scripts/1',
+      icon: 'code'
     },
     {
-      name: 'Scripts',
-      goto: '/scripts',
-      icon: 'code'
+      name: 'Submit',
+      goto: '/new',
+      icon: 'add'
     }
   ]
   /** @type {boolean} */
