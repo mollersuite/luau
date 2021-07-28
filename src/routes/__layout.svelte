@@ -59,11 +59,11 @@
           icon: 'login'
         }
       : {
-          name: 'Logout',
+          name: 'Logout of ' + $user.user_metadata.full_name,
           goto: () => {
             supabase.auth.signOut()
           },
-          icon: 'logout'
+          icon: $user.user_metadata.avatar_url
         }
   ].filter(Boolean)
 
@@ -161,6 +161,7 @@
 <style>
   img {
     border-radius: 50%;
+    background: #36393F;
   }
   footer {
     width: 100vw;
