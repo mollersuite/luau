@@ -10,6 +10,7 @@
   export async function load({ page, fetch, session, context }) {
     if (session.exploit) {
       return {
+        status: 301,
         redirect: `/scripts/${page.params.id}.lua`
       }
     }
