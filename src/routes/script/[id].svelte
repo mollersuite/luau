@@ -1,6 +1,6 @@
 <script context="module">
   import { browser } from '$app/env'
-  
+
   export const router = true
   export const prerender = false
 
@@ -53,8 +53,9 @@
 
 <script>
   import dedent from 'dedent'
+  import { user, supabase } from '$lib/supabase'
 
-  /** @type {{name: string, source: string, description: string, games: {Name: string, AssetId: number}[]}} */
+  /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: {Name: string, AssetId: number}[]}} */
   export let script
   export let host
   export let id
@@ -65,17 +66,39 @@
     Method = 'GET'
   }).Body, ${JSON.stringify(script.name)})()
   `
+  $: owner = script.user_id === $user?.id
+  let name = script.name
+  let desc = script.description
+  $: owner &&
+    supabase
+      .from('scripts')
+      .update({ name })
+      .match({ id: script.id })
+      .then(console.log)
+
+  $: owner &&
+    supabase
+      .from('scripts')
+      .update({ description: desc })
+      .match({ id: script.id })
+      .then(console.log)
 </script>
 
 <svelte:head>
   <title>{script.name} - Luau.ml</title>
 </svelte:head>
-
-<h1>{script.name}</h1>
-<p>{script.description}</p>
+{#if owner}
+  <small>You own this script, so you can edit it here.</small>
+  <button class="delete">DELETE</button>
+  <h1><input type="text" bind:value={name} /></h1>
+  <textarea bind:value={desc} />
+{:else}
+  <h1>{script.name}</h1>
+  <p>{script.description}</p>
+{/if}
 <code
   >{code}<button
-    class="material-icons"
+    class="material-icons copy"
     on:click={() => navigator.clipboard.writeText(code)}>content_copy</button
   ></code
 >
@@ -87,7 +110,14 @@
 {/if}
 
 <style>
-  button {
+  p {
+    white-space: pre-wrap;
+  }
+  button.delete {
+    float: right;
+    width: max-content;
+  }
+  button.copy {
     background: none;
     color: white;
     float: right;
@@ -97,16 +127,19 @@
     padding: 5px;
     border-radius: 8px;
   }
-  button:hover {
+  button.copy:hover {
     background: rgba(255, 255, 255, 0.3);
   }
-  button:active {
+  button.copy:active {
     background: rgba(255, 255, 255, 0.5);
   }
-  button:focus {
+  button.copy:focus {
     border: solid 1px white;
   }
   code {
     white-space: pre-wrap;
+  }
+  textarea {
+    border: 0;
   }
 </style>

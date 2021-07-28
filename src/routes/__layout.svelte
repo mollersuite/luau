@@ -12,22 +12,10 @@
 </script>
 
 <script>
-  import { createClient } from '@supabase/supabase-js'
+  import { user, supabase } from '$lib/supabase.js'
   import '../app.css'
   import { fly } from 'svelte/transition'
-  import { writable } from 'svelte/store'
   import { browser } from '$app/env'
-
-  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-  const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-
-  // @ts-ignore
-  const supabase = createClient(supabaseUrl, supabaseAnonKey)
-
-  const user = writable(supabase.auth.user())
-  supabase.auth.onAuthStateChange((_, { user: newuser }) => {
-    user.set(newuser)
-  })
   export let path
   /** @type {number} */
   let height
@@ -161,7 +149,7 @@
 <style>
   img {
     border-radius: 50%;
-    background: #36393F;
+    background: #36393f;
   }
   footer {
     width: 100vw;
@@ -244,7 +232,7 @@
     font-size: small;
   }
 
-  .selected {
+  a.selected {
     border: solid 1px gray;
   }
   a:active,
