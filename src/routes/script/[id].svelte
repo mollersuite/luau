@@ -93,7 +93,18 @@
 </svelte:head>
 {#if owner}
   <small>You own this script, so you can edit it here.</small>
-  <button class="delete">DELETE</button>
+  <button
+    class="delete"
+    on:click={() => {
+      supabase
+        .from('scripts')
+        .delete()
+        .match({ id: script.id })
+        .then(() => {
+          location.replace('/')
+        })
+    }}>DELETE</button
+  >
   <small>Your script's title.</small>
   <h1><input type="text" bind:value={name} /></h1>
   <small>Your script's description.</small>
