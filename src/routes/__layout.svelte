@@ -36,8 +36,15 @@
       goto: '/new',
       icon: 'add'
     },
-    !$user
+    $user
       ? {
+          name: 'Logout of ' + $user.user_metadata.full_name,
+          goto: () => {
+            supabase.auth.signOut()
+          },
+          icon: $user.user_metadata.avatar_url
+        }
+      : {
           name: 'Login',
           goto: () => {
             supabase.auth.signIn({
@@ -45,13 +52,6 @@
             })
           },
           icon: 'login'
-        }
-      : {
-          name: 'Logout of ' + $user.user_metadata.full_name,
-          goto: () => {
-            supabase.auth.signOut()
-          },
-          icon: $user.user_metadata.avatar_url
         }
   ].filter(Boolean)
 
