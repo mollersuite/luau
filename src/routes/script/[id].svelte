@@ -1,6 +1,6 @@
 <script context="module">
   import { browser } from '$app/env'
-
+  
   export const router = true
   export const prerender = false
 

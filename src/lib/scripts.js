@@ -1,7 +1,7 @@
 import dedent from 'dedent'
 
-export const scripts = {
-  [1]: {
+export const scripts = [
+  {
     name: 'Tux Autofarm',
     description:
       'The fastest autofarm for Build A Boat For Treasure, powered by Tux.',
@@ -41,7 +41,7 @@ export const scripts = {
     `,
     games: [537413528]
   },
-  [2]: {
+  {
     name: 'moller hub',
     description: 'A terrible script hub, powered by beagles.',
     source: dedent(String.raw`
@@ -327,4 +327,4 @@ export const scripts = {
     end)
     `)
   }
-}
+]

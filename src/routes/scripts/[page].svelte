@@ -30,7 +30,7 @@
 <section>
   {#each scripts as script, i}
     <a
-      href="/script/{((page - 1) * 10) + 1 + i}"
+      href="/script/{((page - 1) * 10) + i}"
       in:fly={{ delay: i * 100, y: 50 }}
     >
       <h1>{script.name}</h1>
