@@ -11,7 +11,7 @@
     if (session.exploit) {
       return {
         status: 301,
-        redirect: `/scripts/${page.params.id}.lua`
+        redirect: `/script/${page.params.id}.lua`
       }
     }
 

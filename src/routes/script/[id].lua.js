@@ -14,11 +14,6 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey)
  */
 export async function get({ params, headers }) {
   const { id } = params
-
-  const [script] =
-    (await supabase.from('scripts').select('*').match({ id })).body ||
-    []
-  
   if (!exploit(headers)) {
     return {
       status: 301,
@@ -28,13 +23,16 @@ export async function get({ params, headers }) {
     }
   }
 
+  const [script] =
+    (await supabase.from('scripts').select('*').match({ id })).body || []
+
   if (!script) {
     return {
       status: 404,
       body: 'error("Script not found.")'
     }
   }
-
+  
   if (script.games?.length) {
     script.source =
       dedent`
