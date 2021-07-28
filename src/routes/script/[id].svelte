@@ -89,6 +89,7 @@
 
 <svelte:head>
   <title>{script.name} - Luau.ml</title>
+  <meta name="description" content={script.description} />
 </svelte:head>
 {#if owner}
   <small>You own this script, so you can edit it here.</small>

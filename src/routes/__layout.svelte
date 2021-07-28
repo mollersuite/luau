@@ -64,10 +64,12 @@
   $: user && browser && test()
 </script>
 
-<link
-  href="https://fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet"
-/>
+<svelte:head>
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+</svelte:head>
 <footer
   on:mouseenter={() => (hovering = true)}
   on:mouseleave={() => (hovering = false)}
