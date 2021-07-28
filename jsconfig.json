@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "module": "ESNext",
     "checkJs": true,
+    "moduleResolution": "Node",
     "paths": {
       "$lib": ["src/lib"],
       "$lib/*": ["src/lib/*"]

@@ -20,7 +20,7 @@
 <script>
   import { fly } from 'svelte/transition'
   export let scripts = []
-  export let page = 1
+  export let page = 0
 </script>
 
 <svelte:head>
@@ -30,7 +30,7 @@
 <section>
   {#each scripts as script, i}
     <a
-      href="/script/{((page - 1) * 10) + i}"
+      href="/script/{script.id}"
       in:fly={{ delay: i * 100, y: 50 }}
     >
       <h1>{script.name}</h1>
@@ -44,7 +44,7 @@
   {/each}
 </section>
 <footer>
-  {#if page > 1}
+  {#if page >= 1}
     <a href={(page - 1).toString()}>←</a>
   {/if}
   <span>{page}</span>

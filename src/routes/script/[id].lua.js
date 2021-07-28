@@ -1,6 +1,13 @@
-import { scripts } from '$lib/scripts.js'
 import dedent from 'dedent'
 import exploit from '$lib/exploit.js'
+
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+// @ts-ignore
+const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
@@ -8,6 +15,10 @@ import exploit from '$lib/exploit.js'
 export async function get({ params, headers }) {
   const { id } = params
 
+  const [script] =
+    (await supabase.from('scripts').select('*').match({ id })).body ||
+    []
+  
   if (!exploit(headers)) {
     return {
       status: 301,
@@ -17,14 +28,6 @@ export async function get({ params, headers }) {
     }
   }
 
-  if (isNaN(Number(id))) {
-    return {
-      status: 400,
-      body: 'error("ID must be a number")'
-    }
-  }
-
-  const script = scripts[Number(id)]
   if (!script) {
     return {
       status: 404,

@@ -5,14 +5,21 @@
   export const prerender = true
 </script>
 
+<script>
+  function submit(e) {
+    const form = new FormData(e.target)
+    console.log(Object.fromEntries(form.entries()))
+  }
+</script>
+
 <h1>New Script</h1>
 <p>You will be able to edit these after your script is created.</p>
-<form>
+<form on:submit|preventDefault={submit}>
   <input type="text" name="name" placeholder="Script name" required />
-  <textarea placeholder="Source" value="" maxlength="10000000" required />
+  <textarea placeholder="-- Source" name="source" value="" maxlength="10000000" required />
   <small>The source of your script.</small>
   <br />
-  <textarea placeholder="Description" value="" maxlength="10000" />
+  <textarea placeholder="Description" name="description" value="" maxlength="10000" />
   <small>Max 10k characters.</small>
   <br />
   <small
@@ -20,7 +27,7 @@
     game's URL, or <code>game.PlaceId</code>.<br />Keep this empty if your
     script supports all games.</small
   >
-  <input type="text" placeholder="Supported games" />
+  <input type="text" placeholder="Supported games" name="games" />
   <input type="submit" value="Upload" />
 </form>
 

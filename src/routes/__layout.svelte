@@ -12,13 +12,27 @@
 </script>
 
 <script>
+  import { createClient } from '@supabase/supabase-js'
   import '../app.css'
   import { fly } from 'svelte/transition'
+  import { writable } from 'svelte/store'
+  import { browser } from '$app/env'
+
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+  const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+  // @ts-ignore
+  const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+  const user = writable(supabase.auth.user())
+  supabase.auth.onAuthStateChange((_, { user: newuser }) => {
+    user.set(newuser)
+  })
   export let path
   /** @type {number} */
   let height
-  /** @type {{name: string, goto: string, icon: string}[]} */
-  let links = [
+  /** @type {{name: string, goto: string | (() => unknown), icon: string}[]} */
+  $: links = [
     {
       name: 'Home',
       goto: '/',
@@ -33,10 +47,33 @@
       name: 'Submit',
       goto: '/new',
       icon: 'add'
-    }
+    },
+    !$user
+      ? {
+          name: 'Login',
+          goto: () => {
+            supabase.auth.signIn({
+              provider: 'discord'
+            })
+          },
+          icon: 'login'
+        }
+      : {
+          name: 'Logout',
+          goto: () => {
+            supabase.auth.signOut()
+          },
+          icon: 'logout'
+        }
   ]
+
   /** @type {boolean} */
   let hovering = true
+
+  async function test() {
+    console.log($user)
+  }
+  $: user && browser && test()
 </script>
 
 <link
@@ -60,31 +97,58 @@
       bind:offsetHeight={height}
     >
       {#each links as link, i}
-        <a
-          class:selected={link.goto === path}
-          href={link.goto}
-          aria-label={link.name}
-          in:fly={{
-            duration: 300,
-            delay: (i + 2) * 100,
-            opacity: 1,
-            y: 100
-          }}
-          out:fly={{
-            duration: 300,
-            delay: (i + 1) * 100,
-            opacity: 1,
-            y: 100
-          }}
-        >
-          {#if link.icon.startsWith('https://') || link.icon.startsWith('data:')}
-            <img src={link.icon} alt={link.name} height="24" width="24" />
-          {:else}
-            <span class="material-icons">
-              {link.icon}
-            </span>
-          {/if}
-        </a>
+        {#if typeof link.goto === 'string'}
+          <a
+            class:selected={link.goto === path}
+            href={link.goto}
+            aria-label={link.name}
+            in:fly={{
+              duration: 300,
+              delay: (i + 2) * 100,
+              opacity: 1,
+              y: 100
+            }}
+            out:fly={{
+              duration: 300,
+              delay: (i + 1) * 100,
+              opacity: 1,
+              y: 100
+            }}
+          >
+            {#if link.icon.startsWith('https://') || link.icon.startsWith('data:')}
+              <img src={link.icon} alt={link.name} height="24" width="24" />
+            {:else}
+              <span class="material-icons">
+                {link.icon}
+              </span>
+            {/if}
+          </a>
+        {:else}
+          <button
+            on:click={link.goto}
+            aria-label={link.name}
+            in:fly={{
+              duration: 300,
+              delay: (i + 2) * 100,
+              opacity: 1,
+              y: 100
+            }}
+            out:fly={{
+              duration: 300,
+              delay: (i + 1) * 100,
+              opacity: 1,
+              y: 100
+            }}
+          >
+            {#if link.icon.startsWith('https://') || link.icon.startsWith('data:')}
+              <img src={link.icon} alt={link.name} height="24" width="24" />
+            {:else}
+              <span class="material-icons">
+                {link.icon}
+              </span>
+            {/if}
+          </button>
+        {/if}
       {/each}
     </nav>
   {/if}
@@ -95,6 +159,9 @@
 </main>
 
 <style>
+  img {
+    border-radius: 50%;
+  }
   footer {
     width: 100vw;
     overflow: hidden;
@@ -134,7 +201,8 @@
     }
   }
 
-  a {
+  a,
+  button {
     cursor: default;
     text-align: center;
     display: flex;
@@ -149,16 +217,19 @@
     border-radius: 1em;
     transition: background 0.3s, gap 0.3s;
   }
-  a:focus {
+  a:focus,
+  button:focus {
     border: solid 1px white;
   }
-  a:hover {
+  a:hover,
+  button:hover {
     gap: 1ch;
     text-decoration: none;
     background: rgba(255, 255, 255, 0.3);
   }
 
-  a::after {
+  a::after,
+  button::after {
     font-family: 'moller', 'Segoe UI', sans-serif;
     content: attr(aria-label);
     transition: font-size 0.3s;
@@ -167,30 +238,17 @@
     padding: 0;
   }
 
-  a:hover::after {
+  a:hover::after,
+  button:hover::after {
     font-size: small;
   }
 
   .selected {
     border: solid 1px gray;
   }
-  a:active {
+  a:active,
+  button:active {
     background: rgba(255, 255, 255, 0.7);
-  }
-
-  @media (prefers-color-scheme: light) {
-    a {
-      color: darkslategray;
-    }
-
-    a:active,
-    a:focus {
-      background: rgba(0, 0, 0, 0.3);
-    }
-
-    a:hover {
-      background: rgba(0, 0, 0, 0.1);
-    }
   }
 
   main {

@@ -13,12 +13,6 @@
         redirect: `/scripts/${page.params.id}.lua`
       }
     }
-    if (isNaN(Number(page.params.id))) {
-      return {
-        status: 400,
-        error: new Error(`ID must be a number`)
-      }
-    }
 
     const url = `/script/${page.params.id}.json`
     const res = await fetch(url)

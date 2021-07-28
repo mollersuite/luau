@@ -1,4 +1,11 @@
-import { scripts } from '$lib/scripts.js'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+// @ts-ignore
+const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
@@ -6,17 +13,10 @@ export async function get({ params }) {
   // the `slug` parameter is available because this file
   // is called [slug].json.js
   const { id } = params
-
-  if (isNaN(Number(id))) {
+  const [script] = (await supabase.from('scripts').select('*').match({ id })).body || []
+  if (script) {
     return {
-      status: 400,
-      body: 'ID must be a number'
-    }
-  }
-
-  if (scripts[Number(id)]) {
-    return {
-      body: scripts[Number(id)]
+      body: script
     }
   }
 }

@@ -18,6 +18,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@supabase/supabase-js": "^1.21.0",
     "dedent": "^0.7.0"
   }
 }
