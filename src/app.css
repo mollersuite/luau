@@ -13,8 +13,11 @@
   --column-width: 42rem;
   --column-margin-top: 4rem;
 }
-
+textarea {
+  resize: vertical;
+}
 body {
+  overflow-x: hidden;
   min-height: 100vh;
   margin: 0;
   color: var(--text-color);

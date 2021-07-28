@@ -70,6 +70,7 @@
   let name = script.name
   let desc = script.description
   $: owner &&
+    name &&
     supabase
       .from('scripts')
       .update({ name })
@@ -77,11 +78,13 @@
       .then(console.log)
 
   $: owner &&
+    desc &&
     supabase
       .from('scripts')
       .update({ description: desc })
       .match({ id: script.id })
       .then(console.log)
+  let source = script.source
 </script>
 
 <svelte:head>
@@ -90,12 +93,29 @@
 {#if owner}
   <small>You own this script, so you can edit it here.</small>
   <button class="delete">DELETE</button>
+  <small>Your script's title.</small>
   <h1><input type="text" bind:value={name} /></h1>
+  <small>Your script's description.</small>
   <textarea bind:value={desc} />
+  <small
+    >Edit your script's source here. Other users will not see the source on the
+    website, although they may be able to get it.</small
+  >
+  <button
+    on:click={() => {
+      supabase
+        .from('scripts')
+        .update({ source })
+        .match({ id: script.id })
+        .then(console.log)
+    }}>Save source</button
+  >
+  <textarea bind:value={source} rows="30" />
 {:else}
   <h1>{script.name}</h1>
   <p>{script.description}</p>
 {/if}
+<h2>Loader</h2>
 <code
   >{code}<button
     class="material-icons copy"

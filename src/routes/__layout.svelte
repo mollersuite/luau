@@ -154,7 +154,7 @@
   footer {
     width: 100vw;
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     min-height: 100px;
     z-index: 10000;
