@@ -9,7 +9,7 @@
 </svelte:head>
 
 <section>
-  <h1>Introducing Luau.5079.workers.dev™ (if i could setup my domain it would be Luau.ml)</h1>
+  <h1>Introducing Luau.ml</h1>
 
   <h2>Yet another script sharing website.</h2>
 

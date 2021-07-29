@@ -127,7 +127,7 @@ export async function get({ params, headers }) {
           end
           local close = Instance.new('TextButton', frame)
           close.Font = Enum.Font.GothamBold
-          close.Text = 'Script hosted on Luau.5079.workers.dev (Click here to close)'
+          close.Text = 'Script hosted on Luau.ml (Click here to close)'
           close.TextWrapped = true
           close.Name = 'ZZZZZZZZZZ'
           close.TextColor3 = Color3.new(1,1,1)
