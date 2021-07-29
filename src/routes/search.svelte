@@ -32,6 +32,8 @@
   <input type="submit" value="Search" />
 </form>
 <section>
+  
+{#if query}
   {#each (scripts || []) as script, i}
     <a href="/script/{script.id}" in:fly={{ delay: i * 100, y: 50 }}>
       <h1>{script.name}</h1>
@@ -43,16 +45,12 @@
       <p>Maybe add your own script?</p>
     </a>
   {/each}
+  {:else}
+    <h1>Search for a script above.</h1>
+  {/if}
 </section>
 
 <style>
-  footer {
-    margin-top: 5px;
-    text-align: center;
-  }
-  footer a {
-    display: inline-block;
-  }
   section h1 {
     font-size: 1em;
   }

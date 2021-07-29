@@ -31,6 +31,11 @@
       goto: '/scripts/0',
       icon: 'code'
     },
+    {
+      name: 'Search',
+      goto: '/search',
+      icon: 'search'
+    },
     $user && {
       name: 'Submit',
       goto: '/new',
