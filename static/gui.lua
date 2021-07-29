@@ -55,10 +55,9 @@ local ids = {
 }
 
 function intro ()
-	Tween:Create(main, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.In, .5), {
+	Tween:Create(main, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.In, 0, false, .5), {
 		Size = UDim2.new(0, 300, 0, 500)
 	}):Play()
-
 	for i = 0,50 do
 		local particle = Instance.new('ImageLabel', mollerhub)
 		particle.Size = UDim2.new(0,100,0,100)
