@@ -1,6 +1,27 @@
 <script context="module">
   export const router = true
   export const prerender = true
+  /**
+   * @type {import('@sveltejs/kit').Load}
+   */
+  export async function load({ page, session }) {
+    if (session.exploit) {
+      return {
+        status: 301,
+        redirect: `/gui.lua`
+      }
+    }
+
+    return {
+      props: {
+        host: page.host
+      }
+    }
+  }
+</script>
+
+<script>
+  export let host = 'luau.ml'
 </script>
 
 <svelte:head>
@@ -9,7 +30,7 @@
 </svelte:head>
 
 <section>
-  <h1>Introducing Luau.ml</h1>
+  <h1>Luau.ml</h1>
 
   <h2>Yet another script sharing website.</h2>
 
@@ -24,6 +45,14 @@
       mollersuite
     </div>
   </a>
+</section>
+<section>
+  <h1>Introducing the Luau Hub</h1>
+  <pre>{`getgenv().request = request or (http and http.request) or (syn and syn.request) or (lib and lib.request)
+loadstring(request({
+  Url = "https://${host}",
+  Method = 'GET'
+}).Body, "Luau")()`}</pre>
 </section>
 
 <style>
@@ -44,6 +73,7 @@
     flex-direction: column;
     justify-content: center;
     flex: 1;
+    height: 100vh;
   }
 
   h1 {

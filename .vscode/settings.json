@@ -1,0 +1,4 @@
+{
+  "Lua.diagnostics.globals": ["request", "gethui", "getgenv", "syn", "lib", "http"],
+  "Lua.diagnostics.ignore": ["HttpGet"]
+}
