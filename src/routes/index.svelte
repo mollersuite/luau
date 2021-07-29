@@ -73,10 +73,6 @@
     display: grid;
     place-content: center;
     gap: 1ch;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* flex: 1; */
     width: 100%;
     height: 100vh;
   }
