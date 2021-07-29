@@ -5,20 +5,9 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load({ page, session }) {
-    if (session.exploit) {
-      return {
-        status: 301,
-        redirect: `/gui.lua`
-      }
-    }
-
     return {
       props: {
-        hub: `getgenv().request = request or (http and http.request) or (syn and syn.request) or (lib and lib.request)
-loadstring(request({
-  Url = "https://${page.host}",
-  Method = 'GET'
-}).Body, "Luau")()`
+        hub: `loadstring(game:HttpGet("https://${page.host}/gui.lua"), 'Luau')()`
       }
     }
   }
