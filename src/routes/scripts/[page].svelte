@@ -29,10 +29,7 @@
 <h1>Scripts</h1>
 <section>
   {#each scripts as script, i}
-    <a
-      href="/script/{script.id}"
-      in:fly={{ delay: i * 100, y: 50 }}
-    >
+    <a href="/script/{script.id}" in:fly={{ delay: i * 100, y: 50 }}>
       <h1>{script.name}</h1>
       <p>{script.description}</p>
     </a>

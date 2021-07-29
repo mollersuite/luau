@@ -14,14 +14,19 @@
 
     return {
       props: {
-        host: page.host
+        hub: `getgenv().request = request or (http and http.request) or (syn and syn.request) or (lib and lib.request)
+loadstring(request({
+  Url = "https://${page.host}",
+  Method = 'GET'
+}).Body, "Luau")()`
       }
     }
   }
 </script>
 
 <script>
-  export let host = 'luau.ml'
+  import CodeButton from '$lib/CodeButton.svelte'
+  export let hub = '-- Soon™'
 </script>
 
 <svelte:head>
@@ -48,17 +53,22 @@
 </section>
 <section>
   <h1>Introducing the Luau Hub</h1>
-  <pre>{`getgenv().request = request or (http and http.request) or (syn and syn.request) or (lib and lib.request)
-loadstring(request({
-  Url = "https://${host}",
-  Method = 'GET'
-}).Body, "Luau")()`}</pre>
+  <code
+    >{hub}<CodeButton on:click={() => navigator.clipboard.writeText(hub)}
+      >content_copy</CodeButton
+    ></code
+  >
 </section>
 
 <style>
+  code {
+    white-space: pre-wrap;
+  }
+
   a {
     color: white;
   }
+
   div {
     font-family: 'moller', 'Inter Black', 'inter';
     font-size: 2em;
@@ -68,6 +78,7 @@ loadstring(request({
     gap: 1ch;
     flex-direction: row;
   }
+
   section {
     display: flex;
     flex-direction: column;

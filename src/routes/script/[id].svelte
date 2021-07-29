@@ -55,6 +55,7 @@
 <script>
   import dedent from 'dedent'
   import { user, supabase } from '$lib/supabase'
+  import CodeButton from '$lib/CodeButton.svelte'
 
   /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: {Name: string, AssetId: number}[]}} */
   export let script
@@ -129,12 +130,7 @@
   <p>{script.description}</p>
 {/if}
 <h2>Loader</h2>
-<code
-  >{code}<button
-    class="material-icons copy"
-    on:click={() => navigator.clipboard.writeText(code)}>content_copy</button
-  ></code
->
+<code>{code}<CodeButton on:click={() => navigator.clipboard.writeText(code)}>content_copy</CodeButton></code>
 {#if script.games && script.games.length}
   <h2>Supported places</h2>
   {#each script.games as game}
@@ -154,25 +150,7 @@
   textarea {
     resize: vertical;
   }
-  button.copy {
-    background: none;
-    color: white;
-    float: right;
-    border: 0;
-    cursor: pointer;
-    transition: background 0.3s;
-    padding: 5px;
-    border-radius: 8px;
-  }
-  button.copy:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-  button.copy:active {
-    background: rgba(255, 255, 255, 0.5);
-  }
-  button.copy:focus {
-    border: solid 1px white;
-  }
+
   code {
     white-space: pre-wrap;
   }
