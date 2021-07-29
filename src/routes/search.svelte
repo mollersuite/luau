@@ -4,7 +4,7 @@
    */
   export async function load({ page, fetch }) {
     const scripts = await fetch(
-      `/search.json?q=${page.query.get('q')}`
+      `/search.json?q=${encodeURIComponent(page.query.get('q'))}`
     ).then((res) => res.json())
     return {
       props: {
@@ -18,9 +18,16 @@
 </script>
 
 <script>
+  import { supabase } from '$lib/supabase'
+
   import { fly } from 'svelte/transition'
   export let scripts = []
   export let query = ''
+  $: supabase
+    .from('scripts')
+    .select('*')
+    .textSearch('name', query, { type: 'websearch', config: 'english' })
+    .then(({ body }) => (scripts = body))
 </script>
 
 <svelte:head>
@@ -28,23 +35,22 @@
 </svelte:head>
 <h1>Search</h1>
 <form action="/search">
-  <input type="search" name="q" bind:value={query} />
+  <input type="search" name="q" bind:value={query} on:change={console.log}/>
   <input type="submit" value="Search" />
 </form>
 <section>
-  
-{#if query}
-  {#each (scripts || []) as script, i}
-    <a href="/script/{script.id}" in:fly={{ delay: i * 100, y: 50 }}>
-      <h1>{script.name}</h1>
-      <p>{script.description}</p>
-    </a>
-  {:else}
-    <a in:fly={{ delay: 0, y: 50 }} href="/new">
-      <h1>No scripts found.</h1>
-      <p>Maybe add your own script?</p>
-    </a>
-  {/each}
+  {#if query}
+    {#each scripts || [] as script, i}
+      <a href="/script/{script.id}" in:fly={{ delay: i * 100, y: 50 }}>
+        <h1>{script.name}</h1>
+        <p>{script.description}</p>
+      </a>
+    {:else}
+      <a in:fly={{ delay: 0, y: 50 }} href="/new">
+        <h1>No scripts found.</h1>
+        <p>Maybe add your own script?</p>
+      </a>
+    {/each}
   {:else}
     <h1>Search for a script above.</h1>
   {/if}

@@ -11,7 +11,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey)
  */
 export async function get({ query }) {
   const search = query.get('q')
-  console.log(search)
+
   if (!search) {
     return {
       status: 400,
