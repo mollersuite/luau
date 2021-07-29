@@ -46,7 +46,7 @@
     }
 
     return {
-      status: res.status,
+      status: 404,
       error: new Error(`Script not found.`)
     }
   }
