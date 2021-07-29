@@ -23,7 +23,7 @@ export async function get({ params }) {
   const scripts = await supabase
     .from('scripts')
     .select('*')
-    .range(pg * 100, (pg + 1) * 100)
+    .range(pg * 500, (pg + 1) * 500)
   return {
     body: scripts.body
   }
