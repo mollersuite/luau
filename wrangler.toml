@@ -3,7 +3,7 @@ type = "webpack"
 route = ''
 zone_id = ''
 usage_model = ''
-workers_dev = true
+workers_dev = false
 [site]
 bucket = "./build"
 entry-point = "./workers-site"
