@@ -42,6 +42,7 @@
 </section>
 <section>
   <h1>Introducing the Luau Hub</h1>
+  <p>The fastest way to use Luau.ml</p>
   <code
     >{hub}<CodeButton on:click={() => navigator.clipboard.writeText(hub)}
       >content_copy</CodeButton
@@ -69,10 +70,14 @@
   }
 
   section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
+    display: grid;
+    place-content: center;
+    gap: 1ch;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* flex: 1; */
+    width: 100%;
     height: 100vh;
   }
 

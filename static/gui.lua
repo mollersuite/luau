@@ -4,25 +4,25 @@ getgenv().request = request or (http and http.request) or (syn and syn.request) 
 -- || INSTANCE SETUP
 -- \\
 local lplr = game:GetService('Players').LocalPlayer
-local mollerhub = Instance.new("ScreenGui")
-mollerhub.Name = game:GetService('HttpService'):GenerateGUID()
-mollerhub.IgnoreGuiInset = true
-mollerhub.ResetOnSpawn = false
-local main = Instance.new("ScrollingFrame", mollerhub)
+local luau = Instance.new("ScreenGui")
+luau.Name = game:GetService('HttpService'):GenerateGUID()
+luau.IgnoreGuiInset = true
+luau.ResetOnSpawn = false
+local main = Instance.new("ScrollingFrame", luau)
 local UIListLayout = Instance.new("UIListLayout", main)
 
 
 if gethui then
-	mollerhub.Parent = gethui()
+	luau.Parent = gethui()
 elseif syn and syn.protect_gui then
-	syn.protect_gui(mollerhub)
+	syn.protect_gui(luau)
 else
 	local incoregui = pcall(function ()
-		mollerhub.Parent = game:GetService('CoreGui')
+		luau.Parent = game:GetService('CoreGui')
 	end)
 
 	if not incoregui then
-		mollerhub.Parent = lplr:WaitForChild("PlayerGui")
+		luau.Parent = lplr:WaitForChild("PlayerGui")
 	end
 end
 
@@ -59,7 +59,7 @@ function intro ()
 		Size = UDim2.new(0, 300, 0, 500)
 	}):Play()
 	for i = 0,50 do
-		local particle = Instance.new('ImageLabel', mollerhub)
+		local particle = Instance.new('ImageLabel', luau)
 		particle.Size = UDim2.new(0,100,0,100)
 		particle.Image = 'rbxassetid://' .. ids[math.random(#ids)]
 		particle.BackgroundTransparency = 1
@@ -92,7 +92,7 @@ function outro ()
 	}):Play()
 
 	for i = 0,50 do
-		local particle = Instance.new('ImageLabel', mollerhub)
+		local particle = Instance.new('ImageLabel', luau)
 		particle.Size = UDim2.new()
 		particle.Image = 'rbxassetid://' .. ids[math.random(#ids)]
 		particle.BackgroundTransparency = 1
@@ -111,7 +111,7 @@ function outro ()
 		Debris:AddItem(particle, 1.5)
 		game:GetService('RunService').Heartbeat:Wait()
 	end
-	game:GetService('Debris'):AddItem(mollerhub, 1.5)
+	game:GetService('Debris'):AddItem(luau, 1.5)
 end
 
 local function get (url)
