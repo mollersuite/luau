@@ -24,7 +24,7 @@
 </script>
 
 <svelte:head>
-  <title>Search - Luau.ml</title>
+  <title>Search - Luau</title>
 </svelte:head>
 <h1>Search</h1>
 <form action="/search">

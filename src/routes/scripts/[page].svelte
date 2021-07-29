@@ -24,7 +24,7 @@
 </script>
 
 <svelte:head>
-  <title>Scripts page {page} - Luau.ml</title>
+  <title>Scripts page {page} - Luau</title>
 </svelte:head>
 <h1>Scripts</h1>
 <section>

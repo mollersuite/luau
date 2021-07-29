@@ -89,7 +89,7 @@
 </script>
 
 <svelte:head>
-  <title>{script.name} - Luau.ml</title>
+  <title>{script.name} - Luau</title>
   <meta name="description" content={script.description} />
 </svelte:head>
 {#if owner}
