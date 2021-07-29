@@ -5,6 +5,7 @@
 
 <svelte:head>
   <title>Home</title>
+  <meta name="description" content="Yet another script sharing website" />
 </svelte:head>
 
 <section>
