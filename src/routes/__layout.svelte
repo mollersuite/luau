@@ -57,11 +57,6 @@
 
   /** @type {boolean} */
   let hovering = true
-
-  async function test() {
-    console.log($user)
-  }
-  $: user && browser && test()
 </script>
 
 <svelte:head>
