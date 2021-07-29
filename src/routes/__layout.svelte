@@ -190,13 +190,7 @@
     text-align: center;
     background: darkslategray;
   }
-
-  @media (prefers-color-scheme: light) {
-    .taskbar {
-      background: white;
-    }
-  }
-
+  
   a,
   button {
     cursor: default;
