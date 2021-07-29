@@ -7,7 +7,7 @@
   export async function load({ page, session }) {
     return {
       props: {
-        hub: `loadstring(game:HttpGet("https://${page.host}/gui.lua"), 'Luau')()`
+        host: page.host
       }
     }
   }
@@ -15,7 +15,8 @@
 
 <script>
   import CodeButton from '$lib/CodeButton.svelte'
-  export let hub = '-- Soon™'
+  export let host
+  let hub = `loadstring(game:HttpGet("https://${host}/gui.lua"), 'Luau')()`
 </script>
 
 <svelte:head>
