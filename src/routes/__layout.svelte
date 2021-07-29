@@ -15,7 +15,7 @@
   import { user, supabase } from '$lib/supabase.js'
   import '../app.css'
   import { fly } from 'svelte/transition'
-  import { browser } from '$app/env'
+
   export let path
   /** @type {number} */
   let height
