@@ -41,6 +41,11 @@
       goto: '/new',
       icon: 'add'
     },
+    {
+      name: 'Discord',
+      goto: 'https://discord.gg/HAw7Zf8GF5',
+      icon: 'forum'
+    },
     $user
       ? {
           name: 'Logout of ' + $user.user_metadata.full_name,
