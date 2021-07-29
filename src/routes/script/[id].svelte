@@ -150,6 +150,10 @@
     float: right;
     width: max-content;
   }
+
+  textarea {
+    resize: vertical;
+  }
   button.copy {
     background: none;
     color: white;
