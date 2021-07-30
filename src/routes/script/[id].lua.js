@@ -4,10 +4,10 @@ import exploit from '$lib/exploit.js'
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+const key = import.meta.env.VITE_SUPABASE_SERVICE_KEY
 
 // @ts-ignore
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
+const supabase = createClient(supabaseUrl, key)
 
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
@@ -32,7 +32,19 @@ export async function get({ params, headers }) {
       body: 'error("Script not found.")'
     }
   }
-  
+
+  const using = exploit(headers)
+  const analytics =
+    (await supabase.from('analytics').select('*')).body ||
+    []
+  if (!analytics.length) {
+    await supabase.from('analytics').insert({ script, [using]: 1 })
+  } else {
+    await supabase
+      .from('analytics')
+      .update({ [using]: analytics[0][using] + 1 })
+      .match({ id })
+  }
   if (script.games?.length) {
     script.source =
       dedent`

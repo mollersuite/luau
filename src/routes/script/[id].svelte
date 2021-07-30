@@ -110,6 +110,15 @@
   <small>Your script's title.</small>
   <h1><input type="text" bind:value={name} /></h1>
   <small>Your script's description.</small>
+  <h2>Analytics</h2>
+  <section>
+    {#await supabase
+      .from('analytics')
+      .select('*')
+      .match({ script: script.id }) then analytics}
+      {JSON.stringify(analytics.body)}
+    {/await}
+  </section>
   <textarea bind:value={desc} />
   <small
     >Edit your script's source here. Other users will not see the source on the
@@ -130,12 +139,34 @@
   <p>{script.description}</p>
 {/if}
 <h2>Loader</h2>
-<code>{code}<CodeButton on:click={() => navigator.clipboard.writeText(code)}>content_copy</CodeButton></code>
+<code
+  >{code}<CodeButton on:click={() => navigator.clipboard.writeText(code)}
+    >content_copy</CodeButton
+  ></code
+>
 {#if script.games && script.games.length}
   <h2>Supported places</h2>
   {#each script.games as game}
     <a href="https://roblox.com/games/{game.AssetId}">{game.Name}</a>
   {/each}
+{/if}
+{#if !$user}
+  <h2>FAQ</h2>
+  <details>
+    <summary>How do I run this?</summary>
+    <p>You can run this script in a Roblox scripting utility.</p>
+  </details>
+  <details>
+    <summary>What scripting utilites are supported by Luau.ml?</summary>
+    <ul>
+      <li><a href="https://script-ware.com">Script-Ware</a></li>
+      <li><a href="https://fluxteam.xyz">Fluxus</a></li>
+      <li><a href="https://x.synapse.to">Synapse X</a></li>
+    </ul>
+    <p>
+      Luau.ml has not been tested on Krnl. We doubt it will work on JJSploit.
+    </p>
+  </details>
 {/if}
 
 <style>
