@@ -159,7 +159,10 @@
     background: #36393f;
   }
   footer {
-    width: 100vw;
+    min-width: 50vw;
+    max-width: 100vw;
+    left: 50%;
+    transform: translate(-50%);
     overflow: hidden;
     position: fixed;
     bottom: 0;
