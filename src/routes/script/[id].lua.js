@@ -32,19 +32,7 @@ export async function get({ params, headers }) {
       body: 'error("Script not found.")'
     }
   }
-
-  const using = exploit(headers)
-  const analytics =
-    (await supabase.from('analytics').select('*')).body ||
-    []
-  if (!analytics.length) {
-    await supabase.from('analytics').insert({ script, [using]: 1 })
-  } else {
-    await supabase
-      .from('analytics')
-      .update({ [using]: analytics[0][using] + 1 })
-      .match({ id })
-  }
+  
   if (script.games?.length) {
     script.source =
       dedent`

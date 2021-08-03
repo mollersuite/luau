@@ -110,15 +110,6 @@
   <small>Your script's title.</small>
   <h1><input type="text" bind:value={name} /></h1>
   <small>Your script's description.</small>
-  <h2>Analytics</h2>
-  <section>
-    {#await supabase
-      .from('analytics')
-      .select('*')
-      .match({ script: script.id }) then analytics}
-      {JSON.stringify(analytics.body)}
-    {/await}
-  </section>
   <textarea bind:value={desc} />
   <small
     >Edit your script's source here. Other users will not see the source on the
