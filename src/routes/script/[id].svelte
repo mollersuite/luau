@@ -144,19 +144,34 @@
 {#if !$user}
   <h2>FAQ</h2>
   <details>
-    <summary>How do I run this?</summary>
+    <summary>How do I run this script?</summary>
     <p>You can run this script in a Roblox scripting utility.</p>
   </details>
   <details>
-    <summary>What scripting utilites are supported by Luau.ml?</summary>
+    <summary>What scripting utilities are supported by Luau.ml?</summary>
     <ul>
-      <li><a href="https://script-ware.com">Script-Ware</a></li>
-      <li><a href="https://fluxteam.xyz">Fluxus</a></li>
-      <li><a href="https://x.synapse.to">Synapse X</a></li>
+      <li>
+        <a href="https://script-ware.com">
+          <img src="/sw.svg" height="16" alt="Script-Ware logo" /> Script-Ware</a
+        >
+      </li>
+      <li>
+        <a href="https://x.synapse.to"
+          ><img src="/synx.svg" height="16" alt="Synapse X logo" /> Synapse X</a
+        >
+      </li>
+      <li>
+        <a href="https://krnl.ca"
+          ><img src="/krnl.svg" height="16" alt="Krnl logo" /> Krnl</a
+        >
+      </li>
+      <li>
+        <a href="https://fluxteam.xyz">Fluxus</a>
+      </li>
+      <li>
+        Sentinel (DO NOT BUY)
+      </li>
     </ul>
-    <p>
-      Luau.ml has not been tested on Krnl. We doubt it will work on JJSploit.
-    </p>
   </details>
 {/if}
 
