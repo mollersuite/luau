@@ -165,9 +165,9 @@
           ><img src="/krnl.svg" height="16" alt="Krnl logo" /> Krnl</a
         >
       </li>
-      <li>
+      <!-- <li>
         <a href="https://fluxteam.xyz">Fluxus</a>
-      </li>
+      </li> -->
       <li>
         Sentinel (DO NOT BUY)
       </li>
