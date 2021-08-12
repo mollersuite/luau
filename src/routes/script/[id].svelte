@@ -165,12 +165,11 @@
           ><img src="/krnl.svg" height="16" alt="Krnl logo" /> Krnl</a
         >
       </li>
+      <li>Electron</li>
       <!-- <li>
         <a href="https://fluxteam.xyz">Fluxus</a>
       </li> -->
-      <li>
-        Sentinel (DO NOT BUY)
-      </li>
+      <li>Sentinel</li>
     </ul>
   </details>
 {/if}
