@@ -162,14 +162,14 @@
       </li>
       <li>
         <a href="https://krnl.ca"
-          ><img src="/krnl.svg" height="16" alt="Krnl logo" /> Krnl</a
+          ><img src="/krnl.svg" height="16" alt="Krnl logo" /> Krnl (not tested; someone told me the user agent)</a
         >
       </li>
       <li>Electron</li>
       <!-- <li>
         <a href="https://fluxteam.xyz">Fluxus</a>
       </li> -->
-      <li>Sentinel</li>
+      <li>Sentinel (not tested; looked at API docs for user agent)</li>
     </ul>
   </details>
 {/if}

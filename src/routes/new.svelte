@@ -29,7 +29,9 @@
     location.href = '/script/' + id
   }
 </script>
-
+<svelte:head>
+  <title>New - Luau</title>
+</svelte:head>
 <h1>New Script</h1>
 <p>You will be able to edit these after your script is created.</p>
 <form on:submit|preventDefault={submit}>
