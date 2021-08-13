@@ -36,6 +36,7 @@
     .catch(() => (scripts = []))
 </script>
 
+<h1>Uploaded by {id}</h1>
 <section>
   {#each scripts as script, i}
     <a href="/script/{script.id}" in:fly={{ delay: i * 100, y: 50 }}>
