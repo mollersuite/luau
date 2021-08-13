@@ -92,7 +92,7 @@
 <svelte:head>
   <title>{script.name} - Luau</title>
   <meta name="description" content={script.description} />
-  <link rel="help" href="#faq"/>
+  <link rel="help" href="#faq" />
 </svelte:head>
 {#if owner}
   <small>You own this script, so you can edit it here.</small>
@@ -139,7 +139,9 @@
 {#if script.games && script.games.length}
   <h2>Supported places</h2>
   {#each script.games as game}
-    <a href="https://roblox.com/games/{game.AssetId}">{game.Name}</a>
+    <a href="https://roblox.com/games/{game.AssetId}" rel="nofollow"
+      >{game.Name}</a
+    >
   {/each}
 {/if}
 {#if !$user}
@@ -162,13 +164,14 @@
         >
       </li>
       <li>
-        <a href="https://krnl.ca"
-          ><img src="/krnl.svg" height="16" alt="Krnl logo" /> Krnl (not tested; someone told me the user agent)</a
+        <a href="https://krnl.ca" rel="nofollow"
+          ><img src="/krnl.svg" height="16" alt="Krnl logo" /> Krnl (not tested;
+          someone told me the user agent)</a
         >
       </li>
       <li>Electron</li>
       <li>
-        <a href="https://fluxteam.xyz">Fluxus</a>
+        <a href="https://fluxteam.xyz" rel="nofollow">Fluxus</a>
       </li>
       <li>Sentinel (not tested; looked at API docs for user agent)</li>
     </ul>
