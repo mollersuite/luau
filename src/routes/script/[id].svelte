@@ -92,6 +92,7 @@
 <svelte:head>
   <title>{script.name} - Luau</title>
   <meta name="description" content={script.description} />
+  <link rel="help" href="#faq"/>
 </svelte:head>
 {#if owner}
   <small>You own this script, so you can edit it here.</small>
@@ -142,7 +143,7 @@
   {/each}
 {/if}
 {#if !$user}
-  <h2>FAQ</h2>
+  <h2 id="faq">FAQ</h2>
   <details>
     <summary>How do I run this script?</summary>
     <p>You can run this script in a Roblox scripting utility.</p>
