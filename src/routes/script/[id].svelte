@@ -128,6 +128,7 @@
   <textarea bind:value={source} rows="30" />
 {:else}
   <h1>{script.name}</h1>
+  <a href="/author/{script.user_id}">Uploaded by {script.user_id}</a>
   <p>{script.description}</p>
 {/if}
 <h2>Loader</h2>
