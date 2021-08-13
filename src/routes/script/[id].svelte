@@ -166,9 +166,9 @@
         >
       </li>
       <li>Electron</li>
-      <!-- <li>
+      <li>
         <a href="https://fluxteam.xyz">Fluxus</a>
-      </li> -->
+      </li>
       <li>Sentinel (not tested; looked at API docs for user agent)</li>
     </ul>
   </details>

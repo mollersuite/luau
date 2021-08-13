@@ -29,6 +29,7 @@
     location.href = '/script/' + id
   }
 </script>
+
 <svelte:head>
   <title>New - Luau</title>
 </svelte:head>
