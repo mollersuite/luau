@@ -19,7 +19,7 @@
   export let path
   /** @type {number} */
   let height
-  /** @type {{name: string, goto: string | (() => unknown), icon: string}[]} */
+  /** @type {{name: string, goto: string | (() => unknown), icon: string, rel?: string}[]} */
   $: links = [
     {
       name: 'Home',
@@ -34,7 +34,8 @@
     {
       name: 'Search',
       goto: '/search',
-      icon: 'search'
+      icon: 'search',
+      rel: 'search'
     },
     $user && {
       name: 'Submit',
@@ -94,6 +95,7 @@
       {#each links as link, i}
         {#if typeof link.goto === 'string'}
           <a
+            rel={link.rel}
             class:selected={link.goto === path}
             href={link.goto}
             aria-label={link.name}
@@ -193,7 +195,7 @@
     text-align: center;
     background: darkslategray;
   }
-  
+
   a,
   button {
     cursor: default;

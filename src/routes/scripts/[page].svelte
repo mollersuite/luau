@@ -42,11 +42,11 @@
 </section>
 <footer>
   {#if page >= 1}
-    <a href={(page - 1).toString()}>←</a>
+    <a href={(page - 1).toString()} rel="prev">←</a>
   {/if}
   <span>{page}</span>
   {#if scripts.length}
-    <a href={(Number(page) + 1).toString()}>→</a>
+    <a href={(Number(page) + 1).toString()} rel="next">→</a>
   {/if}
 </footer>
 
