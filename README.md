@@ -6,5 +6,4 @@ the script-ware of script sharing websites
 
 soon:
 
-- authors listed
 - analytics
