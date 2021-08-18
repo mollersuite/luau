@@ -24,7 +24,7 @@ export async function get({ params, headers }) {
   }
 
   const [script] =
-    (await supabase.from('scripts').select('*').match({ id })).body || []
+    (await supabase.from('scripts').select('id,source,games').match({ id })).body || []
 
   if (!script) {
     return {
@@ -32,7 +32,7 @@ export async function get({ params, headers }) {
       body: 'error("Script not found.")'
     }
   }
-  
+
   if (script.games?.length) {
     script.source =
       dedent`
@@ -63,19 +63,17 @@ export async function get({ params, headers }) {
           local gui = Instance.new('ScreenGui')
           gui.Name = random(200)
 
-          -- parenting
-          if syn and syn.protect_gui then
-            syn.protect_gui(gui)
-            gui.Parent = game:GetService('CoreGui')
-          elseif gethui then
-            gui.Parent = gethui()
-          else
-            local worked = pcall(function ()
+          if gethui then
+              gui.Parent = gethui()
+          elseif (syn or lib) and (syn or lib).protect_gui then
+              (syn or lib).protect_gui(gui)
               gui.Parent = game:GetService('CoreGui')
-            end)
-            if not worked then
-              gui.Parent = game:GetService('Players').LocalPlayer:FindFirstChildWhichIsA('PlayerGui')
-            end
+          else
+              xpcall(function ()
+                  gui.Parent = game:GetService('CoreGui')
+              end, function ()
+                  gui.Parent = game:GetService('Players').LocalPlayer:FindFirstChildOfClass('PlayerGui')
+              end)
           end
 
           -- make gui

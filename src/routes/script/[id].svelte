@@ -53,7 +53,6 @@
 </script>
 
 <script>
-  import dedent from 'dedent'
   import { user, supabase } from '$lib/supabase'
   import CodeButton from '$lib/CodeButton.svelte'
 
@@ -61,13 +60,7 @@
   export let script
   export let host
   export let id
-  let code = dedent`
-  getgenv().request = request or (http and http.request) or (syn and syn.request) or (lib and lib.request)
-  loadstring(request({
-    Url = "https://${host}/script/${id}",
-    Method = 'GET'
-  }).Body, ${JSON.stringify(script.name)})()
-  `
+  let code = `loadstring(game:HttpGet("https://${host}/script/${id}"), ${JSON.stringify(script.name)})()`
   $: owner = script.user_id === $user?.id
   let name = script.name
   let desc = script.description
@@ -153,29 +146,32 @@
   </details>
   <details>
     <summary>What scripting utilities are supported by Luau.ml?</summary>
-    <ul>
-      <li>
-        <a href="https://script-ware.com">
-          <img src="/sw.svg" height="16" alt="Script-Ware logo" /> Script-Ware</a
-        >
-      </li>
-      <li>
-        <a href="https://x.synapse.to"
-          ><img src="/synx.svg" height="16" alt="Synapse X logo" /> Synapse X</a
-        >
-      </li>
-      <li>
-        <a href="https://krnl.ca" rel="nofollow"
-          ><img src="/krnl.svg" height="16" alt="Krnl logo" /> Krnl (not tested;
-          someone told me the user agent)</a
-        >
-      </li>
-      <li>Electron</li>
-      <li>
-        <a href="https://fluxteam.xyz" rel="nofollow">Fluxus</a>
-      </li>
-      <li>Sentinel (not tested; looked at API docs for user agent)</li>
-    </ul>
+    <del>
+      <ul>
+        <li>
+          <a href="https://script-ware.com">
+            <img src="/sw.svg" height="16" alt="Script-Ware logo" /> Script-Ware</a
+          >
+        </li>
+        <li>
+          <a href="https://x.synapse.to"
+            ><img src="/synx.svg" height="16" alt="Synapse X logo" /> Synapse X</a
+          >
+        </li>
+        <li>
+          <a href="https://krnl.ca" rel="nofollow"
+            ><img src="/krnl.svg" height="16" alt="Krnl logo" /> Krnl (not tested;
+            someone told me the user agent)</a
+          >
+        </li>
+        <li>Electron</li>
+        <li>
+          <a href="https://fluxteam.xyz" rel="nofollow">Fluxus</a>
+        </li>
+        <li>Sentinel (not tested; looked at API docs for user agent)</li>
+      </ul>
+    </del>
+    Pretty much every exploit.
   </details>
 {/if}
 

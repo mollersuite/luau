@@ -36,8 +36,8 @@ export async function get({ params }) {
 
   const scripts = await supabase
     .from('scripts')
-    .select('*')
-    .eq('user_id', params.id)
+    .select('id,name,description,user_id')
+    .match({ user_id: params.id })
     .range(pg * 500, (pg + 1) * 500)
 
   return {
