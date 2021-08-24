@@ -39,16 +39,10 @@ export async function get({ params, headers }) {
       do
         local games = { ${script.games.join(', ')} }
         if not table.find(games, game.PlaceId) then -- place id NOT game id
-          -- random string polyfill by jac (not jack)
-          local function RandomString(Length)
-              return string.gsub(string.rep(" ",Length,".",function()
-                  return string.char(({math.random(48,57),math.random(65,90),math.random(97,122)})[math.random(1,3)])
-              end)
-          end
-
-          local random = (crypt and (crypt.random or crypt.generatebytes)) or (syn and syn.crypt and syn.crypt.random) or RandomString
           local gui = Instance.new('ScreenGui')
-          gui.Name = random(200)
+          gui.Name = string.gsub(string.rep(" ",200,".",function()
+                return string.char(({math.random(48,57),math.random(65,90),math.random(97,122)})[math.random(1,3)])
+          end)
 
           if gethui then
               gui.Parent = gethui()
