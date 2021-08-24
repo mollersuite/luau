@@ -144,7 +144,7 @@
   <h2 id="faq">FAQ</h2>
   <details>
     <summary>How do I run this script?</summary>
-    <p>You can run this script in a Roblox scripting utility.</p>
+    <p>You can run this script in any Roblox scripting utility.</p>
   </details>
   <!-- in case showerhead dms me about a ad deal or some shit -->
   <!-- <details>
