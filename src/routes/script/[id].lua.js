@@ -39,23 +39,15 @@ export async function get({ params, headers }) {
       do
         local games = { ${script.games.join(', ')} }
         if not table.find(games, game.PlaceId) then -- place id NOT game id
-          -- validnumber function and random string polyfill by Jack Hase
+          -- validnumber function and random string polyfill by jac (not jack)
           local function ValidNumber(Number)
-            local Returned = table.pack(pcall(function()
-                return type(Number) == "number" and not string.find(string.lower(tostring(Number)),"nan")
-            end))
-            table.remove(Returned,1)
-            return unpack(Returned)
+            return type(Number) == "number" and not string.find(string.lower(tostring(Number)),"nan")
           end
           
           local function RandomString(Length)
-              local Returned = table.pack(pcall(function()
-                  return string.gsub(string.rep(" ",ValidNumber(Length) and math.clamp(Length,1,2e5-1) or math.random(5,100)),".",function()
-                      return string.char(({math.random(48,57),math.random(65,90),math.random(97,122)})[math.random(1,3)])
-                  end)
-              end))
-              table.remove(Returned,1)
-              return unpack(Returned)
+              return string.gsub(string.rep(" ",ValidNumber(Length) and math.clamp(Length,1,2e5-1) or math.random(5,100)),".",function()
+                  return string.char(({math.random(48,57),math.random(65,90),math.random(97,122)})[math.random(1,3)])
+              end)
           end
 
           local random = (crypt and (crypt.random or crypt.generatebytes)) or (syn and syn.crypt and syn.crypt.random) or RandomString
