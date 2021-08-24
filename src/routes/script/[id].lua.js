@@ -40,7 +40,7 @@ export async function get({ params, headers }) {
         local games = { ${script.games.join(', ')} }
         if not table.find(games, game.PlaceId) then -- place id NOT game id
 
-          -- validnumber function and random string polyfill by Amourousity
+          -- validnumber function and random string polyfill by Jack H.
           local function ValidNumber(Number)
             local Returned = table.pack(pcall(function()
                 return type(Number) == "number" and not string.find(string.lower(tostring(Number)),"nan")

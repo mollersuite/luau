@@ -1,6 +1,7 @@
 {
-  "name": "luau.ml",
-  "version": "0.0.1",
+  "name": "@moller/luau.ml",
+  "private": true,
+  "version": "1.0.0",
   "description": "The script sharing website.",
   "scripts": {
     "dev": "svelte-kit dev",
