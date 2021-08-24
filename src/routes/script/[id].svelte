@@ -146,35 +146,11 @@
     <summary>How do I run this script?</summary>
     <p>You can run this script in a Roblox scripting utility.</p>
   </details>
-  <details>
-    <summary>What scripting utilities are supported by Luau.ml?</summary>
-    <del>
-      <ul>
-        <li>
-          <a href="https://script-ware.com">
-            <img src="/sw.svg" height="16" alt="Script-Ware logo" /> Script-Ware</a
-          >
-        </li>
-        <li>
-          <a href="https://x.synapse.to"
-            ><img src="/synx.svg" height="16" alt="Synapse X logo" /> Synapse X</a
-          >
-        </li>
-        <li>
-          <a href="https://krnl.ca" rel="nofollow"
-            ><img src="/krnl.svg" height="16" alt="Krnl logo" /> Krnl (not tested;
-            someone told me the user agent)</a
-          >
-        </li>
-        <li>Electron</li>
-        <li>
-          <a href="https://fluxteam.xyz" rel="nofollow">Fluxus</a>
-        </li>
-        <li>Sentinel (not tested; looked at API docs for user agent)</li>
-      </ul>
-    </del>
-    Pretty much every exploit.
-  </details>
+  <!-- in case showerhead dms me about a ad deal or some shit -->
+  <!-- <details>
+    <summary>What scripting utility should I use?</summary>
+    Luau.ml works with every exploit, however we recommend using INSERT_EXPLOIT_NAME_HERE
+  </details> -->
 {/if}
 
 <style>
