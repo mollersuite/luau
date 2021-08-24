@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 :root {
   font-family: sans-serif;
-  --font-mono: ui-monospace, 'Input Mono', 'Cascadia Mono', 'Segoe UI Mono',
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Input Mono', 'Cascadia Mono', 'Segoe UI Mono',
     'Ubuntu Mono', 'Roboto Mono', Menlo, Monaco, Consolas, monospace;
   --pure-white: #ffffff;
   --primary-color: #000000;
