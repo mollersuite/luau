@@ -86,9 +86,7 @@
   <title>{script.name} - Luau</title>
   <meta name="description" content={script.description} />
   <link rel="help" href="#faq" />
-  <meta property="og:type" content="website" />
   <meta property="og:title" content={script.name} />
-  <meta property="og:site_name" content="Luau" />
   <meta property="og:description" content={script.description} />
 </svelte:head>
 {#if owner}
