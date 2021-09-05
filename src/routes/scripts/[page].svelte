@@ -29,12 +29,12 @@
 <h1>Scripts</h1>
 <section>
   {#each scripts as script, i}
-    <a href="/script/{script.id}" in:fly={{ delay: i * 100, y: 50 }}>
+    <a sveltekit:prefetch href="/script/{script.id}" in:fly={{ delay: i * 100, y: 50 }}>
       <h1>{script.name}</h1>
       <p>{script.description}</p>
     </a>
   {:else}
-    <a in:fly={{ delay: 0, y: 50 }} href="/new">
+    <a sveltekit:prefetch in:fly={{ delay: 0, y: 50 }} href="/new">
       <h1>You've reached the end!</h1>
       <p>Maybe add your own script?</p>
     </a>
@@ -42,11 +42,11 @@
 </section>
 <footer>
   {#if page >= 1}
-    <a href={(page - 1).toString()} rel="prev">←</a>
+    <a sveltekit:prefetch href={(page - 1).toString()} rel="prev">←</a>
   {/if}
   <span>{page}</span>
   {#if scripts.length}
-    <a href={(Number(page) + 1).toString()} rel="next">→</a>
+    <a sveltekit:prefetch href={(Number(page) + 1).toString()} rel="next">→</a>
   {/if}
 </footer>
 

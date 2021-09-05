@@ -24,7 +24,8 @@ export async function get({ params, headers }) {
   }
 
   const [script] =
-    (await supabase.from('scripts').select('id,source,games').match({ id })).body || []
+    (await supabase.from('scripts').select('id,source,games').match({ id }))
+      .body || []
 
   if (!script) {
     return {
@@ -123,9 +124,7 @@ export async function get({ params, headers }) {
       '\n' +
       script.source
   }
-  if (script) {
-    return {
-      body: script.source
-    }
+  return {
+    body: script.source
   }
 }
