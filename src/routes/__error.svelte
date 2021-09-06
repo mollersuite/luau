@@ -16,7 +16,7 @@
   export let message
 </script>
 
-<h1 class="big">404</h1>
+<h1 class="big">{status}</h1>
 <pre>{message.stack}</pre>
 
 <style>
@@ -30,16 +30,8 @@
     left: -5vw;
 
     background: var(--accent-color);
-    background: -webkit-linear-gradient(
-      to right,
-      black,
-      var(--accent-color)
-    );
-    background: linear-gradient(
-      to right,
-      black,
-      var(--accent-color)
-    );
+    background: -webkit-linear-gradient(to right, black, var(--accent-color));
+    background: linear-gradient(to right, black, var(--accent-color));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
