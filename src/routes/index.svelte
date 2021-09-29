@@ -1,22 +1,6 @@
 <script context="module">
   export const router = true
   export const prerender = true
-  /**
-   * @type {import('@sveltejs/kit').Load}
-   */
-  export async function load({ page, session }) {
-    return {
-      props: {
-        host: page.host
-      }
-    }
-  }
-</script>
-
-<script>
-  import CodeButton from '$lib/CodeButton.svelte'
-  export let host
-  let hub = `loadstring(game:HttpGet("https://${host}/gui.lua"), 'Luau')()`
 </script>
 
 <svelte:head>
@@ -25,57 +9,26 @@
 </svelte:head>
 
 <section>
-  <h1>Luau.ml</h1>
+  <h1>📜 Luau.ml</h1>
 
   <h2>Yet another script sharing website.</h2>
 
-  <a href="https://github.com/mollersuite">
-    <div>
-      part of
-      <img
-        src="https://5079.ml/5079mlicon.svg"
-        height="100"
-        alt="mollersuite logo"
-      />
-      mollersuite
-    </div>
-  </a>
+  by Jack & Charlie
 </section>
-<section>
-  <h1>Introducing the Luau Hub</h1>
-  <p>The fastest way to use Luau.ml</p>
-  <code
-    >{hub}<CodeButton on:click={() => navigator.clipboard.writeText(hub)}
-      >content_copy</CodeButton
-    ></code
-  >
-</section>
-
+<!-- <section>
+  <h1>Introducing <a sveltekit:prefetch href="hubs">Hubs</a></h1>
+  <p>The world's easiest way to make a script hub.</p>
+  <em>Note: You need to be signed in</em>
+</section> -->
 <style>
-  code {
-    white-space: pre-wrap;
-  }
-
-  a {
-    color: white;
-  }
-
-  div {
-    font-family: 'moller', 'Inter Black', 'inter';
-    font-size: 2em;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    gap: 1ch;
-    flex-direction: row;
-  }
-
-  section {
-    display: grid;
-    place-content: center;
-    gap: 1ch;
+  strong {
+    background: #f0f0f0;
+    color: #333;
+    padding: 0.5em;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100vh;
   }
 
   h1 {

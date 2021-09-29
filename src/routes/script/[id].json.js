@@ -13,10 +13,22 @@ export async function get({ params }) {
   // the `slug` parameter is available because this file
   // is called [slug].json.js
   const { id } = params
-  const [script] = (await supabase.from('scripts').select('*').match({ id })).body || []
-  if (script) {
+  if (
+    id &&
+    /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi.test(
+      id
+    )
+  ) {
+    const [script] =
+      (await supabase.from('scripts').select('*').match({ id })).body || []
+    if (script) {
+      return {
+        body: script
+      }
+    }
+  } else {
     return {
-      body: script
+      status: 400
     }
   }
 }

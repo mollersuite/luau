@@ -7,12 +7,9 @@
   --primary-color: #000000;
   --secondary-color: #282d30;
   --tertiary-color: #3b4147;
-  --accent-color: #00ff2a;
-  --heading-color: rgba(255, 255, 255, 0.7);
+  --accent-color: #F7D7C4;
+  --heading-color: white;
   --text-color: #ffffff;
-  --background-without-opacity: rgba(255, 255, 255, 0.7);
-  --column-width: 42rem;
-  --column-margin-top: 4rem;
 }
 body {
   overflow-x: hidden;

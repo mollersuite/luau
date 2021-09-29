@@ -28,7 +28,7 @@
     },
     {
       name: 'Scripts',
-      goto: '/scripts/0',
+      goto: '/script/0',
       icon: 'code'
     },
     {
@@ -42,6 +42,11 @@
       goto: '/new',
       icon: 'add'
     },
+    // $user && {
+    //   name: 'Hubs',
+    //   goto: '/hubs',
+    //   icon: 'list'
+    // },
     {
       name: 'Discord',
       goto: 'https://discord.gg/HAw7Zf8GF5',
@@ -49,19 +54,16 @@
     },
     $user
       ? {
-          name: 'Logout of ' + $user.user_metadata.full_name,
-          goto: () => {
-            supabase.auth.signOut()
-          },
-          icon: $user.user_metadata.avatar_url
+          name: 'Logout',
+          goto: supabase.auth.signOut.bind(supabase.auth),
+          icon: 'logout'
         }
       : {
           name: 'Login',
-          goto: () => {
+          goto: () =>
             supabase.auth.signIn({
               provider: 'discord'
-            })
-          },
+            }),
           icon: 'login'
         }
   ].filter(Boolean)
@@ -75,17 +77,27 @@
     href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet"
   />
+  <link
+    rel="search"
+    type="application/opensearchdescription+xml"
+    title="9701.ml"
+    href="/search.xml"
+  />
   <meta name="theme-color" value="#F7D7C4" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Luau" />
 </svelte:head>
+
+<main>
+  <slot />
+</main>
+
 <footer
   on:mouseenter={() => (hovering = true)}
   on:mouseleave={() => (hovering = false)}
 >
   {#if hovering}
     <nav
-      class="taskbar"
       in:fly={{ duration: 300, y: height, opacity: 1 }}
       out:fly={{
         duration: 300,
@@ -98,6 +110,7 @@
       {#each links as link, i}
         {#if typeof link.goto === 'string'}
           <a
+            sveltekit:prefetch
             rel={link.rel}
             class:selected={link.goto === path}
             href={link.goto}
@@ -154,10 +167,6 @@
   {/if}
 </footer>
 
-<main>
-  <slot />
-</main>
-
 <style>
   img {
     border-radius: 50%;
@@ -180,7 +189,7 @@
     flex-direction: row;
   }
 
-  .taskbar {
+  nav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -255,7 +264,8 @@
     flex-direction: column;
     padding: 1rem;
     width: 100%;
-    max-width: 1024px;
+    /* max-width: 1024px; */
+    max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
   }

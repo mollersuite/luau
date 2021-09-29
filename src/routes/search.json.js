@@ -21,8 +21,11 @@ export async function get({ query }) {
 
   const scripts = await supabase
     .from('scripts')
-    .select('*')
-    .textSearch('name', search, { type: 'websearch', config: 'english' })
+    .select('id,name,description')
+    .textSearch('name', search, {
+      type: 'websearch',
+      config: 'english'
+    })
 
   return {
     body: scripts.body

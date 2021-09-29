@@ -33,47 +33,46 @@
 <svelte:head>
   <title>Search - Luau</title>
 </svelte:head>
-<h1>Search</h1>
 <form action="/search">
-  <input type="search" name="q" bind:value={query} on:change={console.log}/>
+  <a href="/"><img src="/icon.svg" alt="Luau.ml" /></a>
+  <input
+    type="search"
+    name="q"
+    bind:value={query}
+    on:change={console.log}
+    placeholder="Search for a script..."
+  />
   <input type="submit" value="Search" />
 </form>
-<section>
-  {#if query}
-    {#each scripts || [] as script, i}
-      <a href="/script/{script.id}" in:fly={{ delay: i * 100, y: 50 }}>
-        <h1>{script.name}</h1>
-        <p>{script.description}</p>
-      </a>
-    {:else}
-      <a in:fly={{ delay: 0, y: 50 }} href="/new">
-        <h1>No scripts found.</h1>
-        <p>Maybe add your own script?</p>
-      </a>
-    {/each}
+{#if query}
+  {#each scripts || [] as script, i}
+    <a
+      sveltekit:prefetch
+      href="/script/{script.id}"
+      in:fly={{ delay: i * 100, y: 50 }}
+    >
+      <h1>{script.name}</h1>
+      <p>{script.description}</p>
+    </a>
   {:else}
-    <h1>Search for a script above.</h1>
-  {/if}
-</section>
+    <a sveltekit:prefetch in:fly={{ delay: 0, y: 50 }} href="/new">
+      <h1>No scripts found.</h1>
+      <p>Maybe add your own script?</p>
+    </a>
+  {/each}
+{:else}
+  <h3>Make a search!</h3>
+{/if}
 
 <style>
-  section h1 {
-    font-size: 1em;
-  }
-  section {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: masonry;
+  form {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+    flex-direction: row;
   }
   a {
-    display: block;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 1em;
-    color: var(--heading-color);
-  }
-  a:hover {
-    text-decoration: none;
+    white-space: pre-wrap;
+    color: initial;
   }
 </style>

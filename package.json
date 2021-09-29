@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
+    "test": "npx playwright test",
     "preview": "svelte-kit preview",
     "lint": "prettier --check --plugin-search-dir=. .",
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
+    "@playwright/test": "^1.15.0",
     "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.17",
     "@sveltejs/kit": "next",
     "patch-package": "^6.4.7",
