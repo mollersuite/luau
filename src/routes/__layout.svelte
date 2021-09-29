@@ -42,11 +42,11 @@
       goto: '/new',
       icon: 'add'
     },
-    $user && {
-      name: 'Hubs',
-      goto: '/hubs',
-      icon: 'list'
-    },
+    // $user && {
+    //   name: 'Hubs',
+    //   goto: '/hubs',
+    //   icon: 'list'
+    // },
     {
       name: 'Discord',
       goto: 'https://discord.gg/HAw7Zf8GF5',
