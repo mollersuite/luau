@@ -65,9 +65,6 @@
 {/if}
 
 <style>
-  section h1 {
-    font-size: 1em;
-  }
   form {
     display: flex;
     align-items: center;

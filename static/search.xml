@@ -7,4 +7,5 @@
     <Param name="q" value="{searchTerms}" />
   </Url>
   <moz:SearchForm>[https://Luau.ml/]</moz:SearchForm>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://Luau.ml/search.xml" />
 </OpenSearchDescription>
