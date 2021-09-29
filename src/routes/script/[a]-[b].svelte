@@ -11,11 +11,11 @@
     if (session.exploit) {
       return {
         status: 301,
-        redirect: `/script/${page.params.id}.lua`
+        redirect: `/script/${page.params.a}-${page.params.b}.lua`
       }
     }
 
-    const url = `/script/${page.params.id}.json`
+    const url = `/script/${page.params.a}-${page.params.b}.json`
     const res = await fetch(url)
     if (res.ok) {
       const script = await res.json()
@@ -40,7 +40,7 @@
         props: {
           script,
           host: page.host,
-          id: page.params.id
+          id: `${page.params.a}-${page.params.b}`
         }
       }
     }

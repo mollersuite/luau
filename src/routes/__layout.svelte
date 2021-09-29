@@ -28,7 +28,7 @@
     },
     {
       name: 'Scripts',
-      goto: '/scripts/0',
+      goto: '/script/0',
       icon: 'code'
     },
     {
@@ -258,7 +258,8 @@
     flex-direction: column;
     padding: 1rem;
     width: 100%;
-    max-width: 1024px;
+    /* max-width: 1024px; */
+    max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
   }
