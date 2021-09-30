@@ -1,6 +1,5 @@
 <script context="module">
   import { browser } from '$app/env'
-
   export const router = true
   export const prerender = false
 
@@ -55,12 +54,15 @@
 <script>
   import { user, supabase } from '$lib/supabase'
   import CodeButton from '$lib/CodeButton.svelte'
+  import ld from '$lib/ld'
 
   /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: {Name: string, AssetId: number}[]}} */
   export let script
   export let host
   export let id
-  let code = `loadstring(game:HttpGet("https://${host}/script/${id}"), ${JSON.stringify(script.name)})()`
+  let code = `loadstring(game:HttpGet("https://${host}/script/${id}"), ${JSON.stringify(
+    script.name
+  )})()`
   $: owner = script.user_id === $user?.id
   let name = script.name
   let desc = script.description
@@ -88,6 +90,23 @@
   <link rel="help" href="#faq" />
   <meta property="og:title" content={script.name} />
   <meta property="og:description" content={script.description} />
+  {@html ld({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'Scripts',
+        position: 1,
+        name: 'Books',
+        item: 'https://example.com/books'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: script.name
+      }
+    ]
+  })}
 </svelte:head>
 {#if owner}
   <small>You own this script, so you can edit it here.</small>
@@ -123,7 +142,9 @@
   <textarea bind:value={source} rows="30" />
 {:else}
   <h1>{script.name}</h1>
-  <a sveltekit:prefetch href="/author/{script.user_id}">Uploaded by {script.user_id}</a>
+  <a sveltekit:prefetch href="/author/{script.user_id}"
+    >Uploaded by {script.user_id}</a
+  >
   <p>{script.description}</p>
 {/if}
 <h2>Loader</h2>

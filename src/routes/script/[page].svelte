@@ -9,7 +9,8 @@
     return {
       props: {
         scripts,
-        page: Number(page.params.page)
+        page: Number(page.params.page),
+        host: page.host
       }
     }
   }
@@ -18,18 +19,34 @@
 </script>
 
 <script>
+  import ld from '$lib/ld'
+
   import { fly } from 'svelte/transition'
   export let scripts = []
   export let page = 0
+  export let host
 </script>
 
 <svelte:head>
-  <title>Scripts page {page} - Luau</title>
+  <title>Scripts page {page} - Luau.ml</title>
+  {@html ld({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: scripts.map((script, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `https://${host}/script/${script.id}`
+    }))
+  })}
 </svelte:head>
 <h1>Scripts</h1>
 <section>
   {#each scripts as script, i}
-    <a sveltekit:prefetch href="/script/{script.id}" in:fly={{ delay: i * 100, y: 50 }}>
+    <a
+      sveltekit:prefetch
+      href="/script/{script.id}"
+      in:fly={{ delay: i * 100, y: 50 }}
+    >
       <h1>{script.name}</h1>
       <p>{script.description}</p>
     </a>

@@ -73,19 +73,7 @@
 </script>
 
 <svelte:head>
-  <link
-    href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet"
-  />
-  <link
-    rel="search"
-    type="application/opensearchdescription+xml"
-    title="9701.ml"
-    href="/search.xml"
-  />
-  <meta name="theme-color" value="#F7D7C4" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Luau" />
+  <title>Luau.ml</title>
 </svelte:head>
 
 <main>

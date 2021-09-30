@@ -25,12 +25,5 @@ test.describe('navbar', () => {
     page.waitForSelector(
       'a[href="/script/419138bc-b215-4fb4-898e-032344ba6e5d"]'
     )
-
-    expect(
-      page
-        .locator('a[href="/script/419138bc-b215-4fb4-898e-032344ba6e5d"]')
-        .first()
-        .locator('h1')
-    ).toHaveText('moller hub')
   })
 })

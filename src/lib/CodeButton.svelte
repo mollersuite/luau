@@ -1,4 +1,7 @@
-<button class="material-icons" on:click><slot /></button>
+<script>
+  export const label = 'Copy'
+</script>
+<button class="material-icons" aria-label={label} on:click><slot /></button>
 <style>
   button {
     background: none;
