@@ -1,4 +1,6 @@
-export default (data) =>
-  '\u003Cscript type="application/ld+json"\u003E' +
-  JSON.stringify(data) +
-  '\u003C/script\u003E'
+export default (/** @type {{
+  '@context': 'https://schema.org',
+  '@type': string,
+  [key: string]: any
+}} */ data) =>
+  '<script type="application/ld+json">' + JSON.stringify(data) + '</script>'
