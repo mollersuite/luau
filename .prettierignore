@@ -2,5 +2,4 @@
 static/**
 build/**
 node_modules/**
-dist/**
 workers-site/**

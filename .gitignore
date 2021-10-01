@@ -4,5 +4,4 @@ node_modules
 /package
 /build
 /workers-site
-dist/worker.js
 .env
