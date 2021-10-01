@@ -5,9 +5,16 @@
     "checkJs": true,
     "moduleResolution": "Node",
     "paths": {
-      "$lib": ["src/lib"],
-      "$lib/*": ["src/lib/*"]
+      "$lib": ["lib"],
+      "$lib/*": ["lib/*"]
     }
   },
-  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]
+  "include": [
+    "**/*.d.ts",
+    "lib/**/*.js",
+    "static/**/*.js",
+    "routes/**/*.svelte",
+    "hooks.js",
+    "global.d.ts"
+  ]
 }

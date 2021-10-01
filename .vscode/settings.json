@@ -1,4 +1,14 @@
 {
-  "Lua.diagnostics.globals": ["request", "gethui", "getgenv", "syn", "lib", "http"],
-  "Lua.diagnostics.ignore": ["HttpGet"]
+  "Lua.diagnostics.globals": [
+    "request",
+    "gethui",
+    "getgenv",
+    "syn",
+    "lib",
+    "http"
+  ],
+  "Lua.diagnostics.ignore": ["HttpGet"],
+  "files.exclude": {
+    ".svelte-kit": true,
+  }
 }

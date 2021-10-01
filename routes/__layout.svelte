@@ -23,8 +23,7 @@
     List,
     ChatBubbles,
     SignOut,
-    PasswordKeyHide,
-AddFriend
+    AddFriend
   } from '$lib/fluent'
   export let path
   /** @type {number} */

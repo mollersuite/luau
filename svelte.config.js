@@ -6,7 +6,13 @@ const config = {
     // hydrate the <div id="svelte"> element in src/app.html
     target: '#svelte',
     adapter: workers(),
-    vite: {}
+    vite: {},
+    files: {
+      lib: 'lib',
+      routes: 'routes',
+      hooks: 'hooks',
+      template: 'app.html',
+    }
   }
 }
 
