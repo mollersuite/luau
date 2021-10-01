@@ -1,4 +1,3 @@
-@import '@fontsource/material-icons';
 @import '@fontsource/jetbrains-mono';
 
 :root {
@@ -48,6 +47,11 @@ p {
 @font-face {
   font-family: 'moller';
   src: url(/Segoe-UI-Variable-Display-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'icon';
+  src: url(/icons.ttf);
 }
 
 p {

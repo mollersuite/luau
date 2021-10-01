@@ -15,7 +15,16 @@
   import { user, supabase } from '$lib/supabase.js'
   import '../app.css'
   import { fly } from 'svelte/transition'
-
+  import {
+    Home,
+    Code,
+    Search,
+    Add,
+    List,
+    ChatBubbles,
+    SignOut,
+    PasswordKeyHide
+  } from '$lib/fluent'
   export let path
   /** @type {number} */
   let height
@@ -24,39 +33,39 @@
     {
       name: 'Home',
       goto: '/',
-      icon: 'house'
+      icon: Home
     },
     {
       name: 'Scripts',
       goto: '/script/0',
-      icon: 'code'
+      icon: Code
     },
     {
       name: 'Search',
       goto: '/search',
-      icon: 'search',
+      icon: Search,
       rel: 'search'
     },
     $user && {
       name: 'Submit',
       goto: '/new',
-      icon: 'add'
+      icon: Add
     },
     // $user && {
     //   name: 'Hubs',
     //   goto: '/hubs',
-    //   icon: 'list'
+    //   icon: List
     // },
     {
       name: 'Discord',
       goto: 'https://discord.gg/HAw7Zf8GF5',
-      icon: 'forum'
+      icon: ChatBubbles
     },
     $user
       ? {
           name: 'Logout',
           goto: supabase.auth.signOut.bind(supabase.auth),
-          icon: 'logout'
+          icon: SignOut
         }
       : {
           name: 'Login',
@@ -64,7 +73,7 @@
             supabase.auth.signIn({
               provider: 'discord'
             }),
-          icon: 'login'
+          icon: PasswordKeyHide
         }
   ].filter(Boolean)
 
@@ -119,7 +128,7 @@
             {#if link.icon.startsWith('https://') || link.icon.startsWith('data:')}
               <img src={link.icon} alt={link.name} height="24" width="24" />
             {:else}
-              <span class="material-icons">
+              <span class="icons">
                 {link.icon}
               </span>
             {/if}
@@ -144,7 +153,7 @@
             {#if link.icon.startsWith('https://') || link.icon.startsWith('data:')}
               <img src={link.icon} alt={link.name} height="24" width="24" />
             {:else}
-              <span class="material-icons">
+              <span aria-hidden>
                 {link.icon}
               </span>
             {/if}
@@ -156,6 +165,9 @@
 </footer>
 
 <style>
+  span {
+    font-family: 'icon';
+  }
   img {
     border-radius: 50%;
     background: #36393f;

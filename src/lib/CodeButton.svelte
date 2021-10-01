@@ -1,9 +1,10 @@
 <script>
   export const label = 'Copy'
 </script>
-<button class="material-icons" aria-label={label} on:click><slot /></button>
+<button aria-label={label} on:click><slot /></button>
 <style>
   button {
+    font-family: 'icon';
     background: none;
     color: white;
     float: right;

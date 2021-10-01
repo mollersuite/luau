@@ -1,27 +1,27 @@
 <script context="module">
+  import ld from '$lib/ld'
   export const router = true
   export const prerender = true
 </script>
 
 <svelte:head>
   <meta name="description" content="Yet another script sharing website" />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": "https://luau.ml",
-      "potentialAction": [{
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://luau.ml/search?q={search_term_string}"
+  {@html ld({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    url: 'https://luau.ml',
+    potentialAction: [
+      {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://luau.ml/search?q={search_term_string}'
         },
-        "query-input": "required name=search_term_string"
-      }]
-    }
-  </script>
+        'query-input': 'required name=search_term_string'
+      }
+    ]
+  })}
 </svelte:head>
-
 <section>
   <h1>📜 Luau.ml</h1>
 
@@ -29,16 +29,17 @@
 
   by Jack & Charlie
 </section>
+
 <!-- <section>
   <h1>Introducing <a sveltekit:prefetch href="hubs">Hubs</a></h1>
   <p>The world's easiest way to make a script hub.</p>
   <em>Note: You need to be signed in</em>
-</section> -->
+</section>
 <section class="mollermethod">
   <h1>A brand new <b>method</b>, coming soon.</h1>
   <p>
     mollermethod - the sequel to Luau Hub, will be miles ahead of our
-    competitors, including the entire featureset of all Domain Hubs.
+    competitors.
   </p>
   <h2>Compare</h2>
   <table>
@@ -87,8 +88,7 @@
       </tr>
     </tbody>
   </table>
-</section>
-
+</section> -->
 <style>
   table {
     border: solid 1px white;

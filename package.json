@@ -23,7 +23,6 @@
   "type": "module",
   "dependencies": {
     "@fontsource/jetbrains-mono": "^4.5.0",
-    "@fontsource/material-icons": "^4.5.0",
     "@supabase/supabase-js": "^1.21.0",
     "dedent": "^0.7.0"
   }

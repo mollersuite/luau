@@ -23,6 +23,8 @@ export async function get({ params, headers }) {
     }
   }
 
+
+  // TODO: increment count
   const [script] =
     (await supabase.from('scripts').select('id,source,games').match({ id }))
       .body || []
