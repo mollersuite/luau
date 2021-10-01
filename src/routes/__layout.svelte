@@ -23,7 +23,8 @@
     List,
     ChatBubbles,
     SignOut,
-    PasswordKeyHide
+    PasswordKeyHide,
+AddFriend
   } from '$lib/fluent'
   export let path
   /** @type {number} */
@@ -73,7 +74,7 @@
             supabase.auth.signIn({
               provider: 'discord'
             }),
-          icon: PasswordKeyHide
+          icon: AddFriend
         }
   ].filter(Boolean)
 
