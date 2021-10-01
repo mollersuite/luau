@@ -1,7 +1,9 @@
 <script>
   export const label = 'Copy'
 </script>
+
 <button aria-label={label} on:click><slot /></button>
+
 <style>
   button {
     font-family: 'icon';

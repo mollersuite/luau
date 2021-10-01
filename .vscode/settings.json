@@ -9,6 +9,6 @@
   ],
   "Lua.diagnostics.ignore": ["HttpGet"],
   "files.exclude": {
-    ".svelte-kit": true,
+    ".svelte-kit": true
   }
 }

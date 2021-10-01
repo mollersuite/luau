@@ -6,7 +6,7 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ page, fetch, session, context }) {
+  export async function load({ page, fetch, session }) {
     if (session.exploit) {
       return {
         status: 301,
@@ -55,7 +55,7 @@
   import { user, supabase } from '$lib/supabase'
   import CodeButton from '$lib/CodeButton.svelte'
   import ld from '$lib/ld'
-import { Copy } from '$lib/fluent';
+  import { Copy } from '$lib/fluent'
 
   /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: {Name: string, AssetId: number}[]}} */
   export let script
