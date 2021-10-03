@@ -56,6 +56,7 @@
   import CodeButton from '$lib/CodeButton.svelte'
   import ld from '$lib/ld'
   import { Copy } from '$lib/fluent'
+  import { goto } from '$app/navigation'
 
   /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: {Name: string, AssetId: number}[]}} */
   export let script
@@ -118,9 +119,11 @@
         .from('scripts')
         .delete()
         .match({ id: script.id })
-        .then(() => {
-          location.replace('/')
-        })
+        .then(() =>
+          goto('/', {
+            replaceState: true
+          })
+        )
     }}>DELETE</button
   >
   <small>Your script's title.</small>

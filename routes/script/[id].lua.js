@@ -1,5 +1,5 @@
 import dedent from 'dedent'
-import exploit from '$lib/exploit.js'
+import exploit from '$lib/exploit'
 
 import { createClient } from '@supabase/supabase-js'
 
@@ -13,6 +13,7 @@ const supabase = createClient(supabaseUrl, key)
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 export async function get({ params, headers }) {
+  console.log(headers)
   const { id } = params
   if (!exploit(headers)) {
     return {
@@ -42,7 +43,7 @@ export async function get({ params, headers }) {
         local games = { ${script.games.join(', ')} }
         if not table.find(games, game.PlaceId) then -- place id NOT game id
           local gui = Instance.new('ScreenGui')
-          gui.Name = string.gsub(string.rep(" ",200,".",function()
+          gui.Name = string.gsub(string.rep(" ",20npm 0,".",function()
                 return string.char(({math.random(48,57),math.random(65,90),math.random(97,122)})[math.random(1,3)])
           end)
 

@@ -22,20 +22,22 @@
     ]
   })}
 </svelte:head>
-<section>
-  <h1>📜 Luau.ml</h1>
-
-  <h2>Yet another script sharing website.</h2>
-
-  by Jack & Charlie
-</section>
+<h1>📜 Luau.ml by <a href="https://github.com/mollersuite"><img src="https://github.com/mollersuite.png" alt="mollersuite" height="25">mollersuite</a></h1>
+<article>
+  <h1>It's like the Cloud Scripts in <cite title="Yes, Script-Ware® is trademarked. See UK00003615817">Script<span class="dash">-</span>Ware®</cite>, but</h1>
+  <ul>
+    <li>Works on all exploits</li>
+    <li>No private scripts yet</li>
+    <li>Script hub creator soon</li>
+  </ul>
+</article>
 
 <!-- <section>
   <h1>Introducing <a sveltekit:prefetch href="hubs">Hubs</a></h1>
   <p>The world's easiest way to make a script hub.</p>
   <em>Note: You need to be signed in</em>
-</section>
-<section class="mollermethod">
+</section> -->
+<article class="mollermethod">
   <h1>A brand new <b>method</b>, coming soon.</h1>
   <p>
     mollermethod - the sequel to Luau Hub, will be miles ahead of our
@@ -88,7 +90,8 @@
       </tr>
     </tbody>
   </table>
-</section> -->
+</article>
+
 <style>
   table {
     border: solid 1px white;
@@ -105,6 +108,12 @@
     background-position: 700px 0;
     background-repeat: no-repeat;
     height: 700px;
+  }
+  .dash {
+    color: rgb(66, 155, 251);
+  }
+  cite {
+    font-family: Poppins, moller, sans-serif;
   }
   strong {
     background: #f0f0f0;

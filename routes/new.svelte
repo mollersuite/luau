@@ -5,8 +5,11 @@
 
 <script>
   import { browser } from '$app/env'
+  import { goto } from '$app/navigation'
   import { supabase, user } from '$lib/supabase'
-  $: browser && !$user && (location.href = '/')
+  $: browser && !$user && goto('/', {
+    replaceState: true
+  })
 
   let source = ''
   let title = ''
@@ -26,7 +29,7 @@
         user_id: $user.id
       })
       .throwOnError()
-    location.href = '/script/' + id
+    goto(`/script/${id}`)
   }
 </script>
 
