@@ -1,9 +1,12 @@
 import dedent from 'dedent'
+// @ts-ignore
 import exploit from '$lib/exploit'
 
 import { createClient } from '@supabase/supabase-js'
 
+// @ts-ignore
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+// @ts-ignore
 const key = import.meta.env.VITE_SUPABASE_SERVICE_KEY
 
 // @ts-ignore
