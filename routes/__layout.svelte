@@ -111,7 +111,7 @@
             rel={link.rel}
             class:selected={link.goto === path}
             href={link.goto}
-            aria-label={link.name}
+            data-icon={link.icon}
             in:fly={{
               duration: 300,
               delay: (i + 2) * 100,
@@ -125,18 +125,12 @@
               y: 100
             }}
           >
-            {#if link.icon.startsWith('https://') || link.icon.startsWith('data:')}
-              <img src={link.icon} alt={link.name} height="24" width="24" />
-            {:else}
-              <span class="icons">
-                {link.icon}
-              </span>
-            {/if}
+            {link.name}
           </a>
         {:else}
           <button
             on:click={link.goto}
-            aria-label={link.name}
+            data-icon={link.icon}
             in:fly={{
               duration: 300,
               delay: (i + 2) * 100,
@@ -150,13 +144,7 @@
               y: 100
             }}
           >
-            {#if link.icon.startsWith('https://') || link.icon.startsWith('data:')}
-              <img src={link.icon} alt={link.name} height="24" width="24" />
-            {:else}
-              <span aria-hidden>
-                {link.icon}
-              </span>
-            {/if}
+            {link.name}
           </button>
         {/if}
       {/each}
@@ -208,8 +196,22 @@
     background: darkslategray;
   }
 
+  a::before,
+  button::before {
+    content: attr(data-icon);
+    font-family: 'icon';
+    font-size: 16px;
+  }
+  a:hover,
+  button:hover {
+    font-size: small;
+  }
   a,
   button {
+    padding: 16px;
+    font-family: 'moller', 'Segoe UI', sans-serif;
+    font-size: 0;
+    margin: 0;
     cursor: default;
     text-align: center;
     display: flex;
@@ -220,9 +222,8 @@
     background: none;
     border: none;
     color: white;
-    padding: 1em;
-    border-radius: 1em;
-    transition: background 0.3s, gap 0.3s;
+    border-radius: 16px;
+    transition: background 0.3s, gap 0.3s, font-size 0.3s;
   }
   a:focus,
   button:focus {
@@ -233,21 +234,6 @@
     gap: 1ch;
     text-decoration: none;
     background: rgba(255, 255, 255, 0.3);
-  }
-
-  a::after,
-  button::after {
-    font-family: 'moller', 'Segoe UI', sans-serif;
-    content: attr(aria-label);
-    transition: font-size 0.3s;
-    font-size: 0;
-    margin: 0;
-    padding: 0;
-  }
-
-  a:hover::after,
-  button:hover::after {
-    font-size: small;
   }
 
   a.selected {

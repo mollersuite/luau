@@ -22,9 +22,22 @@
     ]
   })}
 </svelte:head>
-<h1>📜 Luau.ml by <a href="https://github.com/mollersuite"><img src="https://github.com/mollersuite.png" alt="mollersuite" height="25">mollersuite</a></h1>
+<h1>
+  📜 Luau.ml by <a href="https://github.com/mollersuite"
+    ><img
+      src="https://github.com/mollersuite.png"
+      alt="mollersuite"
+      height="25"
+    />mollersuite</a
+  >
+</h1>
 <article>
-  <h1>It's like the Cloud Scripts in <cite title="Yes, Script-Ware® is trademarked. See UK00003615817">Script<span class="dash">-</span>Ware®</cite>, but</h1>
+  <h1>
+    It's like the Cloud Scripts in <cite
+      title="Yes, Script-Ware® is trademarked. See UK00003615817"
+      >Script<span class="dash">-</span>Ware®</cite
+    >, but
+  </h1>
   <ul>
     <li>Works on all exploits</li>
     <li>No private scripts yet</li>
