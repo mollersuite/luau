@@ -1,7 +1,15 @@
 <script context="module">
   import ld from '$lib/ld'
-  export const router = true
+  export const router = false
   export const prerender = true
+  export const hydrate = false
+  const phrases = [
+    'The smartest script hub',
+    'The future of exploiting',
+    'Your favorite script hub',
+    'Your next script hub',
+    'A hub superior to DomainX'
+  ]
 </script>
 
 <svelte:head>
@@ -22,15 +30,7 @@
     ]
   })}
 </svelte:head>
-<h1>
-  📜 Luau.ml by <a href="https://github.com/mollersuite"
-    ><img
-      src="https://github.com/mollersuite.png"
-      alt="mollersuite"
-      height="25"
-    />mollersuite</a
-  >
-</h1>
+<h1>📜 Luau.ml</h1>
 <article>
   <h1>
     It's like the Cloud Scripts in <cite
@@ -52,29 +52,39 @@
 </section> -->
 <article class="mollermethod">
   <h1>
-    The future of script hubs, coming soon. <sup>
+    {phrases[~~(Math.random() * phrases.length)]}, in alpha.
+    <sup>
       <img src="/mollermethod.png" alt="mollermethod" height="16" />
     </sup>
   </h1>
+  <p>note: mollermethod will have actual scripts on launch</p>
+  <p>not rn lol</p>
+  <code>
+    loadstring (game:HttpGet 'https://mthd.ml') {'{}'}
+  </code>
 </article>
 
 <style>
-  .mollermethod {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+  .mollermethod code {
     width: max-content;
+    background: var(--accent-color);
+    color: black;
+    border-radius: 5px;
+  }
+  .mollermethod {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* flex-direction: row; */
+    /* width: max-content; */
     padding-left: 1em;
     padding-right: 1em;
-    background-position: 100% 0;
-    background-size: contain;
     background-color: black;
     border-radius: 1em;
-    background-repeat: no-repeat;
   }
   .mollermethod h1 {
-    display: inline;
+    /* display: inline; */
+    width: max-content;
   }
   .dash {
     color: rgb(66, 155, 251);

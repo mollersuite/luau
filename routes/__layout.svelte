@@ -153,13 +153,6 @@
 </footer>
 
 <style>
-  span {
-    font-family: 'icon';
-  }
-  img {
-    border-radius: 50%;
-    background: #36393f;
-  }
   footer {
     min-width: 50vw;
     max-width: 100vw;
