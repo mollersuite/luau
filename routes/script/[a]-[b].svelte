@@ -58,7 +58,7 @@
   import { Copy } from '$lib/fluent'
   import { goto } from '$app/navigation'
 
-  /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: {Name: string, AssetId: number}[]}} */
+  /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: string[]}} */
   export let script
   export let host
   export let id
@@ -160,9 +160,7 @@
 {#if script.games && script.games.length}
   <h2>Supported places</h2>
   {#each script.games as game}
-    <a href="https://roblox.com/games/{game.AssetId}" rel="nofollow"
-      >{game.Name}</a
-    >
+    <a href="https://roblox.com/games/{game}" rel="nofollow">{game}</a>
   {/each}
 {/if}
 {#if !$user}
