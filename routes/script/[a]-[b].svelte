@@ -18,23 +18,23 @@
     const res = await fetch(url)
     if (res.ok) {
       const script = await res.json()
-      script.games =
-        script.games &&
-        (await Promise.all(
-          script.games.map((game) => {
-            return fetch(
-              `https://cors.bridged.cc/https://api.roblox.com/Marketplace/ProductInfo?assetId=` +
-                game,
-              {
-                headers: browser
-                  ? undefined
-                  : {
-                      Origin: 'https://luau.ml'
-                    }
-              }
-            ).then((res) => res.json())
-          })
-        ))
+      // script.games =
+      //   script.games &&
+      //   (await Promise.all(
+      //     script.games.map((game) => {
+      //       return fetch(
+      //         `https://cors.bridged.cc/https://api.roblox.com/Marketplace/ProductInfo?assetId=` +
+      //           game,
+      //         {
+      //           headers: browser
+      //             ? undefined
+      //             : {
+      //                 Origin: 'https://luau.ml'
+      //               }
+      //         }
+      //       ).then((res) => res.json())
+      //     })
+      //   ))
       return {
         props: {
           script,
