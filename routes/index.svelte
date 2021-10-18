@@ -58,7 +58,7 @@
     </sup>
   </h1>
   <p>note: mollermethod will have actual scripts on launch</p>
-  <p>not rn lol</p>
+  <p><del>not rn lol</del>i could add an autofarm right now</p>
   <code>
     loadstring (game:HttpGet 'https://mthd.ml') {'{}'}
   </code>
