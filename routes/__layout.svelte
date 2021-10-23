@@ -14,7 +14,6 @@
 <script>
   import { user, supabase } from '$lib/supabase.js'
   import '../app.css'
-  import { fly } from 'svelte/transition'
   import {
     Home,
     Code,
@@ -22,7 +21,6 @@
     Add,
     List,
     ChatBubbles,
-    SignOut,
     AddFriend
   } from '$lib/fluent'
   export let path
@@ -61,145 +59,66 @@
       goto: 'https://discord.gg/HAw7Zf8GF5',
       icon: ChatBubbles
     },
-    $user
-      ? {
-          name: 'Logout',
-          goto: supabase.auth.signOut.bind(supabase.auth),
-          icon: SignOut
-        }
-      : {
-          name: 'Login',
-          goto: () =>
-            supabase.auth.signIn({
-              provider: 'discord'
-            }),
-          icon: AddFriend
-        }
+    !$user && {
+      name: 'Login',
+      goto: () =>
+        supabase.auth.signIn({
+          provider: 'discord'
+        }),
+      icon: AddFriend
+    }
   ].filter(Boolean)
-
-  /** @type {boolean} */
-  let hovering = true
 </script>
 
 <svelte:head>
   <title>Luau.ml</title>
 </svelte:head>
-
-<main>
+<a class="skip-to-content-link" href="#main">Skip to content</a>
+<header>
+  <h1>📜 Luau.ml</h1>
+  {#each links as link, i}
+    {#if typeof link.goto === 'string'}
+      <a
+        sveltekit:prefetch
+        rel={link.rel}
+        class:selected={link.goto === path}
+        href={link.goto}
+        title={link.name}
+        data-icon={link.icon}
+      >
+        {link.name}
+      </a>
+    {:else}
+      <button on:click={link.goto} data-icon={link.icon} title={link.name}>
+        {link.name}
+      </button>
+    {/if}
+  {/each}
+</header>
+<main id="main">
   <slot />
 </main>
 
-<footer
-  on:mouseenter={() => (hovering = true)}
-  on:mouseleave={() => (hovering = false)}
->
-  {#if hovering}
-    <nav
-      in:fly={{ duration: 300, y: height, opacity: 1 }}
-      out:fly={{
-        duration: 300,
-        delay: (links.length + 1) * 100,
-        opacity: 1,
-        y: 100
-      }}
-      bind:offsetHeight={height}
-    >
-      {#each links as link, i}
-        {#if typeof link.goto === 'string'}
-          <a
-            sveltekit:prefetch
-            rel={link.rel}
-            class:selected={link.goto === path}
-            href={link.goto}
-            data-icon={link.icon}
-            in:fly={{
-              duration: 300,
-              delay: (i + 2) * 100,
-              opacity: 1,
-              y: 100
-            }}
-            out:fly={{
-              duration: 300,
-              delay: (i + 1) * 100,
-              opacity: 1,
-              y: 100
-            }}
-          >
-            {link.name}
-          </a>
-        {:else}
-          <button
-            on:click={link.goto}
-            data-icon={link.icon}
-            in:fly={{
-              duration: 300,
-              delay: (i + 2) * 100,
-              opacity: 1,
-              y: 100
-            }}
-            out:fly={{
-              duration: 300,
-              delay: (i + 1) * 100,
-              opacity: 1,
-              y: 100
-            }}
-          >
-            {link.name}
-          </button>
-        {/if}
-      {/each}
-    </nav>
-  {/if}
-</footer>
-
 <style>
-  footer {
-    min-width: 50vw;
-    max-width: 100vw;
-    left: 50%;
-    transform: translate(-50%);
-    overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    min-height: 100px;
-    z-index: 10000;
+  header {
+    width: 100%;
+    background: black;
+    padding: 1rem;
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 1ch;
     flex-direction: row;
   }
-
-  nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1ch;
-    overflow-x: auto;
-    overflow-y: hidden;
-    flex-direction: row;
-    top: 0;
-    min-width: 50vw;
-    max-width: 100vw;
-    border-top-left-radius: 1em;
-    border-top-right-radius: 1em;
-    color: white;
-    min-height: 100px;
-    text-align: center;
-    background: darkslategray;
+  header h1 {
+    font-size: small;
   }
-
   a::before,
   button::before {
     content: attr(data-icon);
     font-family: 'icon';
     font-size: 16px;
   }
-  a:hover,
-  button:hover {
-    font-size: small;
-  }
-  a,
+  header a,
   button {
     padding: 16px;
     font-family: 'moller', 'Segoe UI', sans-serif;
@@ -218,21 +137,25 @@
     border-radius: 16px;
     transition: background 0.3s, gap 0.3s, font-size 0.3s;
   }
-  a:focus,
-  button:focus {
-    border: solid 1px white;
-  }
-  a:hover,
-  button:hover {
+
+  header a:hover,
+  button:hover,
+  header a:focus-visible,
+  button:focus-visible {
+    font-size: small;
+    outline: 0;
     gap: 1ch;
     text-decoration: none;
     background: rgba(255, 255, 255, 0.3);
   }
-
+  header a:focus,
+  button:focus {
+    border: solid 1px white;
+  }
   a.selected {
     border: solid 1px gray;
   }
-  a:active,
+  header a:active,
   button:active {
     background: rgba(255, 255, 255, 0.7);
   }
@@ -247,5 +170,35 @@
     max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
+  }
+  .skip-to-content-link {
+    background: #e77e23;
+    height: 30px;
+    left: 50%;
+    padding: 8px;
+    position: absolute;
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+  }
+
+  .skip-to-content-link:focus {
+    transform: translateY(0%);
+  }
+
+  @media (max-width: 500px) {
+    header h1 {
+      display: none;
+    }
+    header {
+      justify-content: center;
+    }
+    header a,
+    button {
+      padding: 5px;
+    }
+    header a:hover,
+    button:hover {
+      font-size: 0;
+    }
   }
 </style>
