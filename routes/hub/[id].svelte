@@ -7,7 +7,7 @@
     if (session.exploit) {
       return {
         status: 301,
-        redirect: `/script/${page.params.id}.lua`
+        redirect: `/hub/${page.params.id}.lua`
       }
     }
     const id = page.params.id

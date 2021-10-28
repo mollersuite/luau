@@ -10,5 +10,6 @@
   "Lua.diagnostics.ignore": ["HttpGet"],
   "files.exclude": {
     ".svelte-kit": true
-  }
+  },
+  "rpc.enabled": false
 }
