@@ -1,5 +1,3 @@
-import exploit from '$lib/exploit'
-
 // TODO
 
 import { createClient } from '@supabase/supabase-js'

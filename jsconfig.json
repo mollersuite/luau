@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "module": "ESNext",
+    "target": "ESNext",
     "checkJs": true,
     "moduleResolution": "Node",
     "paths": {
