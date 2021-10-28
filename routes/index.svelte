@@ -1,15 +1,6 @@
 <script context="module">
   import ld from '$lib/ld'
-  export const router = false
   export const prerender = true
-  export const hydrate = false
-  const phrases = [
-    'The smartest script hub',
-    'The future of exploiting',
-    'Your favorite script hub',
-    'Your next script hub',
-    'A hub superior to DomainX'
-  ]
 </script>
 
 <svelte:head>
@@ -34,7 +25,7 @@
   <div class="big" aria-hidden="true">📜</div>
   <h1>The Roblox script sharing platform.</h1>
   <p>
-    No more running in the wrong game. No more outdated scripts. Just <a
+    No more linkvertises. No more outdated scripts. Just <a
       href="/search"
       sveltekit:prefetch
       >search,
@@ -49,11 +40,12 @@
       href="https://robloxscripts.com">robloxscripts.com</a
     > or has virus popups like rbxscripts.xyz (DO NOT VISIT)
   </p>
+  <p>wonder how long until shlex bootlegs the site and brands it as "Shlex Scripts", considering i'm making a domainx bootleg and advertising it here</p>
 </article>
 
 <article class="mollermethod">
   <h1>
-    {phrases[~~(Math.random() * phrases.length)]}, nowhere close to complete.
+    Your next script hub, nowhere close to complete.
     <sup>
       <img src="/mollermethod.png" alt="mollermethod" height="16" />
     </sup>
@@ -67,10 +59,6 @@
   <h1>upcoming features</h1>
   <ul>
     <li>proper display names</li>
-    <li>
-      script hub (maybe call it playlists) creator (how the fuck would i handle
-      scripts getting deleted)
-    </li>
     <li>after display names, verified badge</li>
     <li>
       changelogs that automatically detect the last version you used and shows
@@ -92,7 +80,9 @@
     user-select: none;
     font-size: 20rem;
     background: url('/stars.webp') fixed right;
+    background-color: black;
     -webkit-background-clip: text;
+    -moz-background-clip: text;
     background-clip: text;
     color: rgba(0, 0, 0, 0.1);
   }

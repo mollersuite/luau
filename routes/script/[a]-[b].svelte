@@ -57,6 +57,7 @@
   import ld from '$lib/ld'
   import { Copy } from '$lib/fluent'
   import { goto } from '$app/navigation'
+  import IconButton from '$lib/IconButton.svelte'
 
   /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: string[]}} */
   export let script
@@ -70,20 +71,53 @@
   let desc = script.description
   $: owner &&
     name &&
-    supabase
-      .from('scripts')
-      .update({ name })
-      .match({ id: script.id })
-      .then(console.log)
+    supabase.from('scripts').update({ name }).match({ id: script.id }).then(()=>{})
 
   $: owner &&
     desc &&
     supabase
       .from('scripts')
-      .update({ description: desc })
+      .update({ description: desc }, { returning: 'minimal' })
       .match({ id: script.id })
-      .then(console.log)
+      .then(()=>{})
+  function del() {
+    supabase
+      .from('scripts')
+      .delete()
+      .match({ id: script.id })
+      .then(() =>
+        goto('/', {
+          replaceState: true
+        })
+      )
+  }
   let source = script.source
+  /** @type {HTMLDialogElement} */
+  let dialog
+  $: hubs =
+    $user &&
+    browser &&
+    supabase.from('hubs').select('name,id,scripts').throwOnError()
+  let hub_id = ''
+  $: hub_id &&
+    hubs.then((hubs) => {
+      console.log(hub_id)
+      console.log(hubs.body.find((hub) => hub.id === hub_id))
+      dialog.close()
+      supabase
+        .from('hubs')
+        .update(
+          {
+            scripts: [
+              ...hubs.body.find((hub) => hub.id === hub_id).scripts,
+              script.id
+            ]
+          },
+          { returning: 'minimal' }
+        )
+        .match({ id: hub_id })
+        .then(()=>{})
+    })
 </script>
 
 <svelte:head>
@@ -110,22 +144,27 @@
     ]
   })}
 </svelte:head>
+{#if $user}
+  <dialog bind:this={dialog}>
+    <h1>Which one?</h1>
+    {#await hubs then hubs}
+      <select bind:value={hub_id}>
+        {#each hubs.body || [] as hub}
+          <option value={hub.id}>{hub.name}</option>
+        {/each}
+      </select>
+    {/await}
+  </dialog>
+  <nav>
+    <IconButton icon="AddTo" on:click={() => dialog.showModal()}
+      >Add to hub</IconButton
+    >
+    {#if owner}
+      <IconButton icon="Delete" on:click={del}>Delete</IconButton>
+    {/if}
+  </nav>
+{/if}
 {#if owner}
-  <small>You own this script, so you can edit it here.</small>
-  <button
-    class="delete"
-    on:click={() => {
-      supabase
-        .from('scripts')
-        .delete()
-        .match({ id: script.id })
-        .then(() =>
-          goto('/', {
-            replaceState: true
-          })
-        )
-    }}>DELETE</button
-  >
   <small>Your script's title.</small>
   <h1><input type="text" bind:value={name} /></h1>
   <small>Your script's description.</small>
@@ -136,11 +175,7 @@
   >
   <button
     on:click={() => {
-      supabase
-        .from('scripts')
-        .update({ source })
-        .match({ id: script.id })
-        .then(console.log)
+      supabase.from('scripts').update({ source }).match({ id: script.id })
     }}>Save source</button
   >
   <textarea bind:value={source} rows="30" />
@@ -175,15 +210,17 @@
   p {
     white-space: pre-wrap;
   }
-  button.delete {
-    float: right;
-    width: max-content;
-  }
-
   textarea {
     resize: vertical;
   }
-
+  dialog {
+    border-radius: 2rem;
+    border: 0;
+    box-shadow: 0 0 5px black;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    backdrop-filter: blur(10px);
+  }
   code {
     white-space: pre-wrap;
   }

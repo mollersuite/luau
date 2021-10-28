@@ -15,12 +15,12 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.15.0",
-    "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.23",
-    "@sveltejs/kit": "^1.0.0-next.180",
+    "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.25",
+    "@sveltejs/kit": "^1.0.0-next.190",
     "patch-package": "^6.4.7",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
-    "svelte": "^3.34.0"
+    "svelte": "^3.44.0"
   },
   "type": "module",
   "dependencies": {

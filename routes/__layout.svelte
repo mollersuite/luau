@@ -2,10 +2,11 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ page: { path } }) {
+  export async function load({ page: { path, host } }) {
     return {
       props: {
-        path
+        path,
+        host
       }
     }
   }
@@ -14,18 +15,10 @@
 <script>
   import { user, supabase } from '$lib/supabase.js'
   import '../app.css'
-  import {
-    Home,
-    Code,
-    Search,
-    Add,
-    List,
-    ChatBubbles,
-    AddFriend
-  } from '$lib/fluent'
+  import { Home, Code, Add, List, ChatBubbles, AddFriend } from '$lib/fluent'
+  import { goto } from '$app/navigation'
   export let path
-  /** @type {number} */
-  let height
+  export let host
   /** @type {{name: string, goto: string | (() => unknown), icon: string, rel?: string}[]} */
   $: links = [
     {
@@ -38,22 +31,16 @@
       goto: '/script/0',
       icon: Code
     },
-    {
-      name: 'Search',
-      goto: '/search',
-      icon: Search,
-      rel: 'search'
-    },
     $user && {
       name: 'Submit',
       goto: '/new',
       icon: Add
     },
-    // $user && {
-    //   name: 'Hubs',
-    //   goto: '/hubs',
-    //   icon: List
-    // },
+    $user && {
+      name: 'Hubs',
+      goto: '/hub',
+      icon: List
+    },
     {
       name: 'Discord',
       goto: 'https://discord.gg/HAw7Zf8GF5',
@@ -62,20 +49,26 @@
     !$user && {
       name: 'Login',
       goto: () =>
-        supabase.auth.signIn({
-          provider: 'discord'
-        }),
+        supabase.auth.signIn(
+          {
+            provider: 'discord'
+          },
+          {
+            redirectTo: location.origin || 'https://' + host
+          }
+        ),
       icon: AddFriend
     }
   ].filter(Boolean)
+  let value = ''
 </script>
 
 <svelte:head>
-  <title>Luau.ml</title>
+  <title>{host}</title>
 </svelte:head>
 <a class="skip-to-content-link" href="#main">Skip to content</a>
 <header>
-  <h1>📜 Luau.ml</h1>
+  <h1>📜 {host}</h1>
   {#each links as link, i}
     {#if typeof link.goto === 'string'}
       <a
@@ -94,6 +87,23 @@
       </button>
     {/if}
   {/each}
+  <form
+    action="/search"
+    on:submit|preventDefault={() => {
+      goto('/search?q=' + value, {
+        keepfocus: true
+      })
+    }}
+  >
+    <input
+      type="search"
+      name="q"
+      bind:value
+      on:change={console.log}
+      placeholder="Search for a script..."
+    />
+    <input type="submit" value="Search" />
+  </form>
 </header>
 <main id="main">
   <slot />
@@ -101,6 +111,8 @@
 
 <style>
   header {
+    position: sticky;
+    top: 0;
     width: 100%;
     background: black;
     padding: 1rem;
@@ -184,8 +196,15 @@
   .skip-to-content-link:focus {
     transform: translateY(0%);
   }
-
   @media (max-width: 500px) {
+    input[type="submit"] {
+      display: none;
+    }
+  }
+  input[type="search"] {
+    max-width: 50vw;
+  }
+  @media (max-width: 768px) {
     header h1 {
       display: none;
     }

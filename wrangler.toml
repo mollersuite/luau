@@ -11,3 +11,4 @@ entry-point = "./workers-site"
 [env.dev]
 name = "luau-dev"
 route = "dev.luau.ml/*"
+compatibility_date = "2021-10-26"

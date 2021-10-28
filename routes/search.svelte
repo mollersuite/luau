@@ -13,14 +13,12 @@
       }
     }
   }
-  export const router = true
-  export const prerender = false
 </script>
 
 <script>
   import { supabase } from '$lib/supabase'
 
-  import { fly } from 'svelte/transition'
+  import { blur } from 'svelte/transition'
   export let scripts = []
   export let query = ''
   $: supabase
@@ -33,46 +31,46 @@
 <svelte:head>
   <title>Search - Luau</title>
 </svelte:head>
-<form action="/search">
-  <a href="/"><img src="/icon.svg" alt="Luau.ml" /></a>
-  <input
-    type="search"
-    name="q"
-    bind:value={query}
-    on:change={console.log}
-    placeholder="Search for a script..."
-  />
-  <input type="submit" value="Search" />
-</form>
-{#if query}
-  {#each scripts || [] as script, i}
-    <a
-      sveltekit:prefetch
-      href="/script/{script.id}"
-      in:fly={{ delay: i * 100, y: 50 }}
-    >
-      <h1>{script.name}</h1>
-      <p>{script.description}</p>
-    </a>
+<section>
+  {#if query}
+    {#each scripts || [] as script, i}
+      <a
+        sveltekit:prefetch
+        href="/script/{script.id}"
+        in:blur={{ delay: (i / scripts.length) * 500, amount: 5 }}
+      >
+        <h1>{script.name}</h1>
+        <p>{script.description}</p>
+      </a>
+    {:else}
+      <a sveltekit:prefetch in:blur={{ amount: 5 }} href="/new">
+        <h1>No scripts found.</h1>
+        <p>Maybe add your own script?</p>
+      </a>
+    {/each}
   {:else}
-    <a sveltekit:prefetch in:fly={{ delay: 0, y: 50 }} href="/new">
-      <h1>No scripts found.</h1>
-      <p>Maybe add your own script?</p>
-    </a>
-  {/each}
-{:else}
-  <h3>Make a search!</h3>
-{/if}
+    <h3>Make a search!</h3>
+  {/if}
+</section>
 
 <style>
-  form {
-    display: flex;
-    align-items: center;
-    gap: 1ch;
-    flex-direction: row;
+  section {
+    column-count: auto;
+    column-width: 250px;
+    column-gap: 1em;
   }
-  a {
+  p {
     white-space: pre-wrap;
-    color: initial;
+  }
+  section a {
+    box-sizing: border-box;
+    display: inline-block;
+    word-wrap: break-word;
+    width: 100%;
+    margin: 0 0 1em;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 1em;
+    color: var(--heading-color);
   }
 </style>
