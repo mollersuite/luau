@@ -17,27 +17,9 @@
     const url = `/script/${page.params.a}-${page.params.b}.json`
     const res = await fetch(url)
     if (res.ok) {
-      const script = await res.json()
-      // script.games =
-      //   script.games &&
-      //   (await Promise.all(
-      //     script.games.map((game) => {
-      //       return fetch(
-      //         `https://cors.bridged.cc/https://api.roblox.com/Marketplace/ProductInfo?assetId=` +
-      //           game,
-      //         {
-      //           headers: browser
-      //             ? undefined
-      //             : {
-      //                 Origin: 'https://luau.ml'
-      //               }
-      //         }
-      //       ).then((res) => res.json())
-      //     })
-      //   ))
       return {
         props: {
-          script,
+          script: await res.json(),
           host: page.host,
           id: `${page.params.a}-${page.params.b}`
         }
@@ -55,9 +37,8 @@
   import { user, supabase } from '$lib/supabase'
   import CodeButton from '$lib/CodeButton.svelte'
   import ld from '$lib/ld'
-  import { Copy } from '$lib/fluent'
+  import { AddTo, Copy, Delete } from '$lib/fluent'
   import { goto } from '$app/navigation'
-  import IconButton from '$lib/IconButton.svelte'
   import { ContentDialog, Checkbox, Button } from 'fluent-svelte'
 
   /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: string[]}} */
@@ -179,11 +160,11 @@
     </svelte:fragment>
   </ContentDialog>
   <nav>
-    <IconButton icon="AddTo" on:click={() => (dialog_open = true)}
-      >Add to hub</IconButton
+    <Button on:click={() => (dialog_open = true)}
+      ><span class="icon">{AddTo}</span>Add to hub</Button
     >
     {#if owner}
-      <IconButton icon="Delete" on:click={del}>Delete</IconButton>
+      <Button on:click={del}><span class="icon">{Delete}</span>Delete</Button>
     {/if}
   </nav>
 {/if}
@@ -230,6 +211,10 @@
 {/if}
 
 <style>
+  .icon {
+    font-family: 'icon';
+    padding-right: 1ch;
+  }
   p {
     white-space: pre-wrap;
   }

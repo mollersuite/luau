@@ -34,14 +34,14 @@
       icon: Code
     },
     $user && {
-      name: 'Submit',
-      goto: '/new',
-      icon: Add
-    },
-    $user && {
       name: 'Hubs',
       goto: '/hub',
       icon: List
+    },
+    $user && {
+      name: 'Submit',
+      goto: '/new',
+      icon: Add
     },
     {
       name: 'Discord',
@@ -193,14 +193,6 @@
 
   .skip-to-content-link:focus {
     transform: translateY(0%);
-  }
-  @media (max-width: 500px) {
-    input[type='submit'] {
-      display: none;
-    }
-  }
-  input[type='search'] {
-    max-width: 50vw;
   }
   @media (max-width: 768px) {
     header h1 {
