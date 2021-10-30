@@ -39,7 +39,7 @@
   import ld from '$lib/ld'
   import { AddTo, Copy, Delete } from '$lib/fluent'
   import { goto } from '$app/navigation'
-  import { ContentDialog, Checkbox, Button } from 'fluent-svelte'
+  import { ContentDialog, Checkbox, Button, TextBox } from 'fluent-svelte'
 
   /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: string[]}} */
   export let script
@@ -100,23 +100,6 @@
   <link rel="help" href="#faq" />
   <meta property="og:title" content={script.name} />
   <meta property="og:description" content={script.description} />
-  {@html ld({
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'Scripts',
-        position: 1,
-        name: 'Books',
-        item: 'https://example.com/books'
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: script.name
-      }
-    ]
-  })}
 </svelte:head>
 
 {#if $user}
@@ -125,7 +108,7 @@
       {#each hubs as hub (hub.id)}
         <Checkbox bind:checked={hub.new_used}>{hub.name}</Checkbox><br />
       {:else}
-        <p>No hubs found.</p>
+        <p>No hubs found. Maybe you should <a href="/hub/new">make one?</a></p>
       {/each}
     {/await}
     <svelte:fragment slot="footer">
@@ -170,7 +153,7 @@
 {/if}
 {#if owner}
   <small>Your script's title.</small>
-  <h1><input type="text" bind:value={name} /></h1>
+  <h1><TextBox required placeholder="Script name" bind:value={name}></TextBox></h1>
   <small>Your script's description.</small>
   <textarea bind:value={desc} />
   <small

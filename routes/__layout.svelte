@@ -20,8 +20,8 @@
   import { Home, Code, Add, List, ChatBubbles, AddFriend } from '$lib/fluent'
   import { goto } from '$app/navigation'
   export let path
-  export let host
-  /** @type {{name: string, goto: string | (() => unknown), icon: string, rel?: string}[]} */
+  export let host = 'Luau.ml'
+  /** @type {{name: string, goto: string | (() => unknown), icon: string}[]} */
   $: links = [
     {
       name: 'Home',
@@ -79,7 +79,6 @@
     {#if typeof link.goto === 'string'}
       <a
         sveltekit:prefetch
-        rel={link.rel}
         class:selected={link.goto === path}
         href={link.goto}
         title={link.name}
