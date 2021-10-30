@@ -58,6 +58,7 @@
   import { Copy } from '$lib/fluent'
   import { goto } from '$app/navigation'
   import IconButton from '$lib/IconButton.svelte'
+  import { ContentDialog, Checkbox, Button } from 'fluent-svelte'
 
   /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: string[]}} */
   export let script
@@ -71,7 +72,11 @@
   let desc = script.description
   $: owner &&
     name &&
-    supabase.from('scripts').update({ name }).match({ id: script.id }).then(()=>{})
+    supabase
+      .from('scripts')
+      .update({ name })
+      .match({ id: script.id })
+      .then(() => {})
 
   $: owner &&
     desc &&
@@ -79,7 +84,7 @@
       .from('scripts')
       .update({ description: desc }, { returning: 'minimal' })
       .match({ id: script.id })
-      .then(()=>{})
+      .then(() => {})
   function del() {
     supabase
       .from('scripts')
@@ -92,32 +97,20 @@
       )
   }
   let source = script.source
-  /** @type {HTMLDialogElement} */
-  let dialog
-  $: hubs =
-    $user &&
-    browser &&
-    supabase.from('hubs').select('name,id,scripts').throwOnError()
-  let hub_id = ''
-  $: hub_id &&
-    hubs.then((hubs) => {
-      console.log(hub_id)
-      console.log(hubs.body.find((hub) => hub.id === hub_id))
-      dialog.close()
-      supabase
+  const hubs = browser
+    ? supabase
         .from('hubs')
-        .update(
-          {
-            scripts: [
-              ...hubs.body.find((hub) => hub.id === hub_id).scripts,
-              script.id
-            ]
-          },
-          { returning: 'minimal' }
+        .select('name,id,scripts')
+        .throwOnError()
+        .then((hubs) =>
+          hubs.body.map((hub) => ({
+            ...hub,
+            used: hub.scripts.includes(script.id),
+            new_used: hub.scripts.includes(script.id)
+          }))
         )
-        .match({ id: hub_id })
-        .then(()=>{})
-    })
+    : Promise.resolve([])
+  let dialog_open = false
 </script>
 
 <svelte:head>
@@ -144,19 +137,49 @@
     ]
   })}
 </svelte:head>
+
 {#if $user}
-  <dialog bind:this={dialog}>
-    <h1>Which one?</h1>
+  <ContentDialog bind:open={dialog_open} title="Which one?">
     {#await hubs then hubs}
-      <select bind:value={hub_id}>
-        {#each hubs.body || [] as hub}
-          <option value={hub.id}>{hub.name}</option>
-        {/each}
-      </select>
+      {#each hubs as hub (hub.id)}
+        <Checkbox bind:checked={hub.new_used}>{hub.name}</Checkbox><br />
+      {:else}
+        <p>No hubs found.</p>
+      {/each}
     {/await}
-  </dialog>
+    <svelte:fragment slot="footer">
+      <Button
+        variant="accent"
+        on:click={() => {
+          dialog_open = false
+          hubs.then((hubs) => {
+            const changed_hubs = hubs.filter((hub) => hub.used !== hub.new_used)
+            changed_hubs.forEach((hub) => {
+              supabase
+                .from('hubs')
+                .update(
+                  {
+                    scripts: hub.new_used
+                      ? [...hub.scripts, script.id]
+                      : hub.scripts.filter((id) => id !== script.id)
+                  },
+                  { returning: 'minimal' }
+                )
+                .match({ id: hub.id })
+                .then(() => {})
+            })
+          })
+        }}>Save</Button
+      >
+      <Button
+        on:click={() => {
+          dialog_open = false
+        }}>Cancel</Button
+      >
+    </svelte:fragment>
+  </ContentDialog>
   <nav>
-    <IconButton icon="AddTo" on:click={() => dialog.showModal()}
+    <IconButton icon="AddTo" on:click={() => (dialog_open = true)}
       >Add to hub</IconButton
     >
     {#if owner}
@@ -212,14 +235,6 @@
   }
   textarea {
     resize: vertical;
-  }
-  dialog {
-    border-radius: 2rem;
-    border: 0;
-    box-shadow: 0 0 5px black;
-    background: rgba(0, 0, 0, 0.3);
-    color: white;
-    backdrop-filter: blur(10px);
   }
   code {
     white-space: pre-wrap;

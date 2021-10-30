@@ -14,7 +14,9 @@
 
 <script>
   import { user, supabase } from '$lib/supabase.js'
-  import '../app.css'
+  import '$lib/app.css'
+  import 'fluent-svelte/theme.css'
+  import { TextBox } from 'fluent-svelte'
   import { Home, Code, Add, List, ChatBubbles, AddFriend } from '$lib/fluent'
   import { goto } from '$app/navigation'
   export let path
@@ -61,6 +63,10 @@
     }
   ].filter(Boolean)
   let value = ''
+  const search = () =>
+    goto('/search?q=' + value, {
+      keepfocus: true
+    })
 </script>
 
 <svelte:head>
@@ -87,22 +93,14 @@
       </button>
     {/if}
   {/each}
-  <form
-    action="/search"
-    on:submit|preventDefault={() => {
-      goto('/search?q=' + value, {
-        keepfocus: true
-      })
-    }}
-  >
-    <input
-      type="search"
+  <form action="/search" on:submit|preventDefault={search}>
+    <TextBox
       name="q"
+      placeholder="Search for a script"
+      type="search"
       bind:value
-      on:change={console.log}
-      placeholder="Search for a script..."
+      on:search={search}
     />
-    <input type="submit" value="Search" />
   </form>
 </header>
 <main id="main">
@@ -197,11 +195,11 @@
     transform: translateY(0%);
   }
   @media (max-width: 500px) {
-    input[type="submit"] {
+    input[type='submit'] {
       display: none;
     }
   }
-  input[type="search"] {
+  input[type='search'] {
     max-width: 50vw;
   }
   @media (max-width: 768px) {
