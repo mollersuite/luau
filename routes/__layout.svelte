@@ -73,7 +73,8 @@
   <title>{host}</title>
 </svelte:head>
 <a class="skip-to-content-link" href="#main">Skip to content</a>
-<strong>Warning: Hub loader hasn't been made yet due to a Roblox outage</strong>
+<!-- for warnings -->
+<!-- <strong></strong> -->
 <header>
   <h1>📜 {host}</h1>
   <form action="/search" on:submit|preventDefault={search}>
@@ -109,7 +110,7 @@
 </main>
 
 <style>
-  strong {
+  /* strong {
     width: 100vw;
     text-align: center;
     background: rgb(64, 32, 16);
@@ -117,7 +118,7 @@
     border-bottom-left-radius: 1em;
     box-sizing: border-box;
     border-bottom-right-radius: 1em;
-  }
+  } */
   header {
     position: sticky;
     top: 0;
@@ -229,9 +230,9 @@
   }
 
   @media (max-width: 425px) {
-    strong {
+    /* strong {
       display: none;
-    }
+    } */
     header :global(input) {
       max-width: 40vw;
     }
