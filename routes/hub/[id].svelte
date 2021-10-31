@@ -11,11 +11,9 @@
       }
     }
     const id = page.params.id
-    console.log(id)
     const {
       body: [hub]
     } = await supabase.from('hubs').select('*').match({ id }).throwOnError()
-    console.log(hub)
     if (!hub) {
       return {}
     }

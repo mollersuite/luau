@@ -94,6 +94,7 @@
   {/each}
   <form action="/search" on:submit|preventDefault={search}>
     <TextBox
+      required
       name="q"
       placeholder="Search for a script"
       type="search"
@@ -112,7 +113,7 @@
     top: 0;
     width: 100%;
     z-index: 1;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(50px);
     padding: 1rem;
     display: flex;

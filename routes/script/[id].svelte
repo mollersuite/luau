@@ -106,7 +106,7 @@
 </svelte:head>
 
 {#if $user}
-  <ContentDialog bind:open={dialog_open} title="Which one?">
+  <ContentDialog bind:open={dialog_open} title="Save to...">
     {#await hubs then hubs}
       {#each hubs as hub (hub.id)}
         <Checkbox bind:checked={hub.new_used}>{hub.name}</Checkbox><br />

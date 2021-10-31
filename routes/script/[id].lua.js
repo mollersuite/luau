@@ -16,7 +16,6 @@ const supabase = createClient(supabaseUrl, key)
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 export async function get({ params, headers }) {
-  console.log(headers)
   const { id } = params
   if (!exploit(headers)) {
     return {
