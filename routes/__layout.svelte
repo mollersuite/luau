@@ -111,7 +111,9 @@
     position: sticky;
     top: 0;
     width: 100%;
-    background: black;
+    z-index: 1;
+    background: rgba(0,0,0,.5);
+    backdrop-filter: blur(50px);
     padding: 1rem;
     display: flex;
     align-items: center;

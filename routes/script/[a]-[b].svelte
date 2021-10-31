@@ -160,15 +160,15 @@
     >Edit your script's source here. Other users will not see the source on the
     website, although they may be able to get it.</small
   >
-  <button
+  <Button
     on:click={() => {
       supabase.from('scripts').update({ source }).match({ id: script.id })
-    }}>Save source</button
+    }}>Save source</Button
   >
   <textarea bind:value={source} rows="30" />
 {:else}
   <h1>{script.name}</h1>
-  <a sveltekit:prefetch href="/author/{script.user_id}"
+  <a sveltekit:prefetch href="/author/{script.user_id}/0"
     >Uploaded by {script.user_id}</a
   >
   <p>{script.description}</p>

@@ -1,28 +1,13 @@
 <script>
+  import { Button } from 'fluent-svelte'
+
   export const label = 'Copy'
 </script>
 
-<button aria-label={label} on:click><slot /></button>
-
+<div><Button on:click aria-label={label}><slot /></Button></div>
 <style>
-  button {
-    font-family: 'icon';
-    background: none;
-    color: white;
+  div :global(button) {
+    font-family: 'icon' !important;
     float: right;
-    border: 0;
-    cursor: pointer;
-    transition: background 0.3s;
-    padding: 5px;
-    border-radius: 8px;
-  }
-  button:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-  button:active {
-    background: rgba(255, 255, 255, 0.5);
-  }
-  button:focus {
-    border: solid 1px white;
   }
 </style>

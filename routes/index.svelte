@@ -1,5 +1,7 @@
 <script context="module">
   import ld from '$lib/ld'
+  import { supabase, user } from '$lib/supabase'
+  import { Button } from 'fluent-svelte'
   export const prerender = true
 </script>
 
@@ -25,11 +27,8 @@
   <div class="big" aria-hidden="true">📜</div>
   <h1>The Roblox script sharing platform.</h1>
   <p>
-    No more linkvertises. No more outdated scripts. Just <a
-      href="/search"
-      sveltekit:prefetch
-      >search,
-    </a> run and exploit.
+    No more linkvertises. No more outdated scripts. Just search, run and
+    exploit.
   </p>
   <p>
     note: we dont have much scripts here because nobody uses this site lmaoo
@@ -40,17 +39,32 @@
       href="https://robloxscripts.com">robloxscripts.com</a
     > or has virus popups like rbxscripts.xyz (DO NOT VISIT)
   </p>
-  <p>wonder how long until shlex bootlegs the site and brands it as "Shlex Scripts", considering i'm making a domainx bootleg and advertising it here</p>
+  <p>
+    wonder how long until shlex bootlegs the site and brands it as "Shlex
+    Scripts", considering i'm making a domainx bootleg and advertising it here
+  </p>
 </article>
-
+<article>
+  <h1>Introducing Hubs</h1>
+  <p>You can now create script hubs, without writing a line of code.</p>
+  <p>Hubs are private; however the loader works for everyone.</p>
+  {#if !$user}
+    <Button variant="accent" disabled>Create a hub (login first)</Button>
+  {:else}
+    <Button href="/hub" variant="accent">Create a hub</Button>
+  {/if}
+</article>
 <article class="mollermethod">
   <h1>
-    Your next script hub, nowhere close to complete.
+    Our DomainX competitor, nowhere close to complete.
     <sup>
       <img src="/mollermethod.png" alt="mollermethod" height="16" />
     </sup>
   </h1>
-  <p>currently trying to fix performance bugs, add more ui  lib inputs, and add scripts</p>
+  <p>
+    currently trying to fix performance bugs, add more ui lib inputs, and add
+    scripts
+  </p>
   <code>
     loadstring (game:HttpGet 'https://mthd.ml') {'{}'}
   </code>
@@ -97,7 +111,7 @@
     /* justify-content: center; */
     /* align-items: center; */
     /* flex-direction: row; */
-    /* width: max-content; */
+    width: max-content;
     padding-left: 1em;
     padding-right: 1em;
     background-color: black;

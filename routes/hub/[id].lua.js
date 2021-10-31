@@ -2,6 +2,8 @@
 
 import { createClient } from '@supabase/supabase-js'
 import dedent from 'dedent'
+// @ts-ignore
+import exploit from '$lib/exploit'
 
 // @ts-ignore
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
@@ -15,14 +17,14 @@ const supabase = createClient(supabaseUrl, key)
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 export async function get({ params: { id }, headers }) {
-  // if (!exploit(headers)) {
-  //   return {
-  //     status: 301,
-  //     headers: {
-  //       Location: '/hub/' + id
-  //     }
-  //   }
-  // }
+  if (!exploit(headers)) {
+    return {
+      status: 301,
+      headers: {
+        Location: '/hub/' + id
+      }
+    }
+  }
   const {
     body: [hub]
   } = await supabase.from('hubs').select('*').match({ id })

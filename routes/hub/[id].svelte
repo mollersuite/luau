@@ -37,11 +37,15 @@
 
 <script>
   import CodeButton from '$lib/CodeButton.svelte'
-  import { Copy } from '$lib/fluent'
-  import IconButton from '$lib/IconButton.svelte'
+  import { Copy, Delete } from '$lib/fluent'
+  import { Button } from 'fluent-svelte'
   import { goto } from '$app/navigation'
 
   export let hub
+  /** @type {{
+      id: string,
+      name: string
+    }[]}*/
   export let scripts
   export let host
   $: code = `loadstring(game:HttpGet("https://${host}/hub/${
@@ -60,7 +64,7 @@
 {#if hub}
   <h1>
     {hub.name}
-    <IconButton
+    <Button
       on:click={() =>
         supabase
           .from('hubs')
@@ -70,8 +74,7 @@
             goto('/hub', {
               replaceState: true
             })
-          )}
-      icon="Delete">Remove</IconButton
+          )}><span class="icon">{Delete}</span>Remove</Button
     >
   </h1>
   <h2>Loader</h2>
@@ -85,7 +88,7 @@
     {#each scripts as script, i}
       <li>
         <a class="script" href="/script/{script.id}">{script.name}</a>
-        <IconButton on:click={() => del(i)} icon="Delete">Remove</IconButton>
+        <Button on:click={() => del(i)}><span class="icon">{Delete}</span>Remove</Button>
       </li>
     {:else}
       <p>Your hub has no scripts. <a href="/script/0">Try adding some.</a></p>
@@ -97,6 +100,10 @@
 {/if}
 
 <style>
+  .icon {
+    font-family: 'icon';
+    padding-right: 1ch;
+  }
   .script {
     display: inline-block;
   }

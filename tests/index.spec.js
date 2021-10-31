@@ -19,8 +19,6 @@ test.describe('navbar', () => {
   })
 
   test('Search', async ({ page }) => {
-    await page.locator('nav >> [aria-label=Search]').click()
-    expect(page).toHaveURL(/search/)
     await page.locator('input[type="search"]').last().type('moller')
     page.waitForSelector(
       'a[href="/script/419138bc-b215-4fb4-898e-032344ba6e5d"]'
