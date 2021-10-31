@@ -10,11 +10,12 @@
       "$lib/*": ["lib/*"]
     }
   },
-  "include": [
-    "lib/**/*.js",
-    "static/**/*.js",
-    "routes/**/*.svelte",
-    "hooks.js",
-    "global.d.ts"
-  ]
+  // "include": [
+  //   "lib/**/*.js",
+  //   "static/**/*.js",
+  //   "routes/**/*.svelte",
+  //   "hooks.js",
+  //   "global.d.ts"
+  // ]
+  "exclude": ["node_modules", "dist", "workers-site", "build", ".svelte-kit"]
 }

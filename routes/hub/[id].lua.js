@@ -2,12 +2,10 @@
 
 import { createClient } from '@supabase/supabase-js'
 import dedent from 'dedent'
-// @ts-ignore
+import { encode } from '$lib/lua'
 import exploit from '$lib/exploit'
 
-// @ts-ignore
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-// @ts-ignore
 const key = import.meta.env.VITE_SUPABASE_SERVICE_KEY
 
 // @ts-ignore
@@ -39,16 +37,32 @@ export async function get({ params: { id }, headers }) {
       -- ${hub.name} has ${
       hub.scripts.length
     } scripts, supporting ${games} games.
-      local scripts = game:GetService('HttpService'):JSONDecode(${JSON.stringify(
-        JSON.stringify(scripts)
-      )})
+      local scripts = ${encode(scripts)}
       local works_here = {}
       for _,v in pairs(scripts) do
         if table.find(v.games, game.PlaceId) or not v.games then
           table.insert(works_here, v)
         end
       end
-      
+
+      local gui = Instance.new('ScreenGui')
+      gui.ResetOnSpawn = false
+      gui.Name = string.gsub(string.rep(" ",200,".",function()
+            return string.char(({math.random(48,57),math.random(65,90),math.random(97,122)})[math.random(1,3)])
+      end)
+
+      if gethui then
+          gui.Parent = gethui()
+      elseif syn and syn.protect_gui then
+          syn.protect_gui(gui)
+          gui.Parent = game:GetService('CoreGui')
+      else
+          xpcall(function ()
+              gui.Parent = game:GetService('CoreGui')
+          end, function ()
+              gui.Parent = game:GetService('Players').LocalPlayer:FindFirstChildOfClass('PlayerGui')
+          end)
+      end
     `
   }
 }

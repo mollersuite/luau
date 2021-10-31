@@ -1,12 +1,9 @@
 import dedent from 'dedent'
-// @ts-ignore
 import exploit from '$lib/exploit'
 
 import { createClient } from '@supabase/supabase-js'
 
-// @ts-ignore
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-// @ts-ignore
 const key = import.meta.env.VITE_SUPABASE_SERVICE_KEY
 
 // @ts-ignore
@@ -45,7 +42,7 @@ export async function get({ params, headers }) {
         local games = { ${script.games.join(', ')} }
         if not table.find(games, game.PlaceId) then -- place id NOT game id
           local gui = Instance.new('ScreenGui')
-          gui.Name = string.gsub(string.rep(" ",20npm 0,".",function()
+          gui.Name = string.gsub(string.rep(" ",200,".",function()
                 return string.char(({math.random(48,57),math.random(65,90),math.random(97,122)})[math.random(1,3)])
           end)
 
