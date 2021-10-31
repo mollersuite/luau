@@ -101,7 +101,7 @@
     color: rgba(0, 0, 0, 0.1);
   }
   .mollermethod code {
-    width: max-content;
+    max-width: max-content;
     background: var(--accent-color);
     color: black;
     border-radius: 5px;
@@ -111,7 +111,7 @@
     /* justify-content: center; */
     /* align-items: center; */
     /* flex-direction: row; */
-    width: max-content;
+    max-width: max-content;
     padding-left: 1em;
     padding-right: 1em;
     background-color: black;

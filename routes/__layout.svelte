@@ -73,9 +73,20 @@
   <title>{host}</title>
 </svelte:head>
 <a class="skip-to-content-link" href="#main">Skip to content</a>
+<strong>Warning: Hub loader hasn't been made yet due to a Roblox outage</strong>
 <header>
   <h1>📜 {host}</h1>
-  {#each links as link, i}
+  <form action="/search" on:submit|preventDefault={search}>
+    <TextBox
+      required
+      name="q"
+      placeholder="Search for a script"
+      type="search"
+      bind:value
+      on:search={search}
+    />
+  </form>
+  {#each links as link}
     {#if typeof link.goto === 'string'}
       <a
         sveltekit:prefetch
@@ -92,26 +103,26 @@
       </button>
     {/if}
   {/each}
-  <form action="/search" on:submit|preventDefault={search}>
-    <TextBox
-      required
-      name="q"
-      placeholder="Search for a script"
-      type="search"
-      bind:value
-      on:search={search}
-    />
-  </form>
 </header>
 <main id="main">
   <slot />
 </main>
 
 <style>
+  strong {
+    width: 100vw;
+    text-align: center;
+    background: rgb(64, 32, 16);
+    padding: 1em;
+    border-bottom-left-radius: 1em;
+    box-sizing: border-box;
+    border-bottom-right-radius: 1em;
+  }
   header {
     position: sticky;
     top: 0;
-    width: 100%;
+    width: 100vw;
+    overflow-x: auto;
     z-index: 1;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(50px);
@@ -132,7 +143,11 @@
   }
   header a,
   button {
-    padding: 16px;
+    /* padding: 16px; */
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     font-family: 'moller', 'Segoe UI', sans-serif;
     font-size: 0;
     margin: 0;
@@ -210,6 +225,26 @@
     header a:hover,
     button:hover {
       font-size: 0;
+    }
+  }
+
+  @media (max-width: 425px) {
+    strong {
+      display: none;
+    }
+    header :global(input) {
+      max-width: 40vw;
+    }
+    header :global(form button) {
+      display: none !important;
+    }
+  }
+  @media (min-width: 1200px) {
+    header {
+      max-width: 1200px;
+      margin: auto;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
     }
   }
 </style>
