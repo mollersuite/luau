@@ -7,21 +7,24 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load({ page, fetch, session }) {
+    if (!isNaN(Number(page.params.id))) {
+      return
+    }
     if (session.exploit) {
       return {
         status: 301,
-        redirect: `/script/${page.params.a}-${page.params.b}.lua`
+        redirect: `/script/${page.params.id}.lua`
       }
     }
 
-    const url = `/script/${page.params.a}-${page.params.b}.json`
+    const url = `/script/${page.params.id}.json`
     const res = await fetch(url)
     if (res.ok) {
       return {
         props: {
           script: await res.json(),
           host: page.host,
-          id: `${page.params.a}-${page.params.b}`
+          id: `${page.params.id}`
         }
       }
     }
@@ -153,7 +156,7 @@
 {/if}
 {#if owner}
   <small>Your script's title.</small>
-  <h1><TextBox required placeholder="Script name" bind:value={name}></TextBox></h1>
+  <h1><TextBox required placeholder="Script name" bind:value={name} /></h1>
   <small>Your script's description.</small>
   <textarea bind:value={desc} />
   <small

@@ -3,6 +3,9 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load({ page, fetch }) {
+    if (isNaN(Number(page.params.page))) {
+      return
+    }
     const scripts = await fetch(
       `/script/page_${page.params.page}.json`
     ).then((res) => res.json())
