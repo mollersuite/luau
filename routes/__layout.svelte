@@ -80,7 +80,7 @@
   <title>{host}</title>
 </svelte:head>
 <!-- for warnings -->
-<!-- <strong></strong> -->
+<strong>Luau.ml is currently experiencing problems. I have no idea what is happening, although I think loaders should still work.</strong>
 <header>
   <h1>📜 {host}</h1>
   <a class="skip-to-content-link" href="#main" data-icon={EaseOfAccess}
@@ -119,15 +119,16 @@
 </main>
 
 <style>
-  /* strong {
+  strong {
     width: 100vw;
     text-align: center;
-    background: rgb(64, 32, 16);
+    background: var(--fds-system-background-caution);
+    color: var(	--fds-system-caution);
     padding: 1em;
     border-bottom-left-radius: 1em;
     box-sizing: border-box;
     border-bottom-right-radius: 1em;
-  } */
+  }
   header {
     position: sticky;
     top: 0;
