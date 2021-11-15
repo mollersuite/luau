@@ -17,7 +17,7 @@
   import '$lib/app.css'
   import 'fluent-svelte/theme.css'
   import { TextBox } from 'fluent-svelte'
-  import { Home, Code, Add, List, ChatBubbles, AddFriend } from '$lib/fluent'
+  import { Home, Code, Add, List, ChatBubbles, AddFriend, EaseOfAccess } from '$lib/fluent'
   import { goto } from '$app/navigation'
   export let path
   export let host = 'Luau.ml'
@@ -72,11 +72,11 @@
 <svelte:head>
   <title>{host}</title>
 </svelte:head>
-<a class="skip-to-content-link" href="#main">Skip to content</a>
 <!-- for warnings -->
 <!-- <strong></strong> -->
 <header>
   <h1>📜 {host}</h1>
+  <a class="skip-to-content-link" href="#main" data-icon={EaseOfAccess}>Skip to content</a>
   <form action="/search" on:submit|preventDefault={search}>
     <TextBox
       required
@@ -199,18 +199,9 @@
     margin: 0 auto;
     box-sizing: border-box;
   }
-  .skip-to-content-link {
-    background: #e77e23;
-    height: 30px;
-    left: 50%;
-    padding: 8px;
+  .skip-to-content-link:not(:focus) {
     position: absolute;
-    transform: translateY(-100%);
-    transition: transform 0.3s;
-  }
-
-  .skip-to-content-link:focus {
-    transform: translateY(0%);
+    clip: rect(0, 0, 0, 0);
   }
   @media (max-width: 768px) {
     header h1 {

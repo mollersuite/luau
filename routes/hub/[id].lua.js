@@ -30,13 +30,9 @@ export async function get({ params: { id }, headers }) {
     .from('scripts')
     .select('name,games,id')
     .in('id', hub.scripts)
-  const games = new Set(scripts.map((a) => a.games)).size
   return {
     body: dedent`
       -- 📜 ${hub.name}, powered by Luau.ml
-      -- ${hub.name} has ${
-      hub.scripts.length
-    } scripts, supporting ${games} games.
       local scripts = ${encode(scripts)}
       local works_here = {}
       for _,v in pairs(scripts) do
