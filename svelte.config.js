@@ -7,6 +7,7 @@ const config = {
     adapter: workers(),
     files: {
       lib: 'lib',
+      assets: 'assets',
       routes: 'routes',
       hooks: 'hooks',
       template: 'app.html'

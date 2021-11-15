@@ -41,12 +41,12 @@ h6 {
 
 @font-face {
   font-family: moller;
-  src: url(/Segoe-UI-Variable-Display-Bold.ttf);
+  src: url(/SegoeUIDisplayBold.woff);
 }
 
 @font-face {
   font-family: icon;
-  src: url(/icons.ttf);
+  src: url(/icons.woff);
 }
 
 p {
