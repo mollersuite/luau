@@ -1,5 +1,5 @@
 @import '@fontsource/jetbrains-mono';
-
+@import 'fluent-svelte/theme.css';
 :root {
   font-family: sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'Input Mono', 'Cascadia Mono',
@@ -17,14 +17,9 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   margin: 0;
-  color: var(--text-color);
-  background-color: var(--primary-color);
-  background: linear-gradient(
-    180deg,
-    var(--primary-color) 0%,
-    var(--secondary-color) 10.45%,
-    var(--tertiary-color) 41.35%
-  );
+  font-family: var(--fds-font-family-text);
+  background-color: var(--fds-solid-background-base);
+  color: var(--fds-text-primary);
   display: flex;
   flex-direction: column;
 }
@@ -54,7 +49,7 @@ p {
 }
 
 a {
-  color: var(--accent-color);
+  color: var(--fds-accent-default);
   text-decoration: none;
 }
 
@@ -67,13 +62,13 @@ code,
 textarea {
   font-size: 13px;
   font-family: var(--font-mono);
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: var(--fds-solid-background-secondary);
   border-radius: 3px;
-  box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
   padding: 0.5em;
   overflow-x: auto;
-  color: var(--text-color);
+  color: var(--fds-text-primary);
 }
+
 input,
 button {
   font-size: inherit;

@@ -15,9 +15,16 @@
 <script>
   import { user, supabase } from '$lib/supabase.js'
   import '$lib/app.css'
-  import 'fluent-svelte/theme.css'
   import { TextBox } from 'fluent-svelte'
-  import { Home, Code, Add, List, ChatBubbles, AddFriend, EaseOfAccess } from '$lib/fluent'
+  import {
+    Home,
+    Code,
+    Add,
+    List,
+    ChatBubbles,
+    AddFriend,
+    EaseOfAccess
+  } from '$lib/fluent'
   import { goto } from '$app/navigation'
   export let path
   export let host = 'Luau.ml'
@@ -76,7 +83,9 @@
 <!-- <strong></strong> -->
 <header>
   <h1>📜 {host}</h1>
-  <a class="skip-to-content-link" href="#main" data-icon={EaseOfAccess}>Skip to content</a>
+  <a class="skip-to-content-link" href="#main" data-icon={EaseOfAccess}
+    >Skip to content</a
+  >
   <form action="/search" on:submit|preventDefault={search}>
     <TextBox
       required
@@ -126,6 +135,7 @@
     overflow-x: auto;
     z-index: 1;
     background: rgba(0, 0, 0, 0.5);
+    color: var(--fds-text-primary);
     backdrop-filter: blur(50px);
     padding: 1rem;
     display: flex;
@@ -161,7 +171,7 @@
     position: relative;
     background: none;
     border: none;
-    color: white;
+    color: var(--fds-text-primary);
     border-radius: 16px;
     transition: background 0.3s, gap 0.3s, font-size 0.3s;
   }
@@ -176,9 +186,10 @@
     text-decoration: none;
     background: rgba(255, 255, 255, 0.3);
   }
+
   header a:focus,
   button:focus {
-    border: solid 1px white;
+    border: solid 1px var(--fds-text-primary);
   }
   a.selected {
     border: solid 1px gray;
@@ -188,6 +199,22 @@
     background: rgba(255, 255, 255, 0.7);
   }
 
+  @media (prefers-color-scheme: light) {
+    header {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    header a:hover,
+    button:hover,
+    header a:focus-visible,
+    button:focus-visible {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    header a:active,
+    button:active {
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
   main {
     flex: 1;
     display: flex;

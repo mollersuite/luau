@@ -62,8 +62,8 @@
     width: 100%;
     margin: 0 0 1em;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--fds-solid-background-secondary);
     border-radius: 1em;
-    color: var(--heading-color);
+    color: var(--fds-text-primary);
   }
 </style>

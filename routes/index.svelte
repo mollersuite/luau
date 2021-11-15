@@ -107,6 +107,7 @@
     border-radius: 5px;
   }
   .mollermethod {
+    color: white;
     /* display: flex; */
     /* justify-content: center; */
     /* align-items: center; */
