@@ -58,7 +58,7 @@
   <h1>
     Our DomainX competitor, nowhere close to complete.
     <sup>
-      <img src="/mollermethod.png" alt="mollermethod" height="16" />
+      <img src="/mollermethod.png" alt="mollermethod" height="16" width="23"/>
     </sup>
   </h1>
   <p>
