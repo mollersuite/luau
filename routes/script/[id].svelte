@@ -87,7 +87,7 @@
         .select('name,id,scripts')
         .throwOnError()
         .then((hubs) =>
-          hubs.body.map((hub) => ({
+          hubs.body?.map((hub) => ({
             ...hub,
             used: hub.scripts.includes(script.id),
             new_used: hub.scripts.includes(script.id)

@@ -24,6 +24,7 @@
 <script>
   import ld from '$lib/ld'
   import Scripts from '$lib/Scripts.svelte'
+  import { Button } from 'fluent-svelte'
   export let scripts = []
   export let page = 0
   export let host
@@ -34,7 +35,7 @@
   {@html ld({
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    itemListElement: scripts.map((script, i) => ({
+    itemListElement: scripts?.map((script, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       url: `https://${host}/script/${script.id}`
@@ -45,11 +46,14 @@
 <Scripts {scripts} />
 <footer>
   {#if page >= 1}
-    <a sveltekit:prefetch href={(page - 1).toString()} rel="prev">←</a>
+    <Button href={(page - 1).toString()} sveltekit:prefetch rel="prev">←</Button
+    >
   {/if}
   <span>{page}</span>
   {#if scripts.length}
-    <a sveltekit:prefetch href={(Number(page) + 1).toString()} rel="next">→</a>
+    <Button sveltekit:prefetch href={(Number(page) + 1).toString()} rel="next"
+      >→</Button
+    >
   {/if}
 </footer>
 
@@ -57,11 +61,5 @@
   footer {
     margin-top: 5px;
     text-align: center;
-  }
-  footer a {
-    display: inline-block;
-  }
-  a:hover {
-    text-decoration: none;
   }
 </style>

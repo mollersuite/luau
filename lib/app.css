@@ -36,7 +36,7 @@ h6 {
 
 @font-face {
   font-family: moller;
-  src: url(/SegoeUIDisplayBold.woff);
+  src: url(/SegoeUIDisplayBold.woff), 'Segoe UI';
 }
 
 @font-face {

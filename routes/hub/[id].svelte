@@ -53,7 +53,7 @@
     scripts = scripts.filter((_, j) => j !== i)
     supabase
       .from('hubs')
-      .update({ scripts: scripts.map((script) => script.id) })
+      .update({ scripts: scripts?.map((script) => script.id) })
       .match({ id: hub.id })
       .then(() => {})
   }
