@@ -13,11 +13,11 @@
     if (session.exploit) {
       return {
         status: 301,
-        redirect: `/script/${page.params.id}.lua`
+        redirect: `/script/s_${page.params.id}.lua`
       }
     }
 
-    const url = `/script/${page.params.id}.json`
+    const url = `/script/s_${page.params.id}.json`
     const res = await fetch(url)
     if (res.ok) {
       return {
@@ -39,7 +39,6 @@
 <script>
   import { user, supabase } from '$lib/supabase'
   import CodeButton from '$lib/CodeButton.svelte'
-  import ld from '$lib/ld'
   import { AddTo, Copy, Delete } from '$lib/fluent'
   import { goto } from '$app/navigation'
   import { ContentDialog, Checkbox, Button, TextBox } from 'fluent-svelte'
