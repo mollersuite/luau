@@ -89,7 +89,7 @@
         <Button on:click={() => del(i)}><span class="icon">{Delete}</span>Remove</Button>
       </li>
     {:else}
-      <p>Your hub has no scripts. <a href="/script/0">Try adding some.</a></p>
+      <p>Your hub has no scripts. <a href="/script/p_0">Try adding some.</a></p>
     {/each}
   </ul>
 {:else}

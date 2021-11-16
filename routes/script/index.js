@@ -2,7 +2,7 @@ export function get() {
   return {
     status: 301,
     headers: {
-      Location: '/script/0'
+      Location: '/script/p_0'
     }
   }
 }

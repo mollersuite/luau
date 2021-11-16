@@ -49,12 +49,12 @@
 <Scripts {scripts} />
 <footer>
   {#if page >= 1}
-    <Button href={(page - 1).toString()} sveltekit:prefetch rel="prev">←</Button
+    <Button href="p_{(page - 1).toString()}" sveltekit:prefetch rel="prev">←</Button
     >
   {/if}
   <span>{page}</span>
   {#if scripts.length}
-    <Button sveltekit:prefetch href={(Number(page) + 1).toString()} rel="next"
+    <Button sveltekit:prefetch href="p_{(Number(page) + 1).toString()}" rel="next"
       >→</Button
     >
   {/if}

@@ -37,7 +37,7 @@
     },
     {
       name: 'Scripts',
-      goto: '/script/0',
+      goto: '/script/p_0',
       icon: Code
     },
     $user && {
@@ -80,7 +80,7 @@
   <title>{host}</title>
 </svelte:head>
 <!-- for warnings -->
-<strong>Script list is currently broken (if you visit it directly), everything else should work</strong>
+<strong>Luau.ml is partially down, I do not know why</strong>
 <header>
   <h1>📜 {host}</h1>
   <a class="skip-to-content-link" href="#main" data-icon={EaseOfAccess}
@@ -123,7 +123,7 @@
     width: 100vw;
     text-align: center;
     background: var(--fds-system-background-caution);
-    color: var(	--fds-system-caution);
+    color: var(--fds-system-caution);
     padding: 1em;
     border-bottom-left-radius: 1em;
     box-sizing: border-box;
