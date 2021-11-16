@@ -11,16 +11,14 @@
     "lint": "prettier --check --plugin-search-dir=. .",
     "format": "prettier --write --plugin-search-dir=. .",
     "publish": "svelte-kit build && wrangler publish",
-    "share": "svelte-kit build && wrangler publish -e dev",
-    "postinstall": "patch-package"
+    "share": "svelte-kit build && wrangler publish -e dev"
   },
   "devDependencies": {
     "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.25",
     "@sveltejs/kit": "^1.0.0-next.196",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
-    "svelte": "^3.44.0",
-    "patch-package": "patch-package"
+    "svelte": "^3.44.0"
   },
   "type": "module",
   "dependencies": {
