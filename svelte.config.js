@@ -5,9 +5,6 @@ let num = 0
 const config = {
   kit: {
     adapter: workers(),
-    vite: {
-      
-    },
     files: {
       lib: 'lib',
       assets: 'assets',

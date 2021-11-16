@@ -1,4 +1,5 @@
 <script context="module">
+  import { supabase } from '$lib/supabase'
   /**
    * @type {import('@sveltejs/kit').Load}
    */
@@ -6,12 +7,14 @@
     if (isNaN(Number(page.params.page))) {
       return
     }
-    const scripts = await fetch(
-      `/script/page_${page.params.page}.json`
-    ).then((res) => res.json())
+    const pg = Number(page.params.page)
+    const scripts = await supabase
+      .from('scripts')
+      .select('id,name,description')
+      .range(pg * 500, (pg + 1) * 500)
     return {
       props: {
-        scripts,
+        scripts: scripts.body,
         page: Number(page.params.page),
         host: page.host
       }

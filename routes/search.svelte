@@ -1,14 +1,22 @@
 <script context="module">
+  import { supabase } from '$lib/supabase'
   /**
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load({ page, fetch }) {
-    const scripts = await fetch(
-      `/search.json?q=${encodeURIComponent(page.query.get('q'))}`
-    ).then((res) => res.json())
+    const search = page.query.get('q')
+
+    const scripts = await supabase
+      .from('scripts')
+      .select('id,name,description')
+      .textSearch('name', search, {
+        type: 'websearch',
+        config: 'english'
+      })
+
     return {
       props: {
-        scripts
+        scripts: scripts.body
       }
     }
   }
