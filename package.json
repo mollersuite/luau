@@ -17,10 +17,10 @@
   "devDependencies": {
     "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.25",
     "@sveltejs/kit": "^1.0.0-next.196",
-    "patch-package": "^6.4.7",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
-    "svelte": "^3.44.0"
+    "svelte": "^3.44.0",
+    "patch-package": "patch-package"
   },
   "type": "module",
   "dependencies": {
