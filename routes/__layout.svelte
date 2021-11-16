@@ -80,7 +80,7 @@
   <title>{host}</title>
 </svelte:head>
 <!-- for warnings -->
-<!-- <strong>Luau.ml SHOULD work now.</strong> -->
+<strong>Script list is currently broken (if you visit it directly), everything else should work</strong>
 <header>
   <h1>📜 {host}</h1>
   <a class="skip-to-content-link" href="#main" data-icon={EaseOfAccess}
@@ -119,7 +119,7 @@
 </main>
 
 <style>
-  /* strong {
+  strong {
     width: 100vw;
     text-align: center;
     background: var(--fds-system-background-caution);
@@ -128,7 +128,7 @@
     border-bottom-left-radius: 1em;
     box-sizing: border-box;
     border-bottom-right-radius: 1em;
-  } */
+  }
   header {
     position: sticky;
     top: 0;
