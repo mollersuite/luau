@@ -11,7 +11,8 @@
     "lint": "prettier --check --plugin-search-dir=. .",
     "format": "prettier --write --plugin-search-dir=. .",
     "publish": "svelte-kit build && wrangler publish",
-    "share": "svelte-kit build && wrangler publish -e dev"
+    "share": "svelte-kit build && wrangler publish -e dev",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.25",
