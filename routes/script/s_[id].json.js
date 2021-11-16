@@ -22,7 +22,6 @@ export async function get({ params }) {
     const [script] =
       (await supabase.from('scripts').select('*').match({ id })).body || []
     if (script) {
-      11
       return {
         body: script
       }

@@ -1,8 +1,8 @@
 <script context="module">
   import { browser } from '$app/env'
+  import { user, supabase } from '$lib/supabase'
   export const router = true
   export const prerender = false
-
   /**
    * @type {import('@sveltejs/kit').Load}
    */
@@ -17,27 +17,22 @@
       }
     }
 
-    const url = `/script/s_${page.params.id}.json`
-    const res = await fetch(url)
-    if (res.ok) {
+    const [script] =
+      (await supabase.from('scripts').select('*').match({ id: page.params.id }))
+        .body || []
+    if (script) {
       return {
         props: {
-          script: await res.json(),
+          script,
           host: page.host,
           id: `${page.params.id}`
         }
       }
     }
-
-    return {
-      status: 404,
-      error: new Error(`Script not found.`)
-    }
   }
 </script>
 
 <script>
-  import { user, supabase } from '$lib/supabase'
   import CodeButton from '$lib/CodeButton.svelte'
   import { AddTo, Copy, Delete } from '$lib/fluent'
   import { goto } from '$app/navigation'
