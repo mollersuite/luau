@@ -5,11 +5,11 @@
 </script>
 
 <section>
-  {#each scripts as script, i}
+  {#each (scripts ?? []) as script, i}
     <a
       sveltekit:prefetch
-      href="/script/{script.id}"
-      in:blur={{ delay: (i / scripts.length) * 500, amount: 5 }}
+      href="/script/{script?.id || ''}"
+      in:blur={{ delay: (i / (scripts?.length | 1)) * 500, amount: 5 }}
     >
       <h1>{script.name}</h1>
       <p>{script.description}</p>
