@@ -36,7 +36,14 @@
   import CodeButton from '$lib/CodeButton.svelte'
   import { AddTo, Copy, Delete } from '$lib/fluent'
   import { goto } from '$app/navigation'
-  import { ContentDialog, Checkbox, Button, TextBox } from 'fluent-svelte'
+  import {
+    ContentDialog,
+    Checkbox,
+    Button,
+    TextBox,
+    Tooltip,
+    Flyout
+  } from 'fluent-svelte'
 
   /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: string[]}} */
   export let script
@@ -89,6 +96,7 @@
         )
     : Promise.resolve([])
   let dialog_open = false
+  let del_dialog = false
 </script>
 
 <svelte:head>
@@ -140,11 +148,20 @@
     </svelte:fragment>
   </ContentDialog>
   <nav>
-    <Button on:click={() => (dialog_open = true)}
-      ><span class="icon">{AddTo}</span>Add to hub</Button
-    >
+    <Tooltip text="Add a script to one of your collections.">
+      <Button on:click={() => (dialog_open = true)}
+        ><span class="icon">{AddTo}</span>Add to hub</Button
+      >
+    </Tooltip>
     {#if owner}
-      <Button on:click={del}><span class="icon">{Delete}</span>Delete</Button>
+      <Flyout position="bottom" bind:open={del_dialog}>
+        <Button><span class="icon">{Delete}</span>Delete</Button>
+        <svelte:fragment slot="flyout"
+          >Are you sure you want to delete your script? You cannot undo this.<br>
+          <Button on:click={del} variant="accent">Delete</Button
+          ></svelte:fragment
+        >
+      </Flyout>
     {/if}
   </nav>
 {/if}
