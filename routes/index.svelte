@@ -39,10 +39,6 @@
       href="https://robloxscripts.com">robloxscripts.com</a
     > or has virus popups like rbxscripts.xyz (DO NOT VISIT)
   </p>
-  <p>
-    wonder how long until shlex bootlegs the site and brands it as "Shlex
-    Scripts", considering i'm making a domainx bootleg and advertising it here
-  </p>
 </article>
 <article>
   <h1>Introducing Hubs</h1>
