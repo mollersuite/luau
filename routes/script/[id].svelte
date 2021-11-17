@@ -33,8 +33,7 @@
 </script>
 
 <script>
-  import CodeButton from '$lib/CodeButton.svelte'
-  import { AddTo, Copy, Delete } from '$lib/fluent'
+  import { AddTo, Delete } from '$lib/fluent'
   import { goto } from '$app/navigation'
   import {
     ContentDialog,
@@ -44,6 +43,7 @@
     Tooltip,
     Flyout
   } from 'fluent-svelte'
+  import Snippet from '$lib/Snippet.svelte'
 
   /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: string[]}} */
   export let script
@@ -157,7 +157,8 @@
       <Flyout position="bottom" bind:open={del_dialog}>
         <Button><span class="icon">{Delete}</span>Delete</Button>
         <svelte:fragment slot="flyout"
-          >Are you sure you want to delete your script? You cannot undo this.<br>
+          >Are you sure you want to delete your script? You cannot undo this.<br
+          />
           <Button on:click={del} variant="accent">Delete</Button
           ></svelte:fragment
         >
@@ -188,11 +189,7 @@
   <p>{script.description}</p>
 {/if}
 <h2>Loader</h2>
-<code
-  >{code}<CodeButton on:click={() => navigator.clipboard.writeText(code)}
-    >{Copy}</CodeButton
-  ></code
->
+<Snippet {code} />
 {#if script.games && script.games.length}
   <h2>Supported places</h2>
   {#each script.games as game}

@@ -48,29 +48,15 @@
   <h1>Introducing Hubs</h1>
   <p>You can now create script hubs, without writing a line of code.</p>
   <p>Hubs are private; however the loader works for everyone.</p>
+  <p>jk i havent made the roblox gui for hubs yet</p>
   {#if !$user}
     <Button variant="accent" disabled>Create a hub (login first)</Button>
   {:else}
     <Button href="/hub" variant="accent">Create a hub</Button>
   {/if}
 </article>
-<article class="mollermethod">
-  <h1>
-    Our DomainX competitor, nowhere close to complete.
-    <sup>
-      <img src="/mollermethod.png" alt="mollermethod" height="16" width="23"/>
-    </sup>
-  </h1>
-  <p>
-    currently trying to fix performance bugs, add more ui lib inputs, and add
-    scripts
-  </p>
-  <code>
-    loadstring (game:HttpGet 'https://mthd.ml') {'{}'}
-  </code>
-</article>
 <article>
-  <h1>upcoming features</h1>
+  <h1>Roadmap</h1>
   <ul>
     <li>proper display names</li>
     <li>after display names, verified badge</li>
@@ -78,7 +64,7 @@
       changelogs that automatically detect the last version you used and shows
       you whats been added
     </li>
-    <li>integration in mollermethod</li>
+    <li>make script hubs, like actually work</li>
     <li>
       have any ideas? <a href="https://discord.gg/HAw7Zf8GF5"
         >join the discord.</a
@@ -99,24 +85,6 @@
     -moz-background-clip: text;
     background-clip: text;
     color: rgba(0, 0, 0, 0.1);
-  }
-  .mollermethod code {
-    max-width: max-content;
-    background: var(--accent-color);
-    color: black;
-    border-radius: 5px;
-  }
-  .mollermethod {
-    color: white;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* flex-direction: row; */
-    max-width: max-content;
-    padding-left: 1em;
-    padding-right: 1em;
-    background-color: black;
-    border-radius: 1em;
   }
   h1 {
     width: 100%;

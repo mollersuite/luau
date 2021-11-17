@@ -1,4 +1,3 @@
-@import '@fontsource/jetbrains-mono';
 @import 'fluent-svelte/theme.css';
 :root {
   font-family: sans-serif;
@@ -36,7 +35,8 @@ h6 {
 
 @font-face {
   font-family: moller;
-  src: url(/SegoeUIDisplayBold.woff), local('Segoe UI Variable Display Bold'), local('Segoe UI Variable Display'), local('Segoe UI');
+  src: url(/SegoeUIDisplayBold.woff), local('Segoe UI Variable Display Bold'),
+    local('Segoe UI Variable Display'), local('Segoe UI');
   font-weight: bold;
   font-display: swap;
 }

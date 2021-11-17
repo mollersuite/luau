@@ -34,10 +34,10 @@
 </script>
 
 <script>
-  import CodeButton from '$lib/CodeButton.svelte'
-  import { Copy, Delete } from '$lib/fluent'
+  import { Delete } from '$lib/fluent'
   import { Button } from 'fluent-svelte'
   import { goto } from '$app/navigation'
+  import Snippet from '$lib/Snippet.svelte'
 
   export let hub
   /** @type {{
@@ -76,17 +76,15 @@
     >
   </h1>
   <h2>Loader</h2>
-  <code
-    >{code}<CodeButton on:click={() => navigator.clipboard.writeText(code)}
-      >{Copy}</CodeButton
-    ></code
-  >
+  <Snippet {code} />
   <h2>Scripts</h2>
   <ul>
     {#each scripts as script, i}
       <li>
         <a class="script" href="/script/{script.id}">{script.name}</a>
-        <Button on:click={() => del(i)}><span class="icon">{Delete}</span>Remove</Button>
+        <Button on:click={() => del(i)}
+          ><span class="icon">{Delete}</span>Remove</Button
+        >
       </li>
     {:else}
       <p>Your hub has no scripts. <a href="/script/p_0">Try adding some.</a></p>
