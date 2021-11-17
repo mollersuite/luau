@@ -1,11 +1,12 @@
 <script context="module">
   import ld from '$lib/ld'
-  import { supabase, user } from '$lib/supabase'
+  import { user } from '$lib/supabase'
   import { Button } from 'fluent-svelte'
   export const prerender = true
 </script>
 
 <svelte:head>
+  <title>Luau.ml</title>
   <meta name="description" content="Yet another script sharing website" />
   {@html ld({
     '@context': 'https://schema.org',
@@ -24,7 +25,6 @@
   })}
 </svelte:head>
 <article>
-  <div class="big" aria-hidden="true">📜</div>
   <h1>The Roblox script sharing platform.</h1>
   <p>
     No more linkvertises. No more outdated scripts. Just search, run and
@@ -68,26 +68,3 @@
     </li>
   </ul>
 </article>
-
-<style>
-  .big {
-    float: right;
-    pointer-events: none;
-    user-select: none;
-    font-size: 20rem;
-    background: url('/stars.webp') fixed right;
-    background-color: black;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    color: rgba(0, 0, 0, 0.1);
-  }
-  h1 {
-    width: 100%;
-  }
-  @media (max-width: 1024px) {
-    .big {
-      display: none;
-    }
-  }
-</style>

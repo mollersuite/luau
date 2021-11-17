@@ -23,7 +23,7 @@
 </script>
 
 <script>
-  import Scripts from '$lib/Scripts.svelte'
+  import Scripts from '$lib/components/Scripts.svelte'
   export let scripts = []
 </script>
 

@@ -10,13 +10,18 @@
 </script>
 
 <script>
-  import Snippet from '$lib/Snippet.svelte'
+  import Snippet from '$lib/components/Snippet.svelte'
 
   /** @type {number} */
   export let status
   /** @type {Error} */
   export let message
 </script>
+
+
+<svelte:head>
+  <title>{status}: {message.name} - Luau.ml</title>
+</svelte:head>
 
 <h1 class="big">{status}</h1>
 <h1>

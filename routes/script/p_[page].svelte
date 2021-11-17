@@ -26,7 +26,7 @@
 
 <script>
   import ld from '$lib/ld'
-  import Scripts from '$lib/Scripts.svelte'
+  import Scripts from '$lib/components/Scripts.svelte'
   import { Button } from 'fluent-svelte'
   export let scripts = []
   export let page = 0

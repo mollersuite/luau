@@ -35,9 +35,9 @@
 
 <script>
   import { Delete } from '$lib/fluent'
-  import { Button } from 'fluent-svelte'
+  import { Button, ProgressRing } from 'fluent-svelte'
   import { goto } from '$app/navigation'
-  import Snippet from '$lib/Snippet.svelte'
+  import Snippet from '$lib/components/Snippet.svelte'
 
   export let hub
   /** @type {{
@@ -91,8 +91,21 @@
     {/each}
   </ul>
 {:else}
-  <h1 class="big">404</h1>
-  <pre>Hub not found.</pre>
+  <h1>Loading...</h1>
+  <ProgressRing />
+  <noscript>
+    <h2>This page requires JavaScript.</h2>
+    <p>
+      <a href="https://www.enable-javascript.com/">Enable JavaScript</a> to view
+      this page.
+    </p>
+    <p>
+      Why? Hubs are supposed to only appear for the person who made them.
+      Supabase uses LocalStorage to store auth tokens; this means I cannot do
+      server-side auth. It uses Discord for auth anyway, which also requires
+      JavaScript.
+    </p>
+  </noscript>
 {/if}
 
 <style>
@@ -102,21 +115,5 @@
   }
   .script {
     display: inline-block;
-  }
-  .big {
-    pointer-events: none;
-    user-select: none;
-    z-index: -1;
-    font-size: 30vw;
-    position: absolute;
-    top: -15vw;
-    left: -5vw;
-
-    background: var(--accent-color);
-    background: -webkit-linear-gradient(to right, black, var(--accent-color));
-    background: linear-gradient(to right, black, var(--accent-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
   }
 </style>

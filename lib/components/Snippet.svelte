@@ -1,6 +1,6 @@
 <script>
   import CodeButton from './CodeButton.svelte'
-  import { Copy } from './fluent'
+  import { Copy } from '../fluent'
 
   export let code = ''
 </script>

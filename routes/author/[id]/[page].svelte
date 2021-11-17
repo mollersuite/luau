@@ -27,7 +27,8 @@
 </script>
 
 <script>
-  import Scripts from '$lib/Scripts.svelte'
+  import Scripts from '$lib/components/Scripts.svelte'
+  import { Button } from 'fluent-svelte'
   export let scripts = []
   export let id = ''
   export let page = 0
@@ -37,11 +38,11 @@
 <Scripts {scripts} />
 <footer>
   {#if page >= 1}
-    <a href="./{page - 1}">←</a>
+    <Button href="./{page - 1}">←</Button>
   {/if}
   <span>{page}</span>
   {#if scripts.length}
-    <a href="./{page + 1}">→</a>
+    <Button href="./{page + 1}">→</Button>
   {/if}
 </footer>
 
@@ -49,11 +50,5 @@
   footer {
     margin-top: 5px;
     text-align: center;
-  }
-  footer a {
-    display: inline-block;
-  }
-  a:hover {
-    text-decoration: none;
   }
 </style>

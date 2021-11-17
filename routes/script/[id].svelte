@@ -43,7 +43,7 @@
     Tooltip,
     Flyout
   } from 'fluent-svelte'
-  import Snippet from '$lib/Snippet.svelte'
+  import Snippet from '$lib/components/Snippet.svelte'
 
   /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: string[]}} */
   export let script
@@ -154,7 +154,7 @@
       >
     </Tooltip>
     {#if owner}
-      <Flyout position="bottom" bind:open={del_dialog}>
+      <Flyout position="right" bind:open={del_dialog}>
         <Button><span class="icon">{Delete}</span>Delete</Button>
         <svelte:fragment slot="flyout"
           >Are you sure you want to delete your script? You cannot undo this.<br
@@ -214,9 +214,6 @@
   }
   textarea {
     resize: vertical;
-  }
-  code {
-    white-space: pre-wrap;
   }
   textarea {
     border: 0;
