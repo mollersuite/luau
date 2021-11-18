@@ -13,13 +13,13 @@
     if (session.exploit) {
       return {
         status: 301,
-        redirect: `/script/${page.params.id}.lua`
+        redirect: `/script/s_${page.params.id}.lua`
       }
     }
 
-    const script = await fetch(`/script/${page.params.id}.json`).then((res) =>
-      res.json()
-    )
+    const [script] =
+      (await supabase.from('scripts').select('*').match({ id: page.params.id }))
+        .body || []
     if (script) {
       return {
         props: {
