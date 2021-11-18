@@ -65,14 +65,14 @@
   <title>{path} - Luau.ml</title>
 </svelte:head>
 <!-- for warnings -->
-<!-- <strong>Luau.ml is partially down, I do not know why</strong> -->
+<strong>once again, scripts are broken</strong>
 <Header {links} {path} />
 <main id="main">
   <slot />
 </main>
 
 <style>
-  /* strong {
+  strong {
     width: 100vw;
     text-align: center;
     background: var(--fds-system-background-caution);
@@ -81,7 +81,7 @@
     border-bottom-left-radius: 1em;
     box-sizing: border-box;
     border-bottom-right-radius: 1em;
-  } */
+  }
 
   main {
     flex: 1;
