@@ -29,7 +29,7 @@
   {message.name}!
 </h1>
 <Snippet code={message.stack} />
-<p>Blame Jack, SvelteKit, Vite, Supabase, or Cloudflare Pages.</p>
+<p>Blame Jack, SvelteKit, Vite, Supabase, or Cloudflare.</p>
 
 <style>
   .big {
