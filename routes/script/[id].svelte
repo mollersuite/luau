@@ -13,7 +13,7 @@
     if (session.exploit) {
       return {
         status: 301,
-        redirect: `/script/s_${page.params.id}.lua`
+        redirect: `/script/lua/${page.params.id}`
       }
     }
 
