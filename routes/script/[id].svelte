@@ -177,7 +177,11 @@
   >
   <Button
     on:click={() => {
-      supabase.from('scripts').update({ source }).match({ id: script.id })
+      supabase
+        .from('scripts')
+        .update({ source })
+        .match({ id: script.id })
+        .then(() => {})
     }}>Save source</Button
   >
   <textarea bind:value={source} rows="30" />
