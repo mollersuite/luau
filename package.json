@@ -9,12 +9,10 @@
     "test": "npx playwright test",
     "preview": "svelte-kit preview",
     "lint": "prettier --check --plugin-search-dir=. .",
-    "format": "prettier --write --plugin-search-dir=. .",
-    "publish": "svelte-kit build && wrangler publish",
-    "share": "svelte-kit build && wrangler publish -e dev"
+    "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.25",
+    "@sveltejs/adapter-cloudflare": "^1.0.0-next.2",
     "@sveltejs/kit": "^1.0.0-next.196",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
