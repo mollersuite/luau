@@ -20,6 +20,7 @@
       }
     }
   }
+
   export const router = true
   export const prerender = false
 </script>
