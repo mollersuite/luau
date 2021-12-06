@@ -4,7 +4,9 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 // @ts-ignore
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
+const supabase = createClient(supabaseUrl, supabaseAnonKey,{
+  fetch: fetch.bind(globalThis)
+})
 
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
