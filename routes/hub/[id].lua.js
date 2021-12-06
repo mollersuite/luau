@@ -42,13 +42,11 @@ export async function get({ params: { id }, headers }) {
           table.insert(works_here, v)
         end
       end
-
       local gui = Instance.new('ScreenGui')
       gui.ResetOnSpawn = false
       gui.Name = string.gsub(string.rep(" ",200,".",function()
             return string.char(({math.random(48,57),math.random(65,90),math.random(97,122)})[math.random(1,3)])
       end)
-
       if gethui then
           gui.Parent = gethui()
       elseif syn and syn.protect_gui then
@@ -61,6 +59,12 @@ export async function get({ params: { id }, headers }) {
               gui.Parent = game:GetService('Players').LocalPlayer:FindFirstChildOfClass('PlayerGui')
           end)
       end
+      local frame = Instance.new('Frame')
+      frame.Name = 'Hub'
+      frame.AnchorPoint = Vector2.new(0.5, 0.5)
+      frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+      frame.Size = UDim2.new(0, 400, 0, 400)
+      frame.Parent = gui
     `
   }
 }
