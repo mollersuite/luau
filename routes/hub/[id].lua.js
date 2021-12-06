@@ -35,7 +35,7 @@ export async function get({ params: { id }, headers }) {
   return {
     body: dedent`
       -- 📜 ${hub.name}, powered by Luau.ml
-      --local scripts = ${encode(scripts)}
+      local scripts = ${encode(scripts)}
       local works_here = {}
       for _,v in pairs(scripts) do
         if table.find(v.games, game.PlaceId) or not v.games then
