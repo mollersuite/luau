@@ -14,7 +14,3 @@ format = "service-worker"
 [site]
 bucket = "./build"
 entry-point = "./workers-site"
-
-[env.dev]
-name = "luau-dev"
-route = "dev.luau.ml/*"

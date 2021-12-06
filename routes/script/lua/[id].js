@@ -7,21 +7,23 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const key = import.meta.env.VITE_SUPABASE_SERVICE_KEY
 
 // @ts-ignore
-const supabase = createClient(supabaseUrl, key)
+const supabase = createClient(supabaseUrl, key, {
+  fetch: fetch.bind(globalThis)
+})
 
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 export async function get({ params, headers }) {
   const { id } = params
-  // if (!exploit(headers)) {
-  //   return {
-  //     status: 301,
-  //     headers: {
-  //       Location: '/script/' + id
-  //     }
-  //   }
-  // }
+  if (!exploit(headers)) {
+    return {
+      status: 301,
+      headers: {
+        Location: '/script/' + id
+      }
+    }
+  }
 
   // TODO: increment count
   const [script] =
