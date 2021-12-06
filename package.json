@@ -25,6 +25,6 @@
     "@fontsource/jetbrains-mono": "^4.5.0",
     "@supabase/supabase-js": "1.28.0",
     "dedent": "^0.7.0",
-    "fluent-svelte": "^1.0.9"
+    "fluent-svelte": "^1.0.8"
   }
 }
