@@ -14,14 +14,14 @@ const supabase = createClient(supabaseUrl, key)
  */
 export async function get({ params, headers }) {
   const { id } = params
-  if (!exploit(headers)) {
-    return {
-      status: 301,
-      headers: {
-        Location: '/script/' + id
-      }
-    }
-  }
+  // if (!exploit(headers)) {
+  //   return {
+  //     status: 301,
+  //     headers: {
+  //       Location: '/script/' + id
+  //     }
+  //   }
+  // }
 
   // TODO: increment count
   const [script] =
