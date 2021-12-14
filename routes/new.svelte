@@ -70,7 +70,6 @@
     bind:value={games}
   />
   <Button type="submit">Upload</Button>
-  <Checkbox>Hidden</Checkbox>
 </form>
 
 <style>
