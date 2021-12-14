@@ -12,7 +12,6 @@
       .from('scripts')
       .select('id,name,description')
       .range(pg * 500, (pg + 1) * 500)
-      .not('hidden','eq',false)
     return {
       props: {
         scripts: scripts.body,
