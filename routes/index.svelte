@@ -1,4 +1,5 @@
 <script context="module">
+  import Snippet from '$lib/components/Snippet.svelte'
   import ld from '$lib/ld'
   import { user } from '$lib/supabase'
   import { Button } from 'fluent-svelte'
@@ -67,4 +68,11 @@
       >
     </li>
   </ul>
+</article>
+<article>
+  <h1>A new hub, coming Soon™️</h1>
+  🐶&plus;📖&equals; mollermethod
+  <br>
+  currently only a intro anim lol
+  <Snippet code={"loadstring(game:HttpGet 'https://mthd.ml') {\n\t\n}"} />
 </article>

@@ -1,6 +1,5 @@
 import workers from '@sveltejs/adapter-cloudflare-workers'
 
-let num = 0
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
@@ -10,6 +9,11 @@ const config = {
       routes: 'routes',
       hooks: 'hooks',
       template: 'app.html'
+    },
+    vite: {
+      optimizeDeps: {
+        include: ['bezier-easing']
+      }
     }
   }
 }
