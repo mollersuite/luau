@@ -1,9 +1,9 @@
-import pages from '@sveltejs/adapter-cloudflare'
+import workers from '@sveltejs/adapter-cloudflare-workers'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: pages(),
+    adapter: workers(),
     files: {
       lib: 'lib',
       routes: 'routes',
