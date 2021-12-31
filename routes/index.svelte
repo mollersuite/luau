@@ -26,7 +26,7 @@
   })}
 </svelte:head>
 <article>
-  <h1>The Roblox script sharing platform.</h1>
+  <h1>The Roblox script platform.</h1>
   <p>
     No more linkvertises. No more outdated scripts. Just search, run and
     exploit.
@@ -69,10 +69,4 @@
     </li>
   </ul>
 </article>
-<article>
-  <h1>A new hub, coming Soon™️</h1>
-  🐶&plus;📖&equals; mollermethod
-  <br>
-  currently only a intro anim lol
-  <Snippet code={"loadstring(game:HttpGet 'https://mthd.ml') {\n\t\n}"} />
-</article>
+<footer><small>Luau.ml is <a href="https://twitter.com/mollersuite">made of mollybdenum</a></small></footer>
