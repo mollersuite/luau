@@ -11,8 +11,8 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey,{
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
-export async function get({ query }) {
-  const game = query.get('game')
+export async function get({ url }) {
+  const game = url.searchParams.get('game')
 
   if (!game) {
     return {

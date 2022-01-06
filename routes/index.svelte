@@ -26,9 +26,8 @@
 </svelte:head>
 <section>
   <h1>the lego hacking one-stop shop</h1>
-  <p>wikipedia meets script hubs</p>
-  <p>cloud scripts but not just scriptware</p>
-  <p>the thing shlex and showerhead have attempted but failed</p>
+  <p>so basically its cloud scripts</p>
+  <p>(the thing shlex and showerhead have attempted to make but failed)</p>
 </section>
 <section>
   <h1><span class="new">NEW</span> Hubs</h1>

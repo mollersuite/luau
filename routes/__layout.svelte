@@ -5,7 +5,7 @@
   export async function load({ url }) {
     return {
       props: {
-        path: url.pathname
+        path: url?.pathname
       }
     }
   }
