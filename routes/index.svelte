@@ -1,5 +1,4 @@
 <script context="module">
-  import Snippet from '$lib/components/Snippet.svelte'
   import ld from '$lib/ld'
   import { user } from '$lib/supabase'
   import { Button } from 'fluent-svelte'
@@ -26,26 +25,17 @@
   })}
 </svelte:head>
 <section>
-  <h1>The Roblox script platform.</h1>
-  <p>
-    No more linkvertises. No more outdated scripts. Just search, run and
-    exploit.
-  </p>
-  <p>
-    note: we dont have much scripts here because nobody uses this site lmaoo
-  </p>
-  <p>
-    at least we arent a slow ass wordpress blog like <a
-      rel="nofollow"
-      href="https://robloxscripts.com">robloxscripts.com</a
-    > or has virus popups like rbxscripts.xyz (DO NOT VISIT)
-  </p>
+  <h1>the lego hacking one-stop shop</h1>
+  <p>wikipedia meets script hubs</p>
+  <p>cloud scripts but not just scriptware</p>
+  <p>the thing shlex and showerhead have attempted but failed</p>
 </section>
 <section>
-  <h1>Introducing Hubs</h1>
+  <h1><span class="new">NEW</span> Hubs</h1>
   <p>You can now create script hubs, without writing a line of code.</p>
-  <p>Hubs are private; however the loader works for everyone.</p>
-  <p>jk i havent made the roblox gui for hubs yet</p>
+  <p>
+    Our hubs are like playlists; click "Add to hub" on a script's page to start.
+  </p>
   {#if !$user}
     <Button variant="accent" disabled>Create a hub (login first)</Button>
   {:else}
@@ -70,33 +60,41 @@
   </ul>
 </section>
 <section>
-  <h1>Made of Mollybdenum</h1>
+  <h1 class="mo">Made of Mollybdenum</h1>
+  <p>three people making dumb lego hacking tools</p>
   <nav>
     <article id="luau">
-      <h1>📜 Luau.ml</h1>
-      <em>You're on it right now</em>
+      <h1>Luau.ml</h1>
+      <em>You're on it right now.</em>
     </article>
     <article id="mollermethod">
       <h1>mollermethod</h1>
-      <em>The script hub that makes sense<sup>upcoming</sup></em>
+      <em>The script hub that makes sense.</em><sup>upcoming</sup>
     </article>
     <article id="trollsmile">
       <h1>trollsmile</h1>
-      <em>The command invoker.<sup>upcoming</sup></em>
+      <em>The command invoker.</em><sup>upcoming</sup>
     </article>
   </nav>
 </section>
 
 <style>
+  .mo {
+    color: #ff4539;
+    font-family: 'Segoe UI Variable Display', 'Segoe UI Variable', 'moller',
+      'Segoe UI';
+    font-weight: normal;
+  }
   nav {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 1ch;
     flex-direction: row;
   }
   article {
     flex-grow: 1;
-    color: black;
+    color: white;
     display: inline-block;
     background: #ff4539;
     border-radius: 5px;
@@ -109,19 +107,30 @@
     background: white;
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
       url(https://cdn.discordapp.com/emojis/817185536661389322.png?size=1024);
-      color: white;
     background-size: 100%;
     background-position: center;
   }
   #luau {
-    background: #f7d7c4;
+    background-color: #f7d7c4;
+    background-image: url(icon.svg);
+    background-size: 30%;
+    color: black;
+    background-position: center right;
+    background-repeat: no-repeat;
   }
   #mollermethod {
     background: white;
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
       url(https://mthd.ml/icon.png);
-      color: white;
     background-size: 100%;
     background-position: center;
+  }
+  .new {
+    font-size: 50%;
+    border-radius: 1em;
+    padding: 0.3rem;
+    user-select: none;
+    color: var(--fds-text-on-accent-primary);
+    background: var(--fds-accent-default);
   }
 </style>

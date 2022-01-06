@@ -1,13 +1,14 @@
 <script>
   import CodeButton from './CodeButton.svelte'
   import { Copy } from '../fluent'
+  import { browser } from '$app/env'
 
   export let code = ''
 </script>
 
-<pre>{code}<CodeButton on:click={() => navigator.clipboard.writeText(code)}
+<pre>{code}{#if browser}<CodeButton on:click={() => navigator.clipboard.writeText(code)}
     >{Copy}</CodeButton
-  ></pre>
+  >{/if}</pre>
 
 <style>
   @import '@fontsource/jetbrains-mono';
