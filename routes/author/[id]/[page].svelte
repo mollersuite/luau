@@ -5,16 +5,17 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ page, fetch }) {
-    const url = `/author/${page.params.id}/${page.params.page}.json`
-    const res = await fetch(url)
+  export async function load({ params, fetch, url }) {
+    const req = `/author/${params.id}/${params.page}.json`
+    const res = await fetch(req)
     if (res.ok) {
       const scripts = await res.json()
       return {
         props: {
           scripts,
-          id: page.params.id,
-          page: Number(page.params.page)
+          id: params.id,
+          page: Number(params.page),
+          host: url.origin
         }
       }
     }
@@ -31,11 +32,12 @@
   import { Button } from 'fluent-svelte'
   export let scripts = []
   export let id = ''
+  export let host = 'https://luau.ml'
   export let page = 0
 </script>
 
 <h1>Uploaded by {id}</h1>
-<Scripts {scripts} />
+<Scripts {scripts} {host} />
 <footer>
   {#if page >= 1}
     <Button href="./{page - 1}">←</Button>

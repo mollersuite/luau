@@ -3,11 +3,11 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ page, fetch }) {
-    if (isNaN(Number(page.params.page))) {
+  export async function load({ params, url }) {
+    if (isNaN(Number(params.page))) {
       return
     }
-    const pg = Number(page.params.page)
+    const pg = Number(params.page)
     const scripts = await supabase
       .from('scripts')
       .select('id,name,description')
@@ -15,8 +15,8 @@
     return {
       props: {
         scripts: scripts.body,
-        page: Number(page.params.page),
-        host: page.host
+        page: Number(params.page),
+        host: url.origin
       }
     }
   }
@@ -42,12 +42,12 @@
     itemListElement: scripts?.map((script, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `https://${host}/script/${script.id}`
+      url: `${host}/script/${script.id}`
     }))
   })}
 </svelte:head>
 <h1>Scripts (page {page})</h1>
-<Scripts {scripts} />
+<Scripts {scripts} {host} />
 <footer>
   {#if page >= 1}
     <Button href="p_{(page - 1).toString()}" sveltekit:prefetch rel="prev">←</Button

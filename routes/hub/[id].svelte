@@ -3,14 +3,14 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ page, session }) {
+  export async function load({ params, session, url }) {
     if (session.exploit) {
       return {
         status: 301,
-        redirect: `/hub/${page.params.id}.lua`
+        redirect: `/hub/${params.id}.lua`
       }
     }
-    const id = page.params.id
+    const id = params.id
     const {
       body: [hub]
     } = await supabase.from('hubs').select('*').match({ id }).throwOnError()
@@ -19,7 +19,7 @@
     }
     return {
       props: {
-        host: page.host,
+        host: url.origin,
         hub,
         scripts: (
           await supabase
@@ -46,7 +46,7 @@
     }[]}*/
   export let scripts
   export let host
-  $: code = `loadstring(game:HttpGet("https://${host}/hub/${
+  $: code = `loadstring(game:HttpGet("${host}/hub/${
     hub?.id
   }"), ${JSON.stringify(hub?.name)})()`
   function del(i) {

@@ -6,29 +6,29 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ page, fetch, session }) {
-    if (!isNaN(Number(page.params.id))) {
+  export async function load({ params, url, session }) {
+    if (!isNaN(Number(params.id))) {
       return
     }
     if (session.exploit) {
       return {
         status: 301,
-        redirect: `/script/lua/${page.params.id}`
+        redirect: `/script/lua/${params.id}`
       }
     }
 
     const [script] =
-      (await supabase.from('scripts').select('*').match({ id: page.params.id }))
+      (await supabase.from('scripts').select('*').match({ id: params.id }))
         .body || []
     if (script) {
       return {
         props: {
           script,
-          host: page.host,
-          id: `${page.params.id}`
+          host: url.origin,
+          id: `${params.id}`
         }
       }
-    } else if (!Number(page.params.id)) {
+    } else if (!Number(params.id)) {
       return {}
     }
   }
@@ -50,7 +50,7 @@
   export let script
   export let host
   export let id
-  let code = `loadstring(game:HttpGet("https://${host}/script/${id}"), ${JSON.stringify(
+  let code = `loadstring(game:HttpGet("${host}/script/${id}"), ${JSON.stringify(
     script?.name
   )})()`
   $: owner = script?.user_id === $user?.id
@@ -124,6 +124,7 @@
 {#if script}
   {#if $user}
     <ContentDialog bind:open={dialog_open} title="Save to...">
+      <br>
       {#await hubs then hubs}
         {#each hubs as hub (hub.id)}
           <Checkbox bind:checked={hub.new_used}>{hub.name}</Checkbox><br />

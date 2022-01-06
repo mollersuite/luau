@@ -80,3 +80,8 @@ button {
 button:focus:not(:focus-visible) {
   outline: none;
 }
+/* <CodeButton> */
+.icon-button {
+  font-family: 'icon';
+  float: right;
+}

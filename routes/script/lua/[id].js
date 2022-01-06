@@ -44,14 +44,12 @@ export async function get({ params, headers }) {
         local games = { ${script.games.join(', ')} }
         if not table.find(games, game.PlaceId) then -- place id NOT game id
           local gui = Instance.new('ScreenGui')
-          gui.Name = string.gsub(string.rep(" ",200,".",function()
-                return string.char(({math.random(48,57),math.random(65,90),math.random(97,122)})[math.random(1,3)])
-          end)
+          gui.Name = (game:service 'HttpService'):GenerateGUID(false)
 
           if gethui then
               gui.Parent = gethui()
-          elseif (syn or lib) and (syn or lib).protect_gui then
-              (syn or lib).protect_gui(gui)
+          elseif syn and syn.protect_gui then
+              syn.protect_gui(gui)
               gui.Parent = game:GetService('CoreGui')
           else
               xpcall(function ()

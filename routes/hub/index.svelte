@@ -3,7 +3,7 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ page, session }) {
+  export async function load() {
     return {
       props: {
         hubs: (

@@ -16,7 +16,8 @@
   "devDependencies": {
     "@sveltejs/adapter-cloudflare": "^1.0.0-next.3",
     "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.25",
-    "@sveltejs/kit": "^1.0.0-next.196",
+    "@sveltejs/kit": "^1.0.0-next.216",
+    "fluent-svelte": "^1.1.4",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
     "svelte": "^3.44.0"
@@ -25,7 +26,6 @@
   "dependencies": {
     "@fontsource/jetbrains-mono": "^4.5.0",
     "@supabase/supabase-js": "1.28.0",
-    "dedent": "^0.7.0",
-    "fluent-svelte": "^1.0.8"
+    "dedent": "^0.7.0"
   }
 }

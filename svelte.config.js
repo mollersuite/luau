@@ -9,11 +9,6 @@ const config = {
       routes: 'routes',
       hooks: 'hooks',
       template: 'app.html'
-    },
-    vite: {
-      optimizeDeps: {
-        include: ['bezier-easing']
-      }
     }
   }
 }
