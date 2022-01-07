@@ -50,7 +50,6 @@
       changelogs that automatically detect the last version you used and shows
       you whats been added
     </li>
-    <li>make script hubs, like actually work</li>
     <li>
       have any ideas? <a href="https://discord.gg/HAw7Zf8GF5"
         >join the discord.</a

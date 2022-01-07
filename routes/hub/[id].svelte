@@ -32,10 +32,9 @@
     }
   }
 </script>
-
 <script>
   import { Delete } from '$lib/fluent'
-  import { Button, ProgressRing } from 'fluent-svelte'
+  import { Button, ProgressBar } from 'fluent-svelte'
   import { goto } from '$app/navigation'
   import Snippet from '$lib/components/Snippet.svelte'
 
@@ -48,7 +47,7 @@
   export let host
   $: code = `loadstring(game:HttpGet("${host}/hub/${
     hub?.id
-  }"), ${JSON.stringify(hub?.name)})()`
+  }.lua"), ${JSON.stringify(hub?.name)})()`
   function del(i) {
     scripts = scripts.filter((_, j) => j !== i)
     supabase
@@ -59,6 +58,9 @@
   }
 </script>
 
+<svelte:head>
+  <title>{hub?.name || 'Loading'}</title>
+</svelte:head>
 {#if hub}
   <h1>
     {hub.name}
@@ -92,7 +94,7 @@
   </ul>
 {:else}
   <h1>Loading...</h1>
-  <ProgressRing />
+  <ProgressBar />
   <noscript>
     <h2>This page requires JavaScript.</h2>
     <p>
