@@ -64,14 +64,14 @@
   <title>{path} - Luau.ml</title>
 </svelte:head>
 <!-- for warnings -->
-<!-- <strong>once again, scripts are broken</strong> -->
+<strong>seems like SSR is broken, idk how the hell this keeps happening</strong>
 <Header {links} {path} />
 <main id="main">
   <slot />
 </main>
 
 <style>
-  /* strong {
+  strong {
     width: 100vw;
     text-align: center;
     background: var(--fds-system-background-caution);
@@ -80,7 +80,7 @@
     border-bottom-left-radius: 1em;
     box-sizing: border-box;
     border-bottom-right-radius: 1em;
-  } */
+  }
 
   main {
     flex: 1;

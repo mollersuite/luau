@@ -14,8 +14,8 @@
     "share": "svelte-kit build && wrangler publish -e dev"
   },
   "devDependencies": {
-    "@sveltejs/adapter-cloudflare": "^1.0.0-next.3",
     "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.28",
+    "@sveltejs/adapter-vercel": "^1.0.0-next.35",
     "@sveltejs/kit": "^1.0.0-next.216",
     "fluent-svelte": "^1.1.4",
     "prettier": "~2.2.1",

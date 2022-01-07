@@ -6,3 +6,4 @@ node_modules
 /workers-site
 .env
 dist
+.vercel_build_output
