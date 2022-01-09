@@ -109,10 +109,9 @@
     background-position: center;
   }
   #luau {
-    background-color: #f7d7c4;
+    background-color: black;
     background-image: url(icon.svg);
-    background-size: 30%;
-    color: black;
+    background-size: 20%;
     background-position: center right;
     background-repeat: no-repeat;
   }
