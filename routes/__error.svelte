@@ -18,18 +18,19 @@
   export let message
 </script>
 
-
 <svelte:head>
   <title>{status}: {message.name} - Luau.ml</title>
 </svelte:head>
 
 <h1 class="big">{status}</h1>
 <h1>
-  It's {new Set('aeiou').has(message.name.toLowerCase()[0]) ? 'an' : 'a'}
-  {message.name}!
+  {status}: {message.name}
 </h1>
 <Snippet code={message.stack} />
-<p>Blame Jack, SvelteKit, Vite, Supabase, or Cloudflare.</p>
+<p>
+  my code tends to actually work; its probably a problem with sveltekit
+  (metaframework), vite (bundler), supabase (db) or vercel (hosting)
+</p>
 
 <style>
   .big {
@@ -40,20 +41,7 @@
     position: absolute;
     top: -15vw;
     left: -5vw;
-    opacity: .5;
-    background: var(--accent-color);
-    background: -webkit-linear-gradient(
-      to right,
-      var(--fds-text-primary),
-      var(--accent-color)
-    );
-    background: linear-gradient(
-      to right,
-      var(--fds-text-primary),
-      var(--accent-color)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    opacity: 0.5;
   }
 </style>

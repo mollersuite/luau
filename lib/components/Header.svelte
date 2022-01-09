@@ -1,8 +1,6 @@
 <script>
   import { TextBox } from 'fluent-svelte'
-  import {
-    EaseOfAccess
-  } from '$lib/fluent'
+  import { EaseOfAccess } from '$lib/fluent'
   import { goto } from '$app/navigation'
   export let path
   /** @type {{name: string, goto: string | (() => unknown), icon: string}[]} */
@@ -120,6 +118,7 @@
   }
   header a:active,
   button:active {
+    
     background: rgba(255, 255, 255, 0.7);
   }
 
