@@ -110,7 +110,7 @@
   }
   #luau {
     background-color: black;
-    background-image: url(icon.svg);
+    background-image: url(/icon.svg);
     background-size: 20%;
     background-position: center right;
     background-repeat: no-repeat;
