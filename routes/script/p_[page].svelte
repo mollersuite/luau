@@ -46,24 +46,32 @@
     }))
   })}
 </svelte:head>
-<h1>Scripts (page {page})</h1>
 <Scripts {scripts} {host} />
 <footer>
-  {#if page >= 1}
-    <Button href="p_{(page - 1).toString()}" sveltekit:prefetch rel="prev">←</Button
-    >
-  {/if}
-  <span>{page}</span>
-  {#if scripts.length}
-    <Button sveltekit:prefetch href="p_{(Number(page) + 1).toString()}" rel="next"
-      >→</Button
-    >
-  {/if}
+  <Button
+    disabled={!page}
+    variant="accent"
+    href="p_{(page - 1).toString()}"
+    sveltekit:prefetch
+    rel="prev">←</Button
+  >
+  <h3>{page + 1}</h3>
+  <Button
+    disabled={!scripts.length}
+    variant="accent"
+    sveltekit:prefetch
+    href="p_{(Number(page) + 1).toString()}"
+    rel="next">→</Button
+  >
 </footer>
 
 <style>
   footer {
     margin-top: 5px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1ch;
+    flex-direction: row;
   }
 </style>

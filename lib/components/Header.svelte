@@ -50,6 +50,7 @@
 
 <style>
   header {
+    flex-wrap: wrap;
     position: sticky;
     top: 0;
     width: 100vw;
@@ -94,6 +95,8 @@
     border: none;
     color: var(--fds-text-primary);
     border-radius: 16px;
+    /* border-bottom-right-radius: 16px; */
+    /* border-top-left-radius: 16px; */
     transition: background 0.3s, gap 0.3s, font-size 0.3s;
   }
 
@@ -157,15 +160,21 @@
     }
   }
 
-  @media (max-width: 425px) {
-    /* strong {
-      display: none;
-    } */
+  @media (max-width: 380px) {
     header :global(input) {
-      max-width: 40vw;
+      width: 90vw !important;
     }
     header :global(form button) {
       display: none !important;
+    }
+  }
+
+  @media (max-width: 130px) {
+    header {
+      margin: 0;
+      position: static;
+      padding: 0;
+      flex-direction: column;
     }
   }
   @media (min-width: 1200px) {

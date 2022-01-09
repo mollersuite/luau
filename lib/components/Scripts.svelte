@@ -1,11 +1,8 @@
 <script>
   import { Copy } from '$lib/fluent'
-  import {
-    ContextMenu,
-    MenuFlyoutItem
-  } from 'fluent-svelte'
-
-  import { blur } from 'svelte/transition'
+  import { ContextMenu, MenuFlyoutItem } from 'fluent-svelte'
+  import { fly } from 'svelte/transition'
+  
   /** @type {{name: string, id: string, description: string, user_id: string}[]}*/
   export let scripts = []
   export let host = 'luau.ml'
@@ -25,7 +22,7 @@
       <a
         sveltekit:prefetch
         href="/script/{script?.id || ''}"
-        in:blur={{ delay: (i / (scripts?.length | 1)) * 500, amount: 5 }}
+        in:fly={{ delay: (i / (scripts?.length | 1)) * 500, y: -50 }}
       >
         <h1>{script.name}</h1>
         <p>{script.description}</p>
@@ -38,7 +35,7 @@
       </svelte:fragment>
     </ContextMenu>
   {:else}
-    <a sveltekit:prefetch in:blur={{ amount: 5 }} href="/new">
+    <a sveltekit:prefetch in:fly={{ y: -50 }} href="/new">
       <h1><slot>You've reached the end!</slot></h1>
       <p>Maybe add your own script?</p>
     </a>

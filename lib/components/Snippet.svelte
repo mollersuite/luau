@@ -15,7 +15,7 @@
   pre {
     font-size: 13px;
     font-family: 'JetBrains Mono', ui-monospace, 'Input Mono', 'Cascadia Mono',
-      'Segoe UI Mono', 'Ubuntu Mono', 'Roboto Mono', Menlo, Monaco, Consolas,
+      'Segoe UI Mono', 'Ubuntu Mono', 'Roboto Mono', 'Fira Code', Menlo, Monaco, Consolas,
       monospace;
     background-color: var(--fds-solid-background-secondary);
     border-radius: 3px;
