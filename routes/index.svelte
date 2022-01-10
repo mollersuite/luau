@@ -25,9 +25,8 @@
   })}
 </svelte:head>
 <section>
-  <h1>the lego hacking one-stop shop</h1>
-  <p>so basically its cloud scripts</p>
-  <p>(the thing shlex and showerhead have attempted to make but failed)</p>
+  <h1>idk what to put here</h1>
+  <p>like scriptblox but i did it first lol</p>
 </section>
 <section>
   <h1><span class="new">NEW</span> Hubs</h1>
