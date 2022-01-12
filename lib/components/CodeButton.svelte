@@ -5,5 +5,12 @@
 </script>
 
 <IconButton on:click aria-label={label}>
-<slot />
+  <slot />
 </IconButton>
+
+<style>
+  :global(.icon-button) {
+    font-family: 'icon';
+    float: right;
+  }
+</style>

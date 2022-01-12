@@ -5,7 +5,9 @@
    */
   export async function load({ params, url }) {
     if (isNaN(Number(params.page))) {
-      return
+      return {
+        fallthrough: true
+      }
     }
     const pg = Number(params.page)
     const scripts = await supabase

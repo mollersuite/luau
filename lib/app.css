@@ -1,4 +1,6 @@
 @import 'fluent-svelte/theme.css';
+@import '@fontsource/jetbrains-mono';
+
 :root {
   font-family: sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'Input Mono', 'Cascadia Mono',
@@ -35,8 +37,9 @@ h6 {
 
 @font-face {
   font-family: moller;
-  src: url(/SegoeUIDisplayBold.woff), local('Segoe UI Variable Display Bold'),
-    local('Segoe UI Variable Display'), local('Segoe UI');
+  src: local('Segoe UI Variable Display Bold'),
+    local('Segoe UI Variable Display'), url(/SegoeUIDisplayBold.woff),
+    local('Segoe UI');
   font-weight: bold;
   font-display: swap;
 }
@@ -63,7 +66,9 @@ pre,
 code,
 textarea {
   font-size: 13px;
-  font-family: var(--font-mono);
+  font-family: 'JetBrains Mono', ui-monospace, 'Input Mono', 'Cascadia Mono',
+    'Segoe UI Mono', 'Ubuntu Mono', 'Roboto Mono', 'Fira Code', Menlo, Monaco,
+    Consolas, monospace;
   background-color: var(--fds-solid-background-secondary);
   border-radius: 3px;
   padding: 0.5em;
@@ -79,9 +84,4 @@ button {
 
 button:focus:not(:focus-visible) {
   outline: none;
-}
-/* <CodeButton> */
-.icon-button {
-  font-family: 'icon';
-  float: right;
 }

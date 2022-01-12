@@ -8,7 +8,9 @@
    */
   export async function load({ params, url, session }) {
     if (!isNaN(Number(params.id))) {
-      return
+      return {
+        fallthrough: true
+      }
     }
     if (session.exploit) {
       return {
@@ -29,7 +31,9 @@
         }
       }
     } else if (!Number(params.id)) {
-      return {}
+      return {
+        // fallthrough: true
+      }
     }
   }
 </script>
@@ -124,7 +128,7 @@
 {#if script}
   {#if $user}
     <ContentDialog bind:open={dialog_open} title="Save to...">
-      <br>
+      <br />
       {#await hubs then hubs}
         {#each hubs as hub (hub.id)}
           <Checkbox bind:checked={hub.new_used}>{hub.name}</Checkbox><br />
@@ -214,15 +218,13 @@
     >
     <textarea bind:value={source} rows="30" />
   {:else}
-    <h1
-    >
+    <h1>
       {script.name}
     </h1>
     <a sveltekit:prefetch href="/author/{script.user_id}/0"
       >Uploaded by {script.user_id}</a
     >
-    <p
-    >
+    <p>
       {script.description}
     </p>
   {/if}
@@ -256,21 +258,8 @@
     position: absolute;
     top: -15vw;
     left: -5vw;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     opacity: 0.5;
-    background: var(--accent-color);
-    background: -webkit-linear-gradient(
-      to right,
-      var(--fds-text-primary),
-      var(--accent-color)
-    );
-    background: linear-gradient(
-      to right,
-      var(--fds-text-primary),
-      var(--accent-color)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
   }
   .icon {
     font-family: 'icon';
