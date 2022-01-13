@@ -70,19 +70,7 @@
   <slot />
 </main>
 
-{#if import.meta.env.DEV}
-  <small>DEV</small>
-{/if}
-
 <style>
-  small {
-    font-family: monospace;
-    background: white;
-    color: black;
-    border-top-right-radius: 1rem;
-    width: max-content;
-    padding: .5rem;
-  }
   /* strong {
     width: 100vw;
     text-align: center;

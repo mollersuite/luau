@@ -1,7 +1,7 @@
 <script context="module">
   import ld from '$lib/ld'
   import { user } from '$lib/supabase'
-  import { Button } from 'fluent-svelte'
+  import { Button, InfoBadge } from 'fluent-svelte'
   export const prerender = true
 </script>
 
@@ -29,7 +29,9 @@
   <p>like scriptblox but i did it first lol</p>
 </section>
 <section>
-  <h1><span class="new">NEW</span> Hubs</h1>
+  <h1>
+    <InfoBadge>NEW</InfoBadge> Hubs
+  </h1>
   <p>You can now create script hubs, without writing a line of code.</p>
   <p>
     Our hubs are like playlists; click "Add to hub" on a script's page to start.
@@ -58,7 +60,7 @@
 </section>
 <section>
   <h1 class="mo">Made of Mollybdenum</h1>
-  <p>three people making dumb lego hacking tools</p>
+  <p>three* people making dumb lego hacking tools</p>
   <nav>
     <article id="luau">
       <h1>Luau.ml</h1>
@@ -73,6 +75,7 @@
       <em>The command invoker.</em><sup>upcoming</sup>
     </article>
   </nav>
+  <small>*trollsmile by Jack & Auxnos; mollermethod by Jack, Glitchy, and Auxnos; Luau.ml by Jack</small>
 </section>
 
 <style>
@@ -120,13 +123,5 @@
       url(https://mthd.ml/icon.png);
     background-size: 100%;
     background-position: center;
-  }
-  .new {
-    font-size: 50%;
-    border-radius: 1em;
-    padding: 0.3rem;
-    user-select: none;
-    color: var(--fds-text-on-accent-primary);
-    background: var(--fds-accent-default);
   }
 </style>
