@@ -6,3 +6,22 @@ export function getSession(request) {
     exploit
   }
 }
+
+export function handleError() {
+  if (import.meta.env.PROD && import.meta.env.VITE_WEBHOOK) {
+    fetch(
+      // @ts-ignore
+      import.meta.env.VITE_WEBHOOK,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          content: import.meta.env.VITE_ERROR,
+          allowed_mentions: []
+        })
+      }
+    )
+  }
+}
