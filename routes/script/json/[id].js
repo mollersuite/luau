@@ -22,7 +22,7 @@ export async function get({ params }) {
     )
   ) {
     const [script] =
-      (await supabase.from('scripts').select('id,name,games,description,user_id,hidden').match({ id })).body || []
+      (await supabase.from('scripts').select('name,games,description,user_id').match({ id })).body || []
     if (script) {
       return {
         body: script
