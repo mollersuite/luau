@@ -34,7 +34,7 @@
 </script>
 
 <script>
-  import { Delete } from '$lib/fluent'
+  import Delete from '@fluentui/svg-icons/icons/delete_20_regular.svg?raw'
   import { Button } from 'fluent-svelte'
   import { goto } from '$app/navigation'
   import Snippet from '$lib/components/Snippet.svelte'
@@ -75,7 +75,7 @@
             goto('/hub', {
               replaceState: true
             })
-          )}><span class="icon">{Delete}</span>Remove</Button
+          )}><span class="icon">{@html Delete}</span>Remove</Button
     >
   </h1>
   <h2>Loader</h2>
@@ -86,7 +86,7 @@
       <li>
         <a class="script" href="/script/{script.id}">{script.name}</a>
         <Button on:click={() => del(i)}
-          ><span class="icon">{Delete}</span>Remove</Button
+          ><span class="icon">{@html Delete}</span>Remove</Button
         >
       </li>
     {:else}
@@ -120,8 +120,8 @@
 
 <style>
   .icon {
-    font-family: 'icon';
     padding-right: 1ch;
+    fill: currentColor;
   }
   .script {
     display: inline-block;

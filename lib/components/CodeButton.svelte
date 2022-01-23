@@ -1,16 +1,17 @@
 <script>
-  import { IconButton } from 'fluent-svelte'
+  import { IconButton, Tooltip } from 'fluent-svelte'
 
   export const label = 'Copy'
 </script>
 
-<IconButton on:click aria-label={label}>
-  <slot />
-</IconButton>
+<Tooltip text={label}>
+  <IconButton on:click aria-label={label}>
+    <slot />
+  </IconButton>
+</Tooltip>
 
 <style>
   :global(.icon-button) {
-    font-family: 'icon';
     float: right;
   }
 </style>

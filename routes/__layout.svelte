@@ -16,7 +16,14 @@
   import Header from '$lib/components/Header.svelte'
   import '$lib/app.css'
   export let path = ''
-  import { Home, Code, Add, List, ChatBubbles, AddFriend } from '$lib/fluent'
+  
+  import Add from '@fluentui/svg-icons/icons/add_16_regular.svg?raw'
+  import Home from '@fluentui/svg-icons/icons/home_16_regular.svg?raw'
+  import Code from '@fluentui/svg-icons/icons/code_16_regular.svg?raw'
+  import ChatBubbles from '@fluentui/svg-icons/icons/chat_16_regular.svg?raw'
+  import AddFriend from '@fluentui/svg-icons/icons/person_add_16_regular.svg?raw'
+  import List from '@fluentui/svg-icons/icons/list_16_regular.svg?raw'
+
   /** @type {{name: string, goto: string | (() => unknown), icon: string}[]} */
   $: links = [
     {

@@ -1,6 +1,7 @@
 <script>
   import { InfoBadge, TextBox } from 'fluent-svelte'
-  import { EaseOfAccess } from '$lib/fluent'
+  import EaseOfAccess from '@fluentui/svg-icons/icons/accessibility_16_regular.svg?raw'
+
   import { goto } from '$app/navigation'
   export let path
   /** @type {{name: string, goto: string | (() => unknown), icon: string}[]} */
@@ -31,8 +32,8 @@
       <InfoBadge>dev</InfoBadge>
     {/if}
   </h1>
-  <a class="skip-to-content-link" href="#main" data-icon={EaseOfAccess}
-    >Skip to content</a
+  <a class="skip-to-content-link" href="#main"
+    >{@html EaseOfAccess} Skip to content</a
   >
   <form action="/search" on:submit|preventDefault={search}>
     <TextBox
@@ -51,13 +52,14 @@
         class:selected={link.goto === path}
         href={link.goto}
         title={link.name}
-        data-icon={link.icon}
       >
-        {link.name}
+        {@html link.icon}
+        <b>{link.name}</b>
       </a>
     {:else}
-      <button on:click={link.goto} data-icon={link.icon} title={link.name}>
-        {link.name}
+      <button on:click={link.goto} title={link.name}>
+        {@html link.icon}
+        <b>{link.name}</b>
       </button>
     {/if}
   {/each}
@@ -90,12 +92,6 @@
   header h1 {
     font-size: small;
   }
-  a::before,
-  button::before {
-    content: attr(data-icon);
-    font-family: 'icon';
-    font-size: 16px;
-  }
   header a,
   button {
     /* padding: 16px; */
@@ -104,7 +100,6 @@
     padding-top: 8px;
     padding-bottom: 8px;
     font-family: 'moller', 'Segoe UI', sans-serif;
-    font-size: 0;
     margin: 0;
     cursor: default;
     text-align: center;
@@ -117,16 +112,29 @@
     border: none;
     color: var(--fds-text-primary);
     border-radius: 16px;
+    gap: 0;
+    fill: currentColor;
     /* border-bottom-right-radius: 16px; */
     /* border-top-left-radius: 16px; */
     transition: background 0.3s, gap 0.3s, font-size 0.3s;
+  }
+
+  header a b,
+  header button b {
+    transition: font-size 0.3s;
+    font-size: 0;
+  }
+  header a:hover b,
+  button:hover b,
+  header a:focus-visible b,
+  button:focus-visible b {
+    font-size: small;
   }
 
   header a:hover,
   button:hover,
   header a:focus-visible,
   button:focus-visible {
-    font-size: small;
     outline: 0;
     gap: 1ch;
     text-decoration: none;

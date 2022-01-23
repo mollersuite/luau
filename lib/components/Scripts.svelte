@@ -1,8 +1,8 @@
 <script>
-  import { Copy } from '$lib/fluent'
+  import Copy from '@fluentui/svg-icons/icons/copy_16_regular.svg?raw'
   import { ContextMenu, MenuFlyoutItem } from 'fluent-svelte'
   import { fly } from 'svelte/transition'
-  
+
   /** @type {{name: string, id: string, description: string, user_id: string}[]}*/
   export let scripts = []
   export let host = 'luau.ml'
@@ -28,8 +28,8 @@
         <p>{script.description}</p>
       </a>
       <svelte:fragment slot="menu">
-        <MenuFlyoutItem on:click={() => copy(script)}
-          ><span class="icon-button">{Copy}</span>
+        <MenuFlyoutItem on:click={() => copy(script)}>
+          {@html Copy}
           Copy</MenuFlyoutItem
         >
       </svelte:fragment>
@@ -43,8 +43,8 @@
 </section>
 
 <style>
-  .icon-button {
-    margin-right: 0.5em;
+  section {
+    fill: currentColor;
   }
   section h1 {
     font-size: 1em;

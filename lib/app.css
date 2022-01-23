@@ -44,10 +44,6 @@ h6 {
   font-display: swap;
 }
 
-@font-face {
-  font-family: icon;
-  src: url(/icons.woff);
-}
 
 p {
   line-height: 1.5;

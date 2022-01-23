@@ -14,6 +14,7 @@
     "share": "svelte-kit build && wrangler publish -e dev"
   },
   "devDependencies": {
+    "@fluentui/svg-icons": "^1.1.157",
     "@sveltejs/adapter-vercel": "^1.0.0-next.35",
     "@sveltejs/kit": "^1.0.0-next.225",
     "fluent-svelte": "^1.1.4",

@@ -39,7 +39,8 @@
 </script>
 
 <script>
-  import { AddTo, Delete } from '$lib/fluent'
+  import Delete from '@fluentui/svg-icons/icons/delete_20_regular.svg?raw'
+  import AddTo from '@fluentui/svg-icons/icons/collections_add_20_regular.svg?raw'
   import { goto } from '$app/navigation'
   import {
     ContentDialog,
@@ -109,7 +110,6 @@
           )
       : Promise.resolve([])
   let dialog_open = false
-  let del_dialog = false
 </script>
 
 <svelte:head>
@@ -174,12 +174,12 @@
     <nav>
       <Tooltip text="Add a script to one of your collections.">
         <Button on:click={() => (dialog_open = true)}
-          ><span class="icon">{AddTo}</span>Add to hub</Button
+          ><span class="icon">{@html AddTo}</span>Add to hub</Button
         >
       </Tooltip>
       {#if owner}
-        <Flyout position="right" bind:open={del_dialog}>
-          <Button><span class="icon">{Delete}</span>Delete</Button>
+        <Flyout position="right">
+          <Button><span class="icon">{@html Delete}</span> Delete</Button>
           <svelte:fragment slot="flyout"
             >Are you sure you want to delete your script? You cannot undo this.<br
             />
@@ -262,8 +262,8 @@
     opacity: 0.5;
   }
   .icon {
-    font-family: 'icon';
     padding-right: 1ch;
+    fill: currentColor;
   }
   p {
     white-space: pre-wrap;

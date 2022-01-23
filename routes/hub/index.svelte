@@ -17,7 +17,7 @@
 <script>
   import { browser } from '$app/env'
   import { goto } from '$app/navigation'
-  import { AddTo } from '$lib/fluent'
+  import AddTo from '@fluentui/svg-icons/icons/collections_add_20_regular.svg?raw'
   import { user } from '$lib/supabase'
   $: browser && !$user && goto('/', { replaceState: true })
   export let hubs
@@ -30,9 +30,8 @@
     ><h1>Create a hub</h1>
     <p>
       After creation, just click the <span
-        class="icon"
         aria-label="Add to hub"
-        title="Add to hub">{AddTo}</span
+        title="Add to hub">{@html AddTo}</span
       > button on a script page and select your script to add it to the hub.
     </p></a
   >
@@ -45,15 +44,13 @@
 </section>
 
 <style>
-  .icon {
-    font-family: 'icon';
-  }
   section {
     column-count: auto;
     column-width: 250px;
     column-gap: 1em;
   }
   p {
+    fill: currentColor;
     white-space: pre-wrap;
   }
   section a {
