@@ -20,14 +20,18 @@
     }
 
     const [script] =
-      (await supabase.from('scripts').select('*').match({ id: params.id }))
-        .body || []
+      (
+        await supabase
+          .from('scripts')
+          .select('name,games,description,user_id,hidden')
+          .match({ id: params.id })
+      ).body || []
     if (script) {
       return {
         props: {
           script,
           host: url.origin,
-          id: `${params.id}`
+          id: params.id
         }
       }
     } else if (!Number(params.id)) {
@@ -94,7 +98,7 @@
         })
       )
   }
-  let source = script?.source
+  let source = script?.source ?? ''
   const hubs =
     $user && browser
       ? supabase
@@ -104,8 +108,8 @@
           .then((hubs) =>
             hubs.body?.map((hub) => ({
               ...hub,
-              used: hub.scripts.includes(script.id),
-              new_used: hub.scripts.includes(script.id)
+              used: hub.scripts.includes(id),
+              new_used: hub.scripts.includes(id)
             }))
           )
       : Promise.resolve([])
@@ -153,8 +157,8 @@
                   .update(
                     {
                       scripts: hub.new_used
-                        ? [...hub.scripts, script.id]
-                        : hub.scripts.filter((id) => id !== script.id)
+                        ? [...hub.scripts, id]
+                        : hub.scripts.filter((id) => id !== id)
                     },
                     { returning: 'minimal' }
                   )
