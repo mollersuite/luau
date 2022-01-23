@@ -23,7 +23,7 @@
       (
         await supabase
           .from('scripts')
-          .select('name,games,description,user_id,hidden')
+          .select('name,games,description,user_id,hidden,source')
           .match({ id: params.id })
       ).body || []
     if (script) {
