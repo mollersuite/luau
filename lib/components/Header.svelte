@@ -14,7 +14,7 @@
 </script>
 
 <header>
-  <h1>
+  <a sveltekit:prefetch class:selected={'/' === path} href="/" title="Home">
     <svg
       viewBox="0 0 15 15"
       width="15"
@@ -27,11 +27,12 @@
       <path d="m 9.6230469,7 v 3 H 12.623047 V 7 Z" />
       <path d="M 3.5,0 2,1.5 V 3 10 H 7 9 V 6 h 3 V 3 h 2 V 1.5 L 12.5,0 Z" />
     </svg>
-    Luau.ml
-    {#if import.meta.env.DEV}
-      <InfoBadge>dev</InfoBadge>
-    {/if}
-  </h1>
+    <b
+      >Luau.ml {#if import.meta.env.DEV}
+        <InfoBadge>dev</InfoBadge>
+      {/if}</b
+    >
+  </a>
   <a class="skip-to-content-link" href="#main"
     >{@html EaseOfAccess} Skip to content</a
   >

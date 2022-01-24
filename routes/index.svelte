@@ -55,6 +55,7 @@
     <TextBox
       required
       name="q"
+      style="font-size: 1.5em;height:2em;"
       autofocus
       placeholder="Search for a script"
       type="search"
@@ -103,7 +104,7 @@
     </article>
     <article id="mollermethod">
       <h1>mollermethod</h1>
-      <em>The script hub that makes sense.</em><sup>upcoming</sup>
+      <em>We made a script hub.</em><sup>upcoming</sup>
     </article>
     <article id="trollsmile">
       <h1>trollsmile</h1>
@@ -133,8 +134,9 @@
     gap: 1ch;
     flex-direction: row;
   }
-  article {
+  section nav > * {
     flex-grow: 1;
+    text-decoration: none;
     color: white;
     display: inline-block;
     background: #ff4539;
