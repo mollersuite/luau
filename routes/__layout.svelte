@@ -16,7 +16,7 @@
   import Header from '$lib/components/Header.svelte'
   import '$lib/app.css'
   export let path = ''
-  
+
   import Add from '@fluentui/svg-icons/icons/add_20_regular.svg?raw'
   import Code from '@fluentui/svg-icons/icons/code_20_regular.svg?raw'
   import ChatBubbles from '@fluentui/svg-icons/icons/chat_20_regular.svg?raw'

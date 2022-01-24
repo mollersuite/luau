@@ -1,3 +1,5 @@
+<svelte:options immutable />
+
 <script>
   import { InfoBadge, TextBox } from 'fluent-svelte'
   import EaseOfAccess from '@fluentui/svg-icons/icons/accessibility_16_regular.svg?raw'
