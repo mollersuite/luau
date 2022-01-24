@@ -1,8 +1,17 @@
 <script context="module">
   import ld from '$lib/ld'
-  import { user } from '$lib/supabase'
-  import { Button, InfoBadge } from 'fluent-svelte'
   export const prerender = true
+</script>
+
+<script>
+  import { goto } from '$app/navigation'
+  import { TextBox } from 'fluent-svelte'
+
+  let value = ''
+  const search = () =>
+    goto('/search?q=' + value, {
+      keepfocus: true
+    })
 </script>
 
 <svelte:head>
@@ -24,32 +33,58 @@
     ]
   })}
 </svelte:head>
+
 <section>
-  <h1>idk what to put here</h1>
-  <p>like scriptblox but i did it first lol</p>
-</section>
-<section>
-  <h1>
-    <InfoBadge>NEW</InfoBadge> Hubs
+  <h1 class="center">
+    The scripting platform.<sup>
+      <svg
+        viewBox="0 0 15 15"
+        width="15"
+        fill="#ff4539"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="m 12,11 v 3 h 3 v -3 z" />
+        <path d="m 8,11 v 3 h 3 v -3 z" />
+        <path d="m 0,11 v 1.5 L 1.5,14 H 7 v -3 z" />
+        <path d="m 9.6230469,7 v 3 H 12.623047 V 7 Z" />
+        <path d="M 3.5,0 2,1.5 V 3 10 H 7 9 V 6 h 3 V 3 h 2 V 1.5 L 12.5,0 Z" />
+      </svg></sup
+    >
   </h1>
-  <p>You can now create script hubs, without writing a line of code.</p>
-  <p>
-    Our hubs are like playlists; click "Add to hub" on a script's page to start.
-  </p>
-  {#if !$user}
-    <Button variant="accent" disabled>Create a hub (login first)</Button>
-  {:else}
-    <Button href="/hub" variant="accent">Create a hub</Button>
-  {/if}
+  <form action="/search" on:submit|preventDefault={search}>
+    <TextBox
+      required
+      name="q"
+      autofocus
+      placeholder="Search for a script"
+      type="search"
+      bind:value
+      on:search={search}
+    />
+  </form>
 </section>
 <section>
   <h1>Roadmap</h1>
   <ul>
-    <li>proper display names</li>
-    <li>after display names, verified badge</li>
     <li>
-      changelogs that automatically detect the last version you used and shows
-      you whats been added
+      add captcha to submit script endpoint<sup
+        >mau could spam my db otherwise</sup
+      >
+    </li>
+    <li>display names and pfps from Discord</li>
+    <li>thumbnails</li>
+    <li>
+      likes and dislikes <sup
+        >hard to do securely<sup
+          >a threat actor could figure out who liked/disliked their script<sup
+            >bad because they'd blacklist people who dont like their script</sup
+          ></sup
+        ></sup
+      >
+    </li>
+    <li>
+      reporting (possibly using serverless discord interactions so I can just
+      click a Delete button)
     </li>
     <li>
       have any ideas? <a href="https://discord.gg/HAw7Zf8GF5"
@@ -59,7 +94,7 @@
   </ul>
 </section>
 <section>
-  <h1 class="mo">Made of Mollybdenum</h1>
+  <h1 class="mo">Luau.ml is made of Mollybdenum</h1>
   <p>three* people making dumb lego hacking tools</p>
   <nav>
     <article id="luau">
@@ -75,10 +110,16 @@
       <em>The command invoker.</em><sup>upcoming</sup>
     </article>
   </nav>
-  <small>*trollsmile by Jack & Auxnos; mollermethod by Jack, Glitchy, and Auxnos; Luau.ml by Jack</small>
+  <small
+    >*trollsmile by Jack & Auxnos; mollermethod by Jack, Glitchy, and Auxnos;
+    Luau.ml by Jack</small
+  >
 </section>
 
 <style>
+  .center {
+    text-align: center;
+  }
   .mo {
     color: #ff4539;
     font-family: 'Segoe UI Variable Display', 'Segoe UI Variable', 'moller',
