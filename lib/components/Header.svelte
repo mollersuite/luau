@@ -69,13 +69,6 @@
 </header>
 
 <style>
-  h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1ch;
-    flex-direction: row;
-  }
   header {
     flex-wrap: wrap;
     position: sticky;
@@ -91,9 +84,6 @@
     align-items: center;
     gap: 1ch;
     flex-direction: row;
-  }
-  header h1 {
-    font-size: small;
   }
   header a,
   button {
@@ -187,15 +177,6 @@
     header a:hover,
     button:hover {
       font-size: 0;
-    }
-  }
-
-  @media (max-width: 380px) {
-    header :global(input) {
-      width: 90vw !important;
-    }
-    header :global(form button) {
-      display: none !important;
     }
   }
 
