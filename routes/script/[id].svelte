@@ -176,11 +176,11 @@
       </svelte:fragment>
     </ContentDialog>
     <nav>
-      <Tooltip text="Add a script to one of your collections.">
-        <Button on:click={() => (dialog_open = true)}
-          ><span class="icon">{@html AddTo}</span>Add to hub</Button
-        >
-      </Tooltip>
+      <Button
+        on:click={() => (dialog_open = true)}
+        title="Add a script to one of your collections."
+        ><span class="icon">{@html AddTo}</span>Add to hub</Button
+      >
       {#if owner}
         <Flyout position="right">
           <Button><span class="icon">{@html Delete}</span> Delete</Button>

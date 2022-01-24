@@ -11,6 +11,7 @@
 
 <script>
   import Snippet from '$lib/components/Snippet.svelte'
+  import { InfoBar, InfoBadge } from 'fluent-svelte'
 
   /** @type {number} */
   export let status
@@ -22,15 +23,14 @@
   <title>{status}: {message.name} - Luau.ml</title>
 </svelte:head>
 
-<h1 class="big">{status}</h1>
-<h1>
-  {status}: {message.name}
+<h1 class="big">
+  {status}
 </h1>
+<InfoBar closable={false} title={status.toString()} severity="critical">
+  {message.name}
+  <InfoBadge style="float: right" severity="critical">{import.meta.env.MODE}</InfoBadge>
+</InfoBar>
 <Snippet code={message.stack} />
-<p>
-  my code tends to actually work; its probably a problem with sveltekit
-  (metaframework), vite (bundler), supabase (db) or vercel (hosting)
-</p>
 
 <style>
   .big {

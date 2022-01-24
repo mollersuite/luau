@@ -71,12 +71,6 @@
 <Header {links} {path} />
 <main id="main">
   <slot />
-
-  {#if import.meta.env.DEV}
-    <InfoBadge severity="information"
-      >{import.meta.env.MODE} - not final!</InfoBadge
-    >
-  {/if}
 </main>
 
 <style>
