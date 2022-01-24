@@ -175,9 +175,6 @@
     clip: rect(0, 0, 0, 0);
   }
   @media (max-width: 659px) {
-    header h1 {
-      display: none;
-    }
     header {
       justify-content: center;
     }
