@@ -1,7 +1,7 @@
 <svelte:options immutable />
 
 <script>
-  import { InfoBadge, TextBox } from 'fluent-svelte'
+  import { TextBox } from 'fluent-svelte'
   import EaseOfAccess from '@fluentui/svg-icons/icons/accessibility_16_regular.svg?raw'
 
   import { goto } from '$app/navigation'
@@ -29,11 +29,7 @@
       <path d="m 9.6230469,7 v 3 H 12.623047 V 7 Z" />
       <path d="M 3.5,0 2,1.5 V 3 10 H 7 9 V 6 h 3 V 3 h 2 V 1.5 L 12.5,0 Z" />
     </svg>
-    <b
-      >Luau.ml {#if import.meta.env.DEV}
-        <InfoBadge>dev</InfoBadge>
-      {/if}</b
-    >
+    <b>Luau.ml</b>
   </a>
   <a class="skip-to-content-link" href="#main"
     >{@html EaseOfAccess} Skip to content</a
@@ -173,10 +169,6 @@
     header a,
     button {
       padding: 5px;
-    }
-    header a:hover,
-    button:hover {
-      font-size: 0;
     }
   }
 

@@ -22,6 +22,7 @@
   import ChatBubbles from '@fluentui/svg-icons/icons/chat_20_regular.svg?raw'
   import AddFriend from '@fluentui/svg-icons/icons/person_add_20_regular.svg?raw'
   import List from '@fluentui/svg-icons/icons/list_20_regular.svg?raw'
+  import { InfoBadge } from 'fluent-svelte'
 
   /** @type {{name: string, goto: string | (() => unknown), icon: string}[]} */
   $: links = [
@@ -66,9 +67,16 @@
 </svelte:head>
 <!-- for warnings -->
 <!-- <strong>seems like SSR is broken, idk how the hell this keeps happening</strong> -->
+
 <Header {links} {path} />
 <main id="main">
   <slot />
+
+  {#if import.meta.env.DEV}
+    <InfoBadge severity="information"
+      >{import.meta.env.MODE} - not final!</InfoBadge
+    >
+  {/if}
 </main>
 
 <style>
