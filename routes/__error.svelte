@@ -28,7 +28,9 @@
 </h1>
 <InfoBar closable={false} title={status.toString()} severity="critical">
   {message.name}
-  <InfoBadge style="float: right" severity="critical">{import.meta.env.MODE}</InfoBadge>
+  <InfoBadge style="float: right" severity="critical"
+    >{import.meta.env.MODE}</InfoBadge
+  >
 </InfoBar>
 <Snippet code={message.stack} />
 
