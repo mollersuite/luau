@@ -15,8 +15,8 @@
   },
   "devDependencies": {
     "@fluentui/svg-icons": "^1.1.157",
-    "@sveltejs/adapter-vercel": "^1.0.0-next.35",
-    "@sveltejs/kit": "^1.0.0-next.225",
+    "@sveltejs/adapter-vercel": "^1.0.0-next.39",
+    "@sveltejs/kit": "^1.0.0-next.241",
     "fluent-svelte": "^1.1.4",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
