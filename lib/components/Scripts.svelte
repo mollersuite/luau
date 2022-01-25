@@ -7,7 +7,6 @@
   export let scripts = []
   export let host = 'luau.ml'
   function copy(script) {
-    console.log('clicked')
     navigator.clipboard.writeText(
       `loadstring(game:HttpGet("${host}/script/${script.id}"), ${JSON.stringify(
         script?.name

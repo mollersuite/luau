@@ -21,7 +21,6 @@
   import { user } from '$lib/supabase'
   $: browser && !$user && goto('/', { replaceState: true })
   export let hubs
-  console.log(hubs)
 </script>
 
 <h1>Hubs</h1>

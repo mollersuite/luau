@@ -1,5 +1,3 @@
-<svelte:options immutable />
-
 <script>
   import { TextBox } from 'fluent-svelte'
   import EaseOfAccess from '@fluentui/svg-icons/icons/accessibility_16_regular.svg?raw'
@@ -8,6 +6,7 @@
   export let path
   /** @type {{name: string, goto: string | (() => unknown), icon: string}[]} */
   export let links
+  import { onMount } from 'svelte'
   let value = ''
   const search = () =>
     goto('/search?q=' + value, {
@@ -44,7 +43,7 @@
       on:search={search}
     />
   </form>
-  {#each links as link}
+  {#each links as link (link.goto)}
     {#if typeof link.goto === 'string'}
       <a
         sveltekit:prefetch
