@@ -1,48 +1,16 @@
 <script>
-  import { TextBox } from 'fluent-svelte'
   import EaseOfAccess from '@fluentui/svg-icons/icons/accessibility_16_regular.svg?raw'
-
-  import { goto } from '$app/navigation'
   export let path
   /** @type {{name: string, goto: string | (() => unknown), icon: string}[]} */
   export let links
-  import { onMount } from 'svelte'
-  let value = ''
-  const search = () =>
-    goto('/search?q=' + value, {
-      keepfocus: true
-    })
 </script>
 
 <header>
-  <a sveltekit:prefetch class:selected={'/' === path} href="/" title="Home">
-    <svg
-      viewBox="0 0 15 15"
-      width="15"
-      fill="#ff4539"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="m 12,11 v 3 h 3 v -3 z" />
-      <path d="m 8,11 v 3 h 3 v -3 z" />
-      <path d="m 0,11 v 1.5 L 1.5,14 H 7 v -3 z" />
-      <path d="m 9.6230469,7 v 3 H 12.623047 V 7 Z" />
-      <path d="M 3.5,0 2,1.5 V 3 10 H 7 9 V 6 h 3 V 3 h 2 V 1.5 L 12.5,0 Z" />
-    </svg>
-    <b>Luau.ml</b>
+  <a class="skip-to-content-link" href="#main">
+    {@html EaseOfAccess}
+    <b>Skip to content</b>
   </a>
-  <a class="skip-to-content-link" href="#main"
-    >{@html EaseOfAccess} Skip to content</a
-  >
-  <form action="/search" on:submit|preventDefault={search}>
-    <TextBox
-      required
-      name="q"
-      placeholder="Search for a script"
-      type="search"
-      bind:value
-      on:search={search}
-    />
-  </form>
+  <slot />
   {#each links as link (link.goto)}
     {#if typeof link.goto === 'string'}
       <a
@@ -80,7 +48,7 @@
     gap: 1ch;
     flex-direction: row;
   }
-  header a,
+  header :global(a),
   button {
     /* padding: 16px; */
     padding-left: 16px;
@@ -107,21 +75,21 @@
     transition: background 0.3s, gap 0.3s, font-size 0.3s;
   }
 
-  header a b,
+  header :global(a b),
   header button b {
     transition: font-size 0.3s;
     font-size: 0;
   }
-  header a:hover b,
+  header :global(a:hover b),
   button:hover b,
-  header a:focus-visible b,
+  header :global(a:focus-visible b),
   button:focus-visible b {
     font-size: small;
   }
 
-  header a:hover,
+  header :global(a:hover),
   button:hover,
-  header a:focus-visible,
+  header :global(a:focus-visible),
   button:focus-visible {
     outline: 0;
     gap: 1ch;
@@ -129,14 +97,14 @@
     background: rgba(255, 255, 255, 0.3);
   }
 
-  header a:focus,
+  header :global(a:focus),
   button:focus {
     border: solid 1px var(--fds-text-primary);
   }
-  a.selected {
+  header :global(a.selected) {
     border: solid 1px gray;
   }
-  header a:active,
+  header :global(a:active),
   button:active {
     background: rgba(255, 255, 255, 0.7);
   }
@@ -146,13 +114,13 @@
       background: rgba(255, 255, 255, 0.5);
     }
 
-    header a:hover,
+    header :global(a:hover),
     button:hover,
-    header a:focus-visible,
+    header :global(a:focus-visible),
     button:focus-visible {
       background: rgba(0, 0, 0, 0.1);
     }
-    header a:active,
+    header :global(a:active),
     button:active {
       background: rgba(0, 0, 0, 0.3);
     }
