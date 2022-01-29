@@ -23,7 +23,10 @@
   export let hubs
 </script>
 
-<h1>Hubs</h1>
+<svelte:head>
+  <title>Hubs</title>
+</svelte:head>
+
 <section>
   <a href="/hub/new"
     ><h1>Create a hub</h1>
