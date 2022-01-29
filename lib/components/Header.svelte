@@ -11,7 +11,7 @@
     <b>Skip to content</b>
   </a>
   <slot />
-  {#each links as link (link.goto)}
+  {#each links as link}
     {#if typeof link.goto === 'string'}
       <a
         sveltekit:prefetch
