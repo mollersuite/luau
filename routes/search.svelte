@@ -32,4 +32,6 @@
 <svelte:head>
   <title>Search - Luau</title>
 </svelte:head>
-<Scripts {scripts} {host}>No scripts found.</Scripts>
+<Scripts {scripts} {host}>
+  <svelte:fragment slot="notfound">No scripts found.</svelte:fragment>
+</Scripts>
