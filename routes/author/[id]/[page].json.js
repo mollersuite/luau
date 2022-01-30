@@ -13,7 +13,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey,{
  */
 export async function get({ params }) {
   const page = params.page
-
+    
   if (!params.id) {
     return {
       status: 400,

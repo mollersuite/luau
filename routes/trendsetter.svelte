@@ -8,31 +8,24 @@
   import Refresh from '@fluentui/svg-icons/icons/arrow_clockwise_dashes_24_regular.svg?raw'
   import Hop from '@fluentui/svg-icons/icons/arrow_bounce_24_regular.svg?raw'
   import Rejoin from '@fluentui/svg-icons/icons/arrow_repeat_all_24_regular.svg?raw'
-  import {
-    Button,
-    IconButton,
-    InfoBadge,
-    TextBox
-  } from 'fluent-svelte'
+  import { Button, IconButton, InfoBadge, TextBox } from 'fluent-svelte'
 </script>
 
 <svelte:head>
   <title>trendsetter</title>
   <meta name="robots" content="noindex,nofollow" />
+  <meta name="description" content="fire when the strobe hits you" />
 </svelte:head>
+
+<nav />
 <aside>
   <h1>MOCKUP</h1>
   <p>
-    This screenshot is a mockup of future Mollybdenum software. We have not made
-    the Lua version; final product will likely be different (and a different
-    name)
+    This screenshot is actually HTML and CSS - it's a mockup of mollermethod 5
+    codename "trendsetter".
   </p>
 </aside>
 <main>
-  <p>
-    why is it that every time i come up with some idea some british guy steals
-    it 4 months later (shlex, thunder mods, glitchy)
-  </p>
   <Header
     path="/home"
     links={[
@@ -140,12 +133,15 @@ Could've bought an ass for my motherfuckin bitch`,
         <option>shlexius</option>
       </select>
       <article>
-        <h1>shlexius<br /><InfoBadge>Ro-Gangster</InfoBadge></h1>
+        <h1>
+          shlex (@shlexius)<br /><em>created 5 years ago | 304343782</em><br
+          /><InfoBadge>mom's credit card</InfoBadge>
+        </h1>
         <Button>Fling</Button>
         <Button>To</Button>
-        <Button disabled>Bring</Button>
-        <Button disabled>Kill</Button>
-        <Button disabled>Kick</Button>
+        <Button>Bring</Button>
+        <Button>Kill</Button>
+        <Button>Kick</Button>
       </article>
     </a>
     <!-- svelte-ignore a11y-missing-attribute -->
@@ -172,12 +168,45 @@ Could've bought an ass for my motherfuckin bitch`,
     <!-- svelte-ignore a11y-missing-attribute -->
     <a class="unleashed">
       <h1>Scripting, unleashed.</h1>
-      <p>See what's new in <del>mollermethod 5</del> trendsetter.</p>
+      <p>See what's new in mollermethod 5.</p>
     </a>
   </Scripts>
 </main>
 
 <style>
+  em {
+    color: gray;
+    font-size: 70%;
+  }
+  nav {
+    /* width: 464px;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 50;
+    background: darkslategray; */
+    z-index: 49;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url(/bg.png) fixed;
+    background-size: 1920px 1080px;
+  }
+  main {
+    max-width: calc(100vw - 464px);
+    box-sizing: border-box;
+    padding-left: 5em;
+    padding-right: 5em;
+    left: 464px;
+    z-index: 50;
+    top: 0;
+    position: fixed;
+    overflow: auto;
+    height: 100vh;
+  }
   .local {
     grid-column: 1 / 3;
   }
@@ -227,6 +256,7 @@ Could've bought an ass for my motherfuckin bitch`,
   aside {
     opacity: 0.5;
     position: fixed;
+    z-index: 5000;
     bottom: 5em;
     right: 5em;
     text-align: right;
