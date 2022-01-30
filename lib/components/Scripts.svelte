@@ -59,7 +59,7 @@
   }
   section :global(a) {
     box-sizing: border-box;
-    max-height: 500px;
+    max-height: 300px;
     overflow-y: auto;
     display: inline-block;
     word-wrap: break-word;
