@@ -195,21 +195,13 @@
     </nav>
   {/if}
   {#if owner}
-    <small>Your script's title.</small>
     <h1><TextBox required placeholder="Script name" bind:value={name} /></h1>
-    <small>Your script's description.</small>
     <textarea bind:value={desc} />
-    <small
-      >Edit your script's source here. Other users will not see the source on
-      the website, although they may be able to get it.</small
-    >
 
     <label for="hidden">
       <Checkbox id="hidden" bind:checked={hidden} />
-      <small
-        >Hidden? (This script will 404 when visited by anyone else, won't show
-        up in the list or search, but the loader will work for everyone.)</small
-      >
+      Hidden? (This script will 404 when visited by anyone else, won't show
+        up in the list or search, but the loader will work for everyone.)
     </label>
     <Button
       on:click={() => {
@@ -239,13 +231,6 @@
     {#each script.games as game}
       <a href="https://roblox.com/games/{game}" rel="nofollow">{game}</a>
     {/each}
-  {/if}
-  {#if !$user}
-    <h2 id="faq">FAQ</h2>
-    <details>
-      <summary>How do I run this script?</summary>
-      <p>You can run this script in any Roblox scripting utility.</p>
-    </details>
   {/if}
 {:else}
   <h1 class="big">404</h1>
