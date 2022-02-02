@@ -14,6 +14,7 @@
 <script>
   import { user, supabase } from '$lib/supabase.js'
   import Header from '$lib/components/Header.svelte'
+  import Button from '$lib/components/Button.svelte'
   import { TextBox } from 'fluent-svelte'
   import { goto } from '$app/navigation'
   import '$lib/app.css'
@@ -81,7 +82,7 @@
 <!-- <strong>seems like SSR is broken, idk how the hell this keeps happening</strong> -->
 
 <Header {links} {path}>
-  <a sveltekit:prefetch class:selected={'/' === path} href="/" title="Home">
+  <Button href="/" label="Luau.ml" selected={'/' === path}>
     <svg
       viewBox="0 0 15 15"
       width="15"
@@ -93,9 +94,9 @@
       <path d="m 0,11 v 1.5 L 1.5,14 H 7 v -3 z" />
       <path d="m 9.6230469,7 v 3 H 12.623047 V 7 Z" />
       <path d="M 3.5,0 2,1.5 V 3 10 H 7 9 V 6 h 3 V 3 h 2 V 1.5 L 12.5,0 Z" />
-    </svg>
-    <b>Luau.ml</b>
-  </a>
+    </svg></Button
+  >
+
   <form action="/search" on:submit|preventDefault={search}>
     <TextBox
       required

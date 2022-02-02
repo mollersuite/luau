@@ -9,22 +9,18 @@
   import Hop from '@fluentui/svg-icons/icons/arrow_bounce_24_regular.svg?raw'
   import Rejoin from '@fluentui/svg-icons/icons/arrow_repeat_all_24_regular.svg?raw'
   import { Button, IconButton, InfoBadge, TextBox } from 'fluent-svelte'
+  import Moller from '$lib/components/Button.svelte'
 </script>
 
 <svelte:head>
-  <title>trendsetter</title>
+  <title>mollermethod 5</title>
   <meta name="robots" content="noindex,nofollow" />
-  <meta name="description" content="fire when the strobe hits you" />
+  <meta name="description" content="project trendsetter" />
 </svelte:head>
 
 <nav />
-<aside>
-  <h1>MOCKUP</h1>
-  <p>
-    This screenshot is actually HTML and CSS - it's a mockup of mollermethod 5
-    codename "trendsetter".
-  </p>
-</aside>
+<!-- svelte-ignore a11y-missing-content -->
+<a href="/" class="back" />
 <main>
   <Header
     path="/home"
@@ -46,20 +42,17 @@
       }
     ]}
   >
-    <a class="selected" href="/"
-      ><img src="https://mthd.ml/icon.png" height="16" alt="mollermethod" /><b
-        >mollermethod</b
-      ></a
+    <Moller label="mollermethod" selected
+      ><img
+        src="https://mthd.ml/icon.png"
+        height="16"
+        alt="mollermethod"
+      /></Moller
     >
     <form>
       <TextBox type="search" placeholder="Find a script" />
     </form>
   </Header>
-  <!-- <h2>welcome to mollermethod support</h2>
-  <h3>Problems with a feature/script? Put the tile's ID here.</h3>
-  <TextBox required name="q" type="search" />
-  <h3>Other problems? Join our support server!</h3>
-  <Button variant="hyperlink">Join Support</Button> -->
   <h2>
     <img
       src="https://tr.rbxcdn.com/4fca9c9e02719e0446eaccdbd4dd3670/150/150/AvatarHeadshot/Png"
@@ -148,7 +141,7 @@ Could've bought an ass for my motherfuckin bitch`,
     <a class="local">
       <IconButton title="Invisible">
         {@html Invisible}
-      </IconButton>
+      </IconButton> 
       <IconButton title="Fly">
         {@html Airplane}
       </IconButton>
@@ -174,6 +167,15 @@ Could've bought an ass for my motherfuckin bitch`,
 </main>
 
 <style>
+  .back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 100vh;
+    display: block;
+    z-index: 50;
+  }
   em {
     color: gray;
     font-size: 70%;
@@ -230,6 +232,7 @@ Could've bought an ass for my motherfuckin bitch`,
     column-count: initial;
     column-width: initial;
     gap: 1em;
+    overflow-x: hidden;
     grid-template-columns: 30% 70%;
     grid-template-rows: masonry;
     padding: 0;
@@ -252,14 +255,5 @@ Could've bought an ass for my motherfuckin bitch`,
     gap: 1ch;
     flex-direction: row;
     text-align: center;
-  }
-  aside {
-    opacity: 0.5;
-    position: fixed;
-    z-index: 5000;
-    bottom: 5em;
-    right: 5em;
-    text-align: right;
-    font-size: 0.7em;
   }
 </style>

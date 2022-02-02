@@ -20,6 +20,7 @@
   {#each scripts ?? [] as script, i}
     <ContextMenu>
       <a
+        rel="ugc"
         sveltekit:prefetch
         href="/script/{script?.id || ''}"
         in:fly={{ delay: (i / (scripts?.length | 1)) * 500, y: -50 }}
