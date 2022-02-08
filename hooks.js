@@ -1,8 +1,8 @@
-import getExploit from '$lib/exploit'
+import exploit from '$lib/exploit'
 
-export function getSession(request) {
-  const exploit = getExploit(request.request.headers)
-  return {
-    exploit
-  }
+/** @type {import('@sveltejs/kit').Handle} */
+export async function handle({ event, resolve }) {
+  event.locals.exploit = exploit(event.request.headers)
+
+  return resolve(event)
 }

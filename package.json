@@ -9,18 +9,16 @@
     "test": "npx playwright test",
     "preview": "svelte-kit preview",
     "lint": "prettier --check --plugin-search-dir=. .",
-    "format": "prettier --write --plugin-search-dir=. .",
-    "publish": "svelte-kit build && wrangler publish",
-    "share": "svelte-kit build && wrangler publish -e dev"
+    "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
     "@fluentui/svg-icons": "^1.1.157",
-    "@sveltejs/adapter-vercel": "^1.0.0-next.39",
-    "@sveltejs/kit": "^1.0.0-next.241",
-    "fluent-svelte": "^1.2.0",
-    "prettier": "~2.2.1",
-    "prettier-plugin-svelte": "^2.2.0",
-    "svelte": "^3.46.2"
+    "@sveltejs/adapter-vercel": "^1.0.0-next.40",
+    "@sveltejs/kit": "^1.0.0-next.260",
+    "fluent-svelte": "^1.3.3",
+    "prettier": "^2.5.1",
+    "prettier-plugin-svelte": "^2.6.0",
+    "svelte": "^3.46.4"
   },
   "type": "module",
   "dependencies": {

@@ -3,13 +3,8 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ params, session, url }) {
-    if (session.exploit) {
-      return {
-        status: 301,
-        redirect: `/hub/${params.id}.lua`
-      }
-    }
+  export async function load({ params, url }) {
+
     const id = params.id
     const {
       body: [hub]

@@ -3,46 +3,33 @@
   import { user, supabase } from '$lib/supabase'
   export const router = true
   export const prerender = false
-  /**
-   * @type {import('@sveltejs/kit').Load}
-   */
-  export async function load({ params, url, session }) {
-    if (!isNaN(Number(params.id))) {
-      return {
-        fallthrough: true
-      }
-    }
-    if (session.exploit) {
-      return {
-        status: 301,
-        redirect: `/script/lua/${params.id}`
-      }
-    }
-
-    const [script] =
-      (
-        await supabase
-          .from('scripts')
-          .select('name,games,description,user_id,hidden,source')
-          .match({ id: params.id })
-      ).body || []
-    if (script) {
-      return {
-        props: {
-          script,
-          host: url.origin,
-          id: params.id
-        }
-      }
-    } else if (!Number(params.id)) {
-      return {
-        // fallthrough: true
-      }
-    }
-  }
 </script>
 
 <script>
+  export let id
+  /** @type {{name: string, id: string,source: string, description: string, user_id: string, games?: string[],hidden:boolean}} */
+  export let script
+  $: owner = script?.user_id === $user?.id
+  let name = script?.name
+  let desc = script?.description
+  let hidden = script?.hidden
+  let source = script?.source ?? ''
+  if (browser && !script) {
+    supabase
+      .from('scripts')
+      .select('name,games,description,user_id,hidden,source')
+      .match({ id })
+      .then((res) => {
+        console.log(res)
+        script = res.body[0]
+        name = script.name
+        desc = script.description
+        hidden = script.hidden
+        source = script.source ?? ''
+      })
+  }
+  export let host
+
   import Delete from '@fluentui/svg-icons/icons/delete_20_regular.svg?raw'
   import AddTo from '@fluentui/svg-icons/icons/collections_add_20_regular.svg?raw'
   import { goto } from '$app/navigation'
@@ -51,21 +38,12 @@
     Checkbox,
     Button,
     TextBox,
-    Tooltip,
     Flyout
   } from 'fluent-svelte'
   import Snippet from '$lib/components/Snippet.svelte'
-  /** @type {{name: string, id: string,source: string, description: string, user_id: string, games: string[],hidden:boolean}} */
-  export let script
-  export let host
-  export let id
   let code = `loadstring(game:HttpGet("${host}/script/${id}"), ${JSON.stringify(
     script?.name
   )})()`
-  $: owner = script?.user_id === $user?.id
-  let name = script?.name
-  let desc = script?.description
-  let hidden = script?.hidden
   $: owner &&
     name &&
     supabase
@@ -98,7 +76,6 @@
         })
       )
   }
-  let source = script?.source ?? ''
   const hubs =
     $user && browser
       ? supabase
@@ -198,11 +175,11 @@
     <h1><TextBox required placeholder="Script name" bind:value={name} /></h1>
     <textarea bind:value={desc} />
 
-    <label for="hidden">
+    <!-- <label for="hidden">
       <Checkbox id="hidden" bind:checked={hidden} />
-      Hidden? (This script will 404 when visited by anyone else, won't show
-        up in the list or search, but the loader will work for everyone.)
-    </label>
+      Hidden? (This script will 404 when visited by anyone else, won't show up in
+      the list or search, but the loader will work for everyone.)
+    </label> -->
     <Button
       on:click={() => {
         supabase

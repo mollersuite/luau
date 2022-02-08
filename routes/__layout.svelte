@@ -12,6 +12,7 @@
 </script>
 
 <script>
+  import { navigating } from '$app/stores'
   import { user, supabase } from '$lib/supabase.js'
   import Header from '$lib/components/Header.svelte'
   import Button from '$lib/components/Button.svelte'
@@ -83,19 +84,14 @@
 
 <Header {links} {path}>
   <Button href="/" label="Luau.ml" selected={'/' === path}>
-    <svg
-      viewBox="0 0 15 15"
-      width="15"
-      fill="#ff4539"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="m 12,11 v 3 h 3 v -3 z" />
-      <path d="m 8,11 v 3 h 3 v -3 z" />
+    <svg viewBox="0 0 15 15" fill="#ff4539" width="15" class:load={$navigating}>
+      <path d="m 12,11 v 3 h 3 v -3 z" class="bottom_right" />
+      <path d="m 8,11 v 3 h 3 v -3 z" class="bottom_left" />
       <path d="m 0,11 v 1.5 L 1.5,14 H 7 v -3 z" />
-      <path d="m 9.6230469,7 v 3 H 12.623047 V 7 Z" />
+      <path d="m 9.6230469,7 v 3 H 12.623047 V 7 Z" class="top" />
       <path d="M 3.5,0 2,1.5 V 3 10 H 7 9 V 6 h 3 V 3 h 2 V 1.5 L 12.5,0 Z" />
-    </svg></Button
-  >
+    </svg>
+  </Button>
 
   <form action="/search" on:submit|preventDefault={search}>
     <TextBox
@@ -134,5 +130,27 @@
     max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
+  }
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .load .top,
+  .load .bottom_left,
+  .load .bottom_right {
+    animation: blink 2s infinite;
+  }
+  .load .bottom_left {
+    animation-delay: 0.2s;
+  }
+  .load .bottom_right {
+    animation-delay: 0.4s;
   }
 </style>

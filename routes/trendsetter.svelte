@@ -44,7 +44,7 @@
   >
     <Moller label="mollermethod" selected
       ><img
-        src="https://mthd.ml/icon.png"
+        src="/mthd.png"
         height="16"
         alt="mollermethod"
       /></Moller

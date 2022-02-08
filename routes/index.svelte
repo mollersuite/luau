@@ -149,7 +149,7 @@
   #trollsmile {
     background: white;
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-      url(https://cdn.discordapp.com/emojis/817185536661389322.png?size=1024);
+      url(/trollsmile.png);
     background-size: 100%;
     background-position: center;
   }
@@ -163,7 +163,7 @@
   #mollermethod {
     background: white;
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-      url(https://mthd.ml/icon.png);
+      url(/mthd.png);
     background-size: 100%;
     background-position: center;
   }
