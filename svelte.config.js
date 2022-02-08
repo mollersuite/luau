@@ -1,6 +1,5 @@
 // import workers from '@sveltejs/adapter-cloudflare-workers'
 import vercel from '@sveltejs/adapter-vercel'
-import { searchForWorkspaceRoot } from 'vite'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -8,7 +7,7 @@ const config = {
     adapter: vercel(),
     csp: {
       directives: {
-        'default-src': ['self', 'https://zngvnlwfhxhjjqnutxfp.supabase.co']
+        'script-src': ['self']
       }
     },
     files: {
