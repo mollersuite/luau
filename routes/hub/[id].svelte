@@ -4,7 +4,6 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load({ params, url }) {
-
     const id = params.id
     const {
       body: [hub]

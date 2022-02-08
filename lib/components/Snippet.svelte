@@ -9,7 +9,7 @@
 <pre>
   {code}
   {#if browser}
-  <CodeButton on:click={() => navigator.clipboard.writeText(code)}>
+    <CodeButton on:click={() => navigator.clipboard.writeText(code)}>
     {@html Copy}
   </CodeButton>
   {/if}

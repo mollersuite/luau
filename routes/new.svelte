@@ -64,11 +64,7 @@
     game's URL, or <code>game.PlaceId</code>.<br />Keep this empty if your
     script supports all games.</small
   >
-  <TextBox
-    name="games"
-    placeholder="Supported games"
-    bind:value={games}
-  />
+  <TextBox name="games" placeholder="Supported games" bind:value={games} />
   <Button type="submit">Upload</Button>
 </form>
 

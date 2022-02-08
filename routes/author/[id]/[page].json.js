@@ -4,7 +4,7 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 // @ts-ignore
-const supabase = createClient(supabaseUrl, supabaseAnonKey,{
+const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   fetch: fetch.bind(globalThis)
 })
 
@@ -13,7 +13,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey,{
  */
 export async function get({ params }) {
   const page = params.page
-    
+
   if (!params.id) {
     return {
       status: 400,

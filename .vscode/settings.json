@@ -1,3 +1,10 @@
 {
-  "rpc.enabled": false
+  "rpc.enabled": false,
+  "robloxLsp.diagnostics.globals": [
+    "gethui",
+    "syn",
+    "_games",
+    "_name",
+    "_scripts"
+  ]
 }

@@ -30,13 +30,12 @@
     flex-direction: row;
   }
 
-
   @media (prefers-color-scheme: light) {
     header {
       background: rgba(255, 255, 255, 0.5);
     }
   }
-  
+
   @media (max-width: 659px) {
     header {
       justify-content: center;

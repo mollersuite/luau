@@ -43,11 +43,7 @@
     ]}
   >
     <Moller label="mollermethod" selected
-      ><img
-        src="/mthd.png"
-        height="16"
-        alt="mollermethod"
-      /></Moller
+      ><img src="/mthd.png" height="16" alt="mollermethod" /></Moller
     >
     <form>
       <TextBox type="search" placeholder="Find a script" />
@@ -141,7 +137,7 @@ Could've bought an ass for my motherfuckin bitch`,
     <a class="local">
       <IconButton title="Invisible">
         {@html Invisible}
-      </IconButton> 
+      </IconButton>
       <IconButton title="Fly">
         {@html Airplane}
       </IconButton>

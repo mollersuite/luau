@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@fluentui/svg-icons": "^1.1.157",
+    "@prettier/plugin-lua": "github:prettier/plugin-lua",
     "@sveltejs/adapter-vercel": "^1.0.0-next.40",
     "@sveltejs/kit": "^1.0.0-next.260",
     "fluent-svelte": "^1.3.3",
@@ -23,7 +24,6 @@
   "type": "module",
   "dependencies": {
     "@fontsource/jetbrains-mono": "^4.5.0",
-    "@supabase/supabase-js": "1.28.0",
-    "dedent": "^0.7.0"
+    "@supabase/supabase-js": "1.28.0"
   }
 }

@@ -8,9 +8,7 @@ declare namespace App {
 
   interface Platform {}
 
-  interface Session {
-    exploit: string | false
-  }
+  interface Session {}
 
   interface Stuff {}
 }

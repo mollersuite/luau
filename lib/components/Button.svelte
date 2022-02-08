@@ -13,7 +13,7 @@
   export let href = '#'
   /**
    * @type {string}
-  */
+   */
   export let label
   /**
    * @type {boolean}
@@ -32,7 +32,6 @@
     <b>{label}</b>
   </button>
 {/if}
-
 
 <style>
   a,
