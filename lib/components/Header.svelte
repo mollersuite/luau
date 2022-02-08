@@ -1,15 +1,5 @@
-<script>
-  export let path
-  import Button from './Button.svelte'
-  /** @type {{name: string, goto: string | (() => unknown), icon: string}[]} */
-  export let links
-</script>
-
 <header>
   <slot />
-  {#each links as { name: label, goto: href, icon }}
-    <Button {label} {href} selected={href === path}>{@html icon}</Button>
-  {/each}
 </header>
 
 <style>
