@@ -1,10 +1,10 @@
 // import workers from '@sveltejs/adapter-cloudflare-workers'
-import vercel from '@sveltejs/adapter-vercel'
+import auto from '@sveltejs/adapter-auto'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: vercel(),
+    adapter: auto(),
     csp: {
       directives: {
         'script-src': ['self']

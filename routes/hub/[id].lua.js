@@ -3,7 +3,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { encode } from '$lib/lua'
 import exploit from '$lib/exploit'
-import script from './_hub.lua?raw'
+import script from './_hub.client.lua?raw'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const key = import.meta.env.VITE_SUPABASE_SERVICE_KEY
