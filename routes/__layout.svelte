@@ -21,10 +21,6 @@
   import { dev } from '$app/env'
 </script>
 
-<svelte:head>
-  <title>{path} - Luau.ml</title>
-</svelte:head>
-
 <!-- <InfoBar closable={false} severity="caution" title="oh hell nah">two discord buttons</InfoBar> -->
 <Header>
   <Button href="/" label="Luau.ml" selected={'/' === path}>
