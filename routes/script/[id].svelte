@@ -28,7 +28,7 @@
         source = script.source ?? ''
       })
   }
-  export let host
+  const host = $page.url.origin
 
   import Delete from '@fluentui/svg-icons/icons/delete_20_regular.svg?raw'
   import AddTo from '@fluentui/svg-icons/icons/collections_add_20_regular.svg?raw'
@@ -41,6 +41,7 @@
     Flyout
   } from 'fluent-svelte'
   import Snippet from '$lib/components/Snippet.svelte'
+  import { page } from '$app/stores'
   let code = `loadstring(game:HttpGet("${host}/script/${id}"), ${JSON.stringify(
     script?.name
   )})()`
@@ -115,7 +116,10 @@
           <Checkbox bind:checked={hub.new_used}>{hub.name}</Checkbox><br />
         {:else}
           <p>
-            No hubs found. Maybe you should <a href="/hub/new">make one?</a>
+            No hubs found. Maybe you should <a
+              sveltekit:prefetch
+              href="/hub/new">make one?</a
+            >
           </p>
         {/each}
       {/await}
@@ -175,11 +179,11 @@
     <h1><TextBox required placeholder="Script name" bind:value={name} /></h1>
     <textarea bind:value={desc} />
 
-    <!-- <label for="hidden">
+    <label for="hidden">
       <Checkbox id="hidden" bind:checked={hidden} />
       Hidden? (This script will 404 when visited by anyone else, won't show up in
       the list or search, but the loader will work for everyone.)
-    </label> -->
+    </label>
     <Button
       on:click={() => {
         supabase

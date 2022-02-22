@@ -12,7 +12,7 @@
 <script>
   import Snippet from '$lib/components/Snippet.svelte'
   import { InfoBar, InfoBadge } from 'fluent-svelte'
-
+  import { mode } from '$app/env'
   /** @type {number} */
   export let status
   /** @type {Error} */
@@ -28,9 +28,7 @@
 </h1>
 <InfoBar closable={false} title={status.toString()} severity="critical">
   {message.name}
-  <InfoBadge style="float: right" severity="critical"
-    >{import.meta.env.MODE}</InfoBadge
-  >
+  <InfoBadge style="float: right" severity="critical">{mode}</InfoBadge>
 </InfoBar>
 <Snippet code={message.stack} />
 

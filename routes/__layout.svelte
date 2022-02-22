@@ -1,25 +1,12 @@
-<script context="module">
-  /**
-   * @type {import('@sveltejs/kit').Load}
-   */
-  export async function load({ url }) {
-    return {
-      props: {
-        path: url?.pathname
-      }
-    }
-  }
-</script>
-
 <script>
-  import { navigating } from '$app/stores'
+  import { navigating, page } from '$app/stores'
   import { user, supabase } from '$lib/supabase.js'
   import Header from '$lib/components/Header.svelte'
   import Button from '$lib/components/Button.svelte'
   import { TextBox } from 'fluent-svelte'
   import { goto } from '$app/navigation'
   import '$lib/app.css'
-  export let path = ''
+  $: path = $page.url.pathname
 
   let value = ''
   const search = () =>
@@ -31,6 +18,7 @@
   import Code from '@fluentui/svg-icons/icons/code_20_regular.svg?raw'
   import AddFriend from '@fluentui/svg-icons/icons/person_add_20_regular.svg?raw'
   import List from '@fluentui/svg-icons/icons/list_20_regular.svg?raw'
+  import { dev } from '$app/env'
 </script>
 
 <svelte:head>
@@ -40,7 +28,12 @@
 <!-- <InfoBar closable={false} severity="caution" title="oh hell nah">two discord buttons</InfoBar> -->
 <Header>
   <Button href="/" label="Luau.ml" selected={'/' === path}>
-    <svg viewBox="0 0 15 15" fill="#ff4539" width="15" class:load={$navigating}>
+    <svg
+      viewBox="0 0 15 15"
+      fill={dev ? 'gray' : '#ff4539'}
+      width="15"
+      class:load={$navigating}
+    >
       <path d="m 12,11 v 3 h 3 v -3 z" class="bottom_right" />
       <path d="m 8,11 v 3 h 3 v -3 z" class="bottom_left" />
       <path d="m 0,11 v 1.5 L 1.5,14 H 7 v -3 z" />

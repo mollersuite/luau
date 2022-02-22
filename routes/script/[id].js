@@ -14,7 +14,8 @@ export async function get({ params, request, locals }) {
     return {
       status: 301,
       headers: {
-        location: `/script/lua/${params.id}`
+        location: `/script/lua/${params.id}`,
+        Vary: 'User-Agent'
       }
     }
   }
@@ -29,15 +30,19 @@ export async function get({ params, request, locals }) {
     return {
       body: {
         script,
-        host: new URL(request.url).origin,
         id: params.id
+      },
+      headers: {
+        Vary: 'User-Agent'
       }
     }
   } else {
     return {
       body: {
-        host: new URL(request.url).origin,
         id: params.id
+      },
+      headers: {
+        Vary: 'User-Agent'
       }
     }
   }
