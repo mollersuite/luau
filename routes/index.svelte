@@ -65,36 +65,6 @@
   </form>
 </section>
 <section>
-  <h1>Roadmap</h1>
-  <ul>
-    <li>
-      add captcha to submit script endpoint<sup
-        >mau could spam my db otherwise</sup
-      >
-    </li>
-    <li>display names and pfps from Discord</li>
-    <li>thumbnails</li>
-    <li>
-      likes and dislikes <sup
-        >hard to do securely<sup
-          >a threat actor could figure out who liked/disliked their script<sup
-            >bad because they'd blacklist people who dont like their script</sup
-          ></sup
-        ></sup
-      >
-    </li>
-    <li>
-      reporting (possibly using serverless discord interactions so I can just
-      click a Delete button)
-    </li>
-    <li>
-      have any ideas? <a href="https://discord.gg/HAw7Zf8GF5"
-        >join the discord.</a
-      >
-    </li>
-  </ul>
-</section>
-<section>
   <h1 class="mo">Luau.ml is made of Mollybdenum</h1>
   <p>three* people making dumb lego hacking tools</p>
   <nav>
@@ -102,10 +72,12 @@
       <h1>Luau.ml</h1>
       <em>You're on it right now.</em>
     </article>
-    <article id="mollermethod">
-      <h1>mollermethod</h1>
-      <em>We made a script hub.</em><sup>upcoming</sup>
-    </article>
+    <a href="https://mthd.ml">
+      <article id="mollermethod">
+        <h1>mollermethod</h1>
+        <em>We made a script hub.</em>
+      </article>
+    </a>
     <article id="trollsmile">
       <h1>trollsmile</h1>
       <em>The command invoker.</em><sup>upcoming</sup>
@@ -134,7 +106,10 @@
     gap: 1ch;
     flex-direction: row;
   }
-  section nav > * {
+  section nav > a {
+    display: contents;
+  }
+  section nav article {
     flex-grow: 1;
     text-decoration: none;
     color: white;
