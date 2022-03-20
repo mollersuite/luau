@@ -14,7 +14,8 @@ const config = {
       lib: 'lib',
       routes: 'routes',
       hooks: 'hooks',
-      template: 'app.html'
+      template: 'app.html',
+      params: 'lib/params'
     }
   }
 }

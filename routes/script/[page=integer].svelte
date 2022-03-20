@@ -4,11 +4,6 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load({ params, url }) {
-    if (isNaN(Number(params.page))) {
-      return {
-        fallthrough: true
-      }
-    }
     const pg = Number(params.page)
     const scripts = await supabase
       .from('scripts')
@@ -53,7 +48,7 @@
   <Button
     disabled={!page}
     variant="accent"
-    href="p_{(page - 1).toString()}"
+    href={(page - 1).toString()}
     sveltekit:prefetch
     rel="prev">←</Button
   >
@@ -62,7 +57,7 @@
     disabled={!scripts.length}
     variant="accent"
     sveltekit:prefetch
-    href="p_{(Number(page) + 1).toString()}"
+    href={(Number(page) + 1).toString()}
     rel="next">→</Button
   >
 </footer>

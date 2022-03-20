@@ -3,12 +3,7 @@
 
 import { supabase } from '$lib/supabase'
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function get({ params, request, locals }) {
-  if (!isNaN(Number(params.id))) {
-    return {
-      fallthrough: true
-    }
-  }
+export async function get({ params, locals }) {
 
   if (locals.exploit) {
     return {

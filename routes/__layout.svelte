@@ -50,9 +50,9 @@
   </form>
 
   <Button
-    href="/script/p_0"
+    href="/script/0"
     label="Scripts"
-    selected={path.startsWith('/script/p_')}
+    selected={path.startsWith('/script/')}
   >
     {@html Code}
   </Button>
