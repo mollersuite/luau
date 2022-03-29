@@ -1,10 +1,30 @@
 {
-  "rpc.enabled": false,
+  "rpc.detailsViewing": "Making Luau.ml {problems}",
   "robloxLsp.diagnostics.globals": [
     "gethui",
     "syn",
     "_games",
     "_name",
     "_scripts"
-  ]
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#ff756c",
+    "activityBar.activeBorder": "#80ff87",
+    "activityBar.background": "#ff756c",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#80ff87",
+    "activityBarBadge.foreground": "#15202b",
+    "sash.hoverBorder": "#ff756c",
+    "statusBar.background": "#ff4539",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#ff756c",
+    "statusBarItem.remoteBackground": "#ff4539",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#ff4539",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#ff453999",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#ff4539"
 }
