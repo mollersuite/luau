@@ -64,30 +64,6 @@
     />
   </form>
 </section>
-<section>
-  <h1 class="mo">Luau.ml is made of Mollybdenum</h1>
-  <p>three* people making dumb lego hacking tools</p>
-  <nav>
-    <article id="luau">
-      <h1>Luau.ml</h1>
-      <em>You're on it right now.</em>
-    </article>
-    <a href="https://mthd.ml">
-      <article id="mollermethod">
-        <h1>mollermethod</h1>
-        <em>We made a script hub.</em>
-      </article>
-    </a>
-    <article id="trollsmile">
-      <h1>trollsmile</h1>
-      <em>The command invoker.</em><sup>upcoming</sup>
-    </article>
-  </nav>
-  <small
-    >*trollsmile by Jack & Auxnos; mollermethod by Jack, Glitchy, and Auxnos;
-    Luau.ml by Jack</small
-  >
-</section>
 
 <style>
   .center {
